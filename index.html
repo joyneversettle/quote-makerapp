@@ -32,9 +32,6 @@
       <div class="mobile-brand"><img src="icon-192.png" alt=""><strong>Quotation Maker</strong></div>
       <div class="top-title"><h1 id="pageTitle">Dashboard</h1><p id="pageSub">Manage professional quotations</p></div>
       <div class="top-actions">
-        <button class="icon-btn" id="globalZoomOut" title="Zoom out">−</button>
-        <span class="zoom-value" id="globalZoomValue">100%</span>
-        <button class="icon-btn" id="globalZoomIn" title="Zoom in">＋</button>
         <button class="btn primary" id="newTop">+ New Quotation</button>
       </div>
     </header>
@@ -95,7 +92,7 @@
 
       <section class="page" id="page-quotations"><div class="page-head"><div><span class="eyebrow">LIBRARY</span><h2>Saved Quotations</h2><p>Search, edit, duplicate or delete quotations stored on this device.</p></div><button class="btn primary" id="newFromLibrary">+ New Quotation</button></div><div class="panel"><div class="search-row"><input id="searchQuotes" placeholder="Search quotation ref, guest or agency..."><select id="filterStatus"><option value="all">All Status</option><option>DRAFT</option><option>PROVISIONAL</option><option>CONFIRMED</option><option>HOLD</option></select></div><div id="quoteLibrary" class="quote-library"></div></div></section>
 
-      <section class="page" id="page-preview"><div class="preview-toolbar"><div><span class="eyebrow">DOCUMENT PREVIEW</span><h2>Quotation Preview</h2></div><div class="preview-controls"><button class="icon-btn" id="previewZoomOut">−</button><span id="previewZoomValue">100%</span><button class="icon-btn" id="previewZoomIn">＋</button><button class="btn" id="previewFit">Fit</button><button class="btn" id="previewCopyEmail">Copy Email</button><button class="btn primary" id="previewPrint">Print / PDF</button></div></div><div id="previewCanvas" class="preview-canvas"><div id="quotationDocument" class="quotation-document"></div></div></section>
+      <section class="page" id="page-preview"><div class="preview-toolbar"><div><span class="eyebrow">DOCUMENT PREVIEW</span><h2>Quotation Preview</h2></div><div class="preview-controls"><button class="btn" id="previewCopyEmail">Copy Email</button><button class="btn primary" id="previewPrint">Print / PDF</button></div></div><div id="previewCanvas" class="preview-canvas"><div id="quotationDocument" class="quotation-document"></div></div></section>
 
       <section class="page" id="page-settings"><div class="page-head"><div><span class="eyebrow">SYSTEM SETTINGS</span><h2>Quotation Settings</h2><p>Manage the master data used by the quotation editor and output.</p></div><button class="btn primary" id="saveSettings">Save Settings</button></div>
         <div class="settings-grid">
