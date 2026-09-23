@@ -1,25 +1,15 @@
 {
-  "name": "Quotation Maker PRO",
-  "short_name": "Quotation Maker",
-  "description": "Professional hotel and resort quotation management app",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#f5f7fa",
-  "theme_color": "#f97316",
-  "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+  "name":"Quotation Maker Pro",
+  "short_name":"Quotation Maker",
+  "description":"Professional hotel quotation management app",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"portrait-primary",
+  "theme_color":"#0b1d41",
+  "background_color":"#f4f6f9",
+  "icons":[
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ]
 }

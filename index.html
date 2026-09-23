@@ -2,492 +2,118 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f97316">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1d41">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Quotation Maker">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="favicon-64.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><title>Quotation Maker PRO</title>
-<style>
-:root{--orange:#f97316;--orange2:#ea580c;--bg:#f4f6f8;--card:#fff;--text:#111827;--muted:#667085;--line:#e5e7eb;--soft:#fff7ed;--danger:#dc2626;--green:#15803d;--radius:16px}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-text-size-adjust:100%}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
-body{min-height:100dvh}.app{min-height:100dvh;display:flex}.sidebar{width:250px;background:#111827;color:#fff;position:fixed;inset:0 auto 0 0;padding:20px 14px;display:flex;flex-direction:column;z-index:20}.brand{display:flex;align-items:center;gap:11px;padding:8px 8px 24px}.brand img{width:40px;height:40px;border-radius:11px}.brand strong{font-size:17px}.brand span{display:block;color:#9ca3af;font-size:11px;margin-top:2px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#d1d5db;text-align:left;padding:12px 13px;border-radius:11px;font-weight:700}.nav button.active,.nav button:hover{background:#1f2937;color:#fff}.nav .active{box-shadow:inset 3px 0 var(--orange)}.sidebar-bottom{margin-top:auto;padding:10px 8px;color:#9ca3af;font-size:11px}.main{margin-left:250px;width:calc(100% - 250px);min-width:0}.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:15}.topbar-title h1{margin:0;font-size:20px}.topbar-title p{margin:3px 0 0;color:var(--muted);font-size:12px}.top-actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 14px;font-weight:800;color:#1f2937}.btn.primary{background:var(--orange);border-color:var(--orange);color:#fff}.btn.primary:hover{background:var(--orange2)}.btn.dark{background:#111827;border-color:#111827;color:#fff}.btn.danger{color:var(--danger)}.content{padding:24px;max-width:1450px;margin:auto}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(340px,.85fr);gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 2px 8px rgba(16,24,40,.04);padding:18px}.card h2{font-size:15px;margin:0 0 15px}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.section-title h2{margin:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.form-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.field label{display:block;font-size:11px;font-weight:800;color:#667085;margin-bottom:6px;text-transform:uppercase;letter-spacing:.03em}.field input,.field select,.field textarea{width:100%;border:1px solid #d1d5db;border-radius:10px;background:#fff;padding:10px 11px;outline:none;color:#111827}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.12)}.field textarea{min-height:88px;resize:vertical}.full{grid-column:1/-1}.items{overflow:auto;border:1px solid var(--line);border-radius:12px}.items table{width:100%;border-collapse:collapse;min-width:720px}.items th{background:#111827;color:#fff;text-align:left;padding:10px;font-size:11px}.items td{padding:8px;border-top:1px solid var(--line);vertical-align:middle}.items input,.items select{width:100%;border:1px solid #d1d5db;border-radius:8px;padding:8px}.num{text-align:right}.summary{display:grid;grid-template-columns:1fr 240px;gap:20px;align-items:start}.totals{border:1px solid var(--line);border-radius:12px;overflow:hidden}.totals div{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--line);font-size:13px}.totals div:last-child{border:0;background:#111827;color:#fff;font-weight:900;font-size:15px}.pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#fff7ed;color:#c2410c;font-size:11px;font-weight:800}.qr-box{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}.qr-box img{width:132px;height:132px;border:8px solid #fff;box-shadow:0 0 0 1px #d1d5db;border-radius:8px}.qr-meta{min-width:0}.qr-meta strong{display:block;font-size:18px}.qr-meta small{color:var(--muted)}.toolbar{display:flex;flex-wrap:wrap;gap:8px}.notice{padding:10px 12px;border-radius:10px;background:#f0fdf4;color:#166534;font-size:12px;font-weight:700}.dashboard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.stat span{font-size:11px;color:var(--muted);font-weight:800}.stat strong{display:block;font-size:26px;margin-top:5px}.recent{margin-top:16px}.list{display:grid;gap:8px}.list-row{display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid var(--line);padding:12px;border-radius:11px;background:#fff}.list-row strong{font-size:13px}.list-row small{display:block;color:var(--muted);margin-top:3px}.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.setting-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.setting-card h3{margin:0 0 12px;font-size:14px}.file-btn{display:inline-flex;align-items:center;gap:8px;border:1px dashed #cbd5e1;border-radius:10px;padding:10px 12px;font-weight:800;background:#f8fafc}.preview{margin-top:10px;max-width:100%;max-height:120px;border-radius:10px;border:1px solid var(--line)}
-/* quotation preview */
-.quote-page{background:#e5e7eb;padding:18px}.quote-sheet{background:#fff;max-width:820px;margin:0 auto;box-shadow:0 3px 18px rgba(0,0,0,.08);border:1px solid #d1d5db;padding:30px;color:#111827}.quote-head{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #d4a72c;padding-bottom:14px}.quote-brand h1{font-size:20px;margin:0 0 4px}.quote-brand p{margin:2px 0;font-size:10px;color:#374151}.quote-badge{border:1px solid #111827;border-radius:8px;padding:9px 11px;min-width:155px;font-size:10px}.quote-badge strong{font-size:13px;display:block;margin-bottom:5px}.quote-section{margin-top:15px;border:1px solid #d1d5db;border-radius:8px;overflow:hidden}.quote-section-title{background:#faf6e9;border-bottom:1px solid #d4a72c;padding:7px 10px;font-weight:900;font-size:11px}.quote-section-body{padding:10px}.quote-info{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.quote-info div{padding:5px 0;border-bottom:1px solid #edf0f2;font-size:10px}.quote-info b{font-size:9px;color:#374151}.quote-table{width:100%;border-collapse:collapse;font-size:9px}.quote-table th{background:#111827;color:#fff;padding:7px;text-align:left}.quote-table td{padding:7px;border-bottom:1px solid #e5e7eb}.quote-bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}.quote-summary{border:1px solid #d1d5db;border-radius:8px;padding:10px;font-size:10px}.quote-summary strong{font-size:11px}.grand{display:flex;justify-content:space-between;background:#111827;color:#fff;padding:7px 9px;border-radius:4px;margin-top:7px;font-weight:900}.quote-payment{display:flex;gap:12px;align-items:center}.quote-payment img{width:90px;height:90px}.quote-payment div{font-size:10px;line-height:1.5}.quote-note{font-size:10px;line-height:1.5}.quote-footer{margin-top:18px;padding-top:10px;border-top:2px solid #d4a72c;text-align:center;font-size:9px}.mobile-bottom{display:none}.install-banner{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:12px 15px;border-radius:10px;box-shadow:0 8px 25px rgba(0,0,0,.2);z-index:100;font-size:13px;font-weight:700}.modal-back{position:fixed;inset:0;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;z-index:90;padding:18px}.modal-back.show{display:flex}.modal{width:min(620px,100%);max-height:90dvh;overflow:auto;background:#fff;border-radius:16px;padding:18px}.modal h2{margin-top:0}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}
-@media(max-width:1000px){.sidebar{display:none}.main{margin:0;width:100%;padding-bottom:76px}.topbar{height:64px;padding:0 14px}.topbar-title h1{font-size:17px}.topbar-title p{display:none}.top-actions .secondary{display:none}.content{padding:12px}.grid{grid-template-columns:1fr}.dashboard-grid{grid-template-columns:repeat(2,1fr)}.settings-grid{grid-template-columns:1fr}.mobile-bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;z-index:30;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:7px 6px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -4px 15px rgba(0,0,0,.06)}.mobile-bottom button{border:0;background:none;padding:6px 2px;color:#667085;font-size:10px;font-weight:800}.mobile-bottom button.active{color:var(--orange)}.mobile-bottom .mi{display:block;font-size:20px;line-height:22px}.form-grid.three{grid-template-columns:1fr}.quote-sheet{padding:20px}.quote-head{gap:10px}.quote-badge{min-width:135px}.quote-bottom{grid-template-columns:1fr}.qr-box{align-items:flex-start}.qr-box img{width:110px;height:110px}}
-@media(max-width:620px){.topbar{padding:0 10px}.top-actions{gap:5px}.btn{padding:9px 10px}.content{padding:9px}.card{padding:13px;border-radius:13px}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.dashboard-grid{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.install-banner{align-items:flex-start;flex-direction:column}.quote-page{padding:0}.quote-sheet{box-shadow:none;border:0;min-height:100vh;padding:18px 14px}.quote-head{display:block}.quote-badge{margin-top:10px}.quote-info{grid-template-columns:1fr}.quote-brand h1{font-size:18px}.quote-table{font-size:8px}.quote-table th,.quote-table td{padding:5px 4px}.quote-payment img{width:76px;height:76px}}
-@media print{body{background:#fff}.sidebar,.topbar,.mobile-bottom,.no-print{display:none!important}.main{margin:0;width:100%}.content{padding:0}.page{display:none!important}.page.print-page{display:block!important}.quote-page{padding:0;background:#fff}.quote-sheet{box-shadow:none;border:0;max-width:none;margin:0;padding:14mm;color:#111} @page{size:A4;margin:0}}
-
-/* V5 systematic editor + exact quotation styling */
-:root{--orange:#f97316;--orange2:#ea580c;--bg:#f5f7fa;--card:#fff;--text:#111827;--muted:#667085;--line:#d7dde5;--soft:#fff7ed;--navy:#0b1d41;--gold:#d6b56b}
-html,body,*{font-family:Inter,Arial,Helvetica,sans-serif!important}
-.editor-card{padding:20px!important}
-.form-grid.large-gap{gap:16px}
-.field input,.field select,.field textarea{min-height:44px;font-size:15px!important}
-.field label{font-size:12px!important}
-.items table{min-width:900px}
-.items th{font-size:12px;padding:12px}
-.items td{padding:9px}
-.items input,.items select{min-height:40px;font-size:14px!important}
-.stepper{display:flex;align-items:center;gap:4px}
-.stepper input{width:58px!important;text-align:center}
-.stepper button{width:32px;height:32px;border:1px solid #cbd5e1;background:#fff;border-radius:8px;font-weight:900;font-size:17px;line-height:1}
-.catalog-list{display:grid;gap:8px;margin-top:12px}
-.catalog-row{display:grid;grid-template-columns:minmax(0,1fr) 110px 110px 40px;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fafafa}
-.catalog-row input,.catalog-row select{width:100%;border:1px solid #d1d5db;border-radius:8px;padding:9px}
-.catalog-add{display:grid;grid-template-columns:minmax(0,1fr) 110px 110px auto;gap:8px;align-items:end;margin-top:10px}
-.setting-card h3{font-size:15px}
-.settings-help{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.4}
-.quote-shell{font-family:Inter,Arial,Helvetica,sans-serif}
-.quote-reference{font-size:11px}
-.quote-section-title2{background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:7px 9px;font-weight:900;font-size:10px;letter-spacing:.04em}
-.quote-box{border:1px solid #cbd5e1;border-radius:5px;overflow:hidden}
-.quote-box-body{padding:9px}
-.quote-table2{width:100%;border-collapse:collapse;font-size:9px}
-.quote-table2 th{background:var(--navy);color:#fff;padding:7px 6px;text-align:left;border:1px solid #cbd5e1}
-.quote-table2 td{padding:6px;border:1px solid #cbd5e1}
-.quote-totalbar{background:var(--navy);color:#fff;font-weight:900;padding:8px 10px;display:flex;justify-content:space-between}
-.quote-a4{background:#fff;max-width:820px;margin:auto;border:1px solid #cbd5e1;padding:22px;font-family:Inter,Arial,Helvetica,sans-serif}
-.quote-a4 .qhead{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #0b1d41;padding-bottom:8px}
-.quote-a4 .qbrand{flex:1}
-.quote-a4 .qbrand h1{font-size:15px;margin:0 0 2px;letter-spacing:.02em}
-.quote-a4 .qbrand p{font-size:8px;line-height:11px;margin:1px 0}
-.quote-a4 .qref{width:170px;border:1px solid #cbd5e1;border-radius:4px;padding:8px;font-size:8px;line-height:12px}
-.quote-a4 .qref strong{font-size:9px}
-.quote-a4 .qgrid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
-.quote-a4 .qmini{border:1px solid #cbd5e1;border-radius:4px;overflow:hidden}
-.quote-a4 .qtitle{background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900}
-.quote-a4 .qbody{padding:7px 8px;font-size:8px;line-height:12px}
-.quote-a4 .qbody b{font-weight:800}
-.quote-a4 .qtable{width:100%;border-collapse:collapse;font-size:8px}
-.quote-a4 .qtable th{background:var(--navy);color:#fff;padding:6px 5px;border:1px solid #cbd5e1}
-.quote-a4 .qtable td{padding:6px 5px;border:1px solid #cbd5e1}
-.quote-a4 .qsummary{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-.quote-a4 .qsummarybox{border:1px solid #cbd5e1;border-radius:4px;overflow:hidden}
-.quote-a4 .qrows{padding:7px 8px;font-size:8px;line-height:13px}
-.quote-a4 .qgrand{background:var(--navy);color:#fff;padding:7px 8px;font-size:10px;font-weight:900;display:flex;justify-content:space-between}
-.quote-a4 .qpay{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center}
-.quote-a4 .qpay img{width:82px;height:82px;border:1px solid #cbd5e1}
-.quote-a4 .qpaytext{font-size:8px;line-height:12px}
-.quote-a4 .qbanner{margin-top:8px}
-.quote-a4 .qbanner img{display:block;width:100%;max-height:105px;object-fit:cover;border:1px solid #cbd5e1}
-.quote-a4 .qterms{font-size:8px;line-height:12px}
-.quote-a4 .qfooter{border-top:1px solid #cbd5e1;margin-top:9px;padding-top:8px;text-align:right;font-size:7px;line-height:10px}
-.quote-a4 .signature{margin-top:5px;display:inline-block;text-align:center}
-.quote-a4 .signature img{display:block;max-width:110px;max-height:45px;margin-left:auto}
-@media(max-width:620px){
- .editor-card{padding:15px!important}
- .catalog-row{grid-template-columns:1fr 1fr 1fr 40px}
- .catalog-add{grid-template-columns:1fr 1fr 1fr}
- .catalog-add .btn{grid-column:1/-1}
- .quote-a4{padding:14px;border:0;max-width:none}
- .quote-a4 .qhead{display:block}
- .quote-a4 .qref{width:auto;margin-top:7px}
- .quote-a4 .qgrid2,.quote-a4 .qsummary{grid-template-columns:1fr}
- .quote-a4 .qtable{font-size:7px}
- .quote-a4 .qtable th,.quote-a4 .qtable td{padding:4px 3px}
- .quote-a4 .qpay{grid-template-columns:80px 1fr}
-}
-</style>
+<title>Quotation Maker Pro</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app">
-<aside class="sidebar">
-  <div class="brand"><img src="icon-192.png"><div><strong>Quotation Maker</strong><span>Professional Quote System</span></div></div>
-  <nav class="nav">
-    <button class="active" data-page="dashboard">▦ &nbsp; Dashboard</button>
-    <button data-page="quotation">＋ &nbsp; New Quotation</button>
-    <button data-page="quotations">▤ &nbsp; Quotations</button>
-    <button data-page="preview">◫ &nbsp; Preview</button>
-    <button data-page="settings">⚙ &nbsp; Settings</button>
-  </nav>
-  <div class="sidebar-bottom">Quotation Maker PRO • v5 • auto-updates</div>
-</aside>
-<main class="main">
-<header class="topbar"><div class="topbar-title"><h1 id="pageTitle">Dashboard</h1><p id="pageSub">Create and manage professional quotations</p></div><div class="top-actions"><button class="btn secondary" id="installBtn">Install App</button><button class="btn primary" id="newTop">+ New Quotation</button></div></header>
-<div class="content">
-<section class="page active" id="page-dashboard">
- <div id="updateNotice" class="install-banner hidden"><div><strong>New app version available.</strong><div style="font-size:12px;margin-top:2px">Update once — your quotations and settings stay on this device.</div></div><button class="btn primary" id="updateBtn">Update</button></div>
- <div class="dashboard-grid"><div class="stat"><span>TOTAL QUOTATIONS</span><strong id="statTotal">0</strong></div><div class="stat"><span>DRAFTS</span><strong id="statDraft">0</strong></div><div class="stat"><span>SAVED TOTAL</span><strong id="statValue">₹0</strong></div><div class="stat"><span>LAST QUOTE</span><strong id="statLast">—</strong></div></div>
- <div class="card recent"><div class="section-title"><h2>Recent Quotations</h2><button class="btn" id="newDash">+ New</button></div><div id="recentList" class="list"></div></div>
-</section>
-<section class="page" id="page-quotation">
- <div class="install-banner no-print"><div><strong>Quotation Editor</strong><div style="font-size:12px;margin-top:2px">Everything saves locally. Use Preview before sending.</div></div><span class="pill" id="saveState">Ready</span></div>
- <div class="grid">
-  <div>
-   <div class="card">
-    <div class="section-title"><h2>Quotation Details</h2><span class="pill" id="statusPill">DRAFT</span></div>
-    <div class="form-grid">
-      <div class="field"><label>Quotation Ref</label><input id="qRef"></div><div class="field"><label>Issue Date</label><input id="issueDate" type="date"></div>
-      <div class="field"><label>Valid Until</label><input id="validUntil" type="date"></div><div class="field"><label>Booking Status</label><select id="bookingStatus"><option>PROVISIONAL</option><option>CONFIRMED</option><option>HOLD</option><option>CANCELLED</option></select></div>
-    </div>
-   </div>
-   <div class="card" style="margin-top:14px">
-    <div class="section-title"><h2>Guest & Stay Details</h2></div>
-    <div class="form-grid">
-      <div class="field"><label>Guest Full Name</label><input id="guestName"></div><div class="field"><label>Mobile Number</label><input id="guestMobile"></div>
-      <div class="field"><label>Email Address</label><input id="guestEmail" type="email"></div><div class="field"><label>Agency / Company</label><input id="agency" placeholder="Travel Agency"></div>
-      <div class="field"><label>Check-in</label><input id="checkIn" type="date"></div><div class="field"><label>Check-out</label><input id="checkOut" type="date"></div>
-      <div class="field"><label>Nights</label><input id="nights" type="number" min="1" value="1"></div><div class="field"><label>Pax</label><input id="pax" placeholder="2 Adults, 1 Child"></div>
-      <div class="field"><label>Meal Plan</label><input id="mealPlan" placeholder="CP (Breakfast Included)"></div><div class="field"><label>Room Category</label><select id="roomCategory"></select></div>
-    </div>
-   </div>
-   <div class="card" style="margin-top:14px">
-    <div class="section-title"><h2>Itemized Rate & Charges</h2><button class="btn" id="addItem">+ Add Item</button></div>
-    <div class="items"><table><thead><tr><th>Description / Category</th><th>Plan</th><th style="width:145px">Rooms / Qty</th><th style="width:145px">Nights</th><th style="width:130px">Rate</th><th style="width:130px">Amount</th><th style="width:45px"></th></tr></thead><tbody id="itemBody"></tbody></table></div>
-   </div>
-   <div class="card" style="margin-top:14px">
-    <div class="section-title"><h2>Discount & Tax</h2></div>
-    <div class="form-grid three"><div class="field"><label>Discount %</label><input id="discountPct" type="number" min="0" step="0.01" value="0"></div><div class="field"><label>Tax / GST %</label><input id="taxPct" type="number" min="0" step="0.01" value="12"></div><div class="field"><label>Other Charges</label><input id="otherCharges" type="number" min="0" step="0.01" value="0"></div></div>
-   </div>
-   <div class="card" style="margin-top:14px">
-    <div class="section-title"><h2>Notes & Terms</h2></div>
-    <div class="form-grid"><div class="field"><label>Note</label><textarea id="note" placeholder="Special note for guest / agent"></textarea></div><div class="field"><label>Terms & Conditions</label><textarea id="terms"></textarea></div></div>
-   </div>
-  </div>
-  <div>
-   <div class="card">
-    <div class="section-title"><h2>Payment QR</h2><span class="pill" id="qrModePill">GRAND TOTAL</span></div>
-    <div class="form-grid"><div class="field"><label>QR Amount Mode</label><select id="qrMode"><option value="total">Grand Total</option><option value="percent">Percentage</option><option value="manual">Manual Amount</option></select></div><div class="field"><label id="qrValueLabel">Percentage / Amount</label><input id="qrValue" type="number" min="0" step="0.01" value="50"></div></div>
-    <div class="qr-box" style="margin-top:12px"><img id="qrImg" alt="Payment QR"><div class="qr-meta"><strong id="qrAmount">₹0</strong><small id="qrText">Scan to pay</small></div></div>
-   </div>
-   <div class="card" style="margin-top:14px"><div class="section-title"><h2>Quotation Summary</h2></div><div class="totals"><div><span>Subtotal</span><strong id="sumSubtotal">₹0</strong></div><div><span>Discount</span><strong id="sumDiscount">₹0</strong></div><div><span>Tax / GST</span><strong id="sumTax">₹0</strong></div><div><span>Other Charges</span><strong id="sumOther">₹0</strong></div><div><span>Grand Total</span><strong id="sumGrand">₹0</strong></div></div></div>
-   <div class="card" style="margin-top:14px"><div class="section-title"><h2>Actions</h2></div><div class="toolbar"><button class="btn primary" id="saveBtn">Save Quotation</button><button class="btn dark" id="previewBtn">Preview</button><button class="btn" id="emailBtn">Copy Email Quotation</button><button class="btn" id="printBtn">Print / PDF</button></div></div>
-  </div>
- </div>
-</section>
-<section class="page" id="page-quotations"><div class="card"><div class="section-title"><h2>All Quotations</h2><button class="btn primary" id="newList">+ New Quotation</button></div><div class="field" style="margin-bottom:12px"><input id="searchQuotes" placeholder="Search by quotation ref or guest name"></div><div id="quoteList" class="list"></div></div></section>
-<section class="page" id="page-preview"><div class="quote-page" id="quotePreview"></div></section>
-<section class="page" id="page-settings">
- <div class="settings-grid">
-  <div class="setting-card">
-   <h3>Property Details</h3>
-   <div class="form-grid">
-    <div class="field full"><label>Hotel / Resort Name</label><input id="sName"></div>
-    <div class="field full"><label>Address</label><input id="sAddress"></div>
-    <div class="field"><label>Phone</label><input id="sPhone"></div>
-    <div class="field"><label>Email</label><input id="sEmail"></div>
-    <div class="field"><label>GSTIN / Tax ID</label><input id="sGst"></div>
-    <div class="field"><label>Website</label><input id="sWebsite"></div>
-   </div>
-  </div>
-  <div class="setting-card">
-   <h3>Payment & Quotation</h3>
-   <div class="form-grid">
-    <div class="field full"><label>UPI ID</label><input id="sUpi"></div>
-    <div class="field"><label>Account Name</label><input id="sAccount"></div>
-    <div class="field"><label>Bank Details</label><input id="sBank"></div>
-    <div class="field"><label>Default Tax %</label><input id="sTax" type="number" step="0.01"></div>
-    <div class="field"><label>Quotation Prefix</label><input id="sPrefix"></div>
-   </div>
-  </div>
-  <div class="setting-card">
-   <h3>Room Categories</h3>
-   <div class="settings-help">These options appear in the quotation form. Rate is the default rate; you can still edit it in the quotation.</div>
-   <div id="roomCatalog" class="catalog-list"></div>
-   <div class="catalog-add">
-    <div class="field"><label>Name</label><input id="newRoomName" placeholder="Deluxe"></div>
-    <div class="field"><label>Plan</label><select id="newRoomPlan"></select></div>
-    <div class="field"><label>Default Rate</label><input id="newRoomRate" type="number" min="0" placeholder="5650"></div>
-    <button class="btn primary" id="addRoomCategory">+ Add Room</button>
-   </div>
-  </div>
-  <div class="setting-card">
-   <h3>Extra Items / Add-ons</h3>
-   <div class="settings-help">Examples: Extra Mattress, Breakfast, Lunch, Dinner, Transfer, etc. These appear in the item description dropdown.</div>
-   <div id="extraCatalog" class="catalog-list"></div>
-   <div class="catalog-add">
-    <div class="field"><label>Name</label><input id="newExtraName" placeholder="Extra Mattress"></div>
-    <div class="field"><label>Plan</label><select id="newExtraPlan"></select></div>
-    <div class="field"><label>Default Rate</label><input id="newExtraRate" type="number" min="0" placeholder="1800"></div>
-    <button class="btn primary" id="addExtraItem">+ Add Item</button>
-   </div>
-  </div>
-  <div class="setting-card">
-   <h3>Default Content</h3>
-   <div class="field"><label>Default Terms</label><textarea id="sTerms"></textarea></div>
-   <div class="field" style="margin-top:10px"><label>Default Note</label><textarea id="sNote"></textarea></div>
-  </div>
-  <div class="setting-card">
-   <h3>Branding</h3>
-   <label class="file-btn">Upload Promo Banner<input id="bannerFile" type="file" accept="image/*" hidden></label>
-   <img id="bannerPreview" class="preview hidden">
-   <div style="height:10px"></div>
-   <label class="file-btn">Upload Signature<input id="sigFile" type="file" accept="image/*" hidden></label>
-   <img id="sigPreview" class="preview hidden">
-  </div>
- </div>
- <div class="card" style="margin-top:16px"><button class="btn primary" id="saveSettings">Save Settings</button><button class="btn" id="resetSettings" style="margin-left:8px">Reset Defaults</button></div>
-</section>
+<div id="app" class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><img src="icon-192.png" alt=""><div><strong>Quotation Maker</strong><span>Professional Edition</span></div></div>
+    <nav>
+      <button class="nav-btn active" data-page="dashboard">⌂<span>Dashboard</span></button>
+      <button class="nav-btn" data-page="editor">＋<span>New Quotation</span></button>
+      <button class="nav-btn" data-page="quotations">▤<span>Quotations</span></button>
+      <button class="nav-btn" data-page="preview">▣<span>Preview</span></button>
+      <button class="nav-btn" data-page="settings">⚙<span>Settings</span></button>
+    </nav>
+    <div class="sidebar-footer"><span id="onlineState">Online</span><button id="installBtnSide" class="install-mini hidden">Install App</button></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><img src="icon-192.png" alt=""><strong>Quotation Maker</strong></div>
+      <div class="top-title"><h1 id="pageTitle">Dashboard</h1><p id="pageSub">Manage professional quotations</p></div>
+      <div class="top-actions">
+        <button class="icon-btn" id="globalZoomOut" title="Zoom out">−</button>
+        <span class="zoom-value" id="globalZoomValue">100%</span>
+        <button class="icon-btn" id="globalZoomIn" title="Zoom in">＋</button>
+        <button class="btn primary" id="newTop">+ New Quotation</button>
+      </div>
+    </header>
+
+    <section class="content">
+      <div id="installBanner" class="install-banner hidden"><div><strong>Install Quotation Maker</strong><small>Use it like a mobile app and receive future updates automatically.</small></div><button class="btn primary" id="installBtn">Install App</button></div>
+
+      <section class="page active" id="page-dashboard">
+        <div class="hero"><div><span class="eyebrow">QUOTATION WORKSPACE</span><h2>Build, save and share professional hotel quotations.</h2><p>Designed around your reference quotation format with a controlled A4 preview and email-safe output.</p></div><button class="btn primary big" id="heroNew">Create Quotation</button></div>
+        <div class="stats">
+          <div class="stat"><span>Total Quotations</span><strong id="statTotal">0</strong><small>Saved on this device</small></div>
+          <div class="stat"><span>Drafts</span><strong id="statDraft">0</strong><small>Work in progress</small></div>
+          <div class="stat"><span>Grand Total</span><strong id="statValue">₹0</strong><small>Across saved quotations</small></div>
+          <div class="stat"><span>App Version</span><strong>6.0</strong><small id="updateState">Auto-update enabled</small></div>
+        </div>
+        <div class="panel"><div class="panel-head"><div><h3>Recent Quotations</h3><p>Open an existing quotation or create a duplicate.</p></div><button class="btn" data-page-jump="quotations">View all</button></div><div id="recentList" class="recent-list"></div></div>
+      </section>
+
+      <section class="page" id="page-editor">
+        <div class="editor-toolbar"><div><span class="eyebrow">QUOTATION EDITOR</span><h2 id="editorHeading">New Quotation</h2></div><div class="toolbar-actions"><button class="btn" id="resetQuote">Reset</button><button class="btn" id="saveQuote">Save Quotation</button><button class="btn primary" id="previewQuote">Preview</button></div></div>
+        <div class="editor-grid">
+          <div class="editor-main">
+            <div class="panel editor-panel"><div class="panel-head"><div><h3>Quotation & Customer</h3><p>All fields use the same visual scale across the app.</p></div><span class="status-pill" id="quoteStatus">DRAFT</span></div>
+              <div class="form-grid">
+                <label>Quotation Ref<input id="f_ref"></label><label>Issue Date<input id="f_issue" type="date"></label>
+                <label>Valid Until<input id="f_valid" type="date"></label><label>Booking Status<select id="f_status"><option>PROVISIONAL</option><option>CONFIRMED</option><option>HOLD</option><option>CANCELLED</option></select></label>
+                <label>Prepared For<input id="f_guest"></label><label>Phone<input id="f_phone"></label>
+                <label>Email<input id="f_email" type="email"></label><label>Agency / Company<input id="f_agency"></label>
+              </div>
+            </div>
+
+            <div class="panel editor-panel"><div class="panel-head"><div><h3>Stay Details</h3><p>Use steppers and settings-based dropdowns.</p></div></div>
+              <div class="form-grid three">
+                <label>Check-in<input id="f_checkin" type="date"></label><label>Check-out<input id="f_checkout" type="date"></label><label>Adults<input id="f_adults" type="number" min="0" value="2"></label>
+                <label>Children<input id="f_children" type="number" min="0" value="0"></label><label>Meal Plan<select id="f_plan"></select></label><label>Currency<select id="f_currency"><option>INR</option><option>USD</option></select></label>
+              </div>
+            </div>
+
+            <div class="panel editor-panel"><div class="panel-head"><div><h3>Accommodation & Tariff</h3><p>Room categories and extra items come from Settings.</p></div><button class="btn small" id="addItem">+ Add Item</button></div>
+              <div class="item-table-wrap"><table class="item-editor"><thead><tr><th>Room / Item</th><th>Plan</th><th>Rms</th><th>Nts</th><th>Rate / Nt</th><th>Disc %</th><th>Amount</th><th></th></tr></thead><tbody id="itemRows"></tbody></table></div>
+            </div>
+
+            <div class="panel editor-panel"><div class="panel-head"><div><h3>Charges & Payment</h3><p>Tax, discount and QR payment amount are fully dynamic.</p></div></div>
+              <div class="form-grid three">
+                <label>Discount %<input id="f_discount" type="number" min="0" step="0.01"></label><label>GST %<input id="f_gst" type="number" min="0" step="0.01"></label><label>Other Charges<input id="f_other" type="number" min="0" step="0.01"></label>
+                <label>QR Mode<select id="f_qrMode"><option value="total">Grand Total</option><option value="percent">Percentage</option><option value="manual">Manual Amount</option></select></label><label id="qrPercentField">QR Percentage<input id="f_qrPercent" type="number" min="0" max="100" step="1" value="50"></label><label id="qrManualField" class="hidden">QR Manual Amount<input id="f_qrManual" type="number" min="0" step="0.01"></label>
+              </div>
+              <div class="totals-strip"><div><span>Accommodation</span><strong id="sumAccommodation">₹0</strong></div><div><span>Subtotal</span><strong id="sumSubtotal">₹0</strong></div><div><span>GST</span><strong id="sumGST">₹0</strong></div><div><span>Grand Total</span><strong id="sumGrand">₹0</strong></div></div>
+            </div>
+
+            <div class="panel editor-panel"><div class="panel-head"><div><h3>Notes & Terms</h3><p>These appear in both A4 preview and email quotation.</p></div></div>
+              <div class="form-grid"><label class="full">Notes<textarea id="f_notes"></textarea></label><label class="full">Terms & Conditions<textarea id="f_terms"></textarea></label></div>
+            </div>
+          </div>
+          <aside class="editor-side"><div class="panel sticky-panel"><div class="side-title"><h3>Live Summary</h3><span id="liveRef">QT-000000</span></div><div class="live-total"><small>Grand Total</small><strong id="liveGrand">₹0</strong></div><div class="side-qr"><img id="liveQR" alt="Payment QR"><div><strong id="liveQRAmount">₹0</strong><small id="liveQRLabel">QR payment amount</small></div></div><div class="side-actions"><button class="btn dark" id="copyEmail">Copy Email Quotation</button><button class="btn" id="printQuote">Print / Save PDF</button></div><div class="mini-help">Tip: use the + / − steppers in the tariff table. Room categories and extra items can be maintained in Settings.</div></div></aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-quotations"><div class="page-head"><div><span class="eyebrow">LIBRARY</span><h2>Saved Quotations</h2><p>Search, edit, duplicate or delete quotations stored on this device.</p></div><button class="btn primary" id="newFromLibrary">+ New Quotation</button></div><div class="panel"><div class="search-row"><input id="searchQuotes" placeholder="Search quotation ref, guest or agency..."><select id="filterStatus"><option value="all">All Status</option><option>DRAFT</option><option>PROVISIONAL</option><option>CONFIRMED</option><option>HOLD</option></select></div><div id="quoteLibrary" class="quote-library"></div></div></section>
+
+      <section class="page" id="page-preview"><div class="preview-toolbar"><div><span class="eyebrow">DOCUMENT PREVIEW</span><h2>Quotation Preview</h2></div><div class="preview-controls"><button class="icon-btn" id="previewZoomOut">−</button><span id="previewZoomValue">100%</span><button class="icon-btn" id="previewZoomIn">＋</button><button class="btn" id="previewFit">Fit</button><button class="btn" id="previewCopyEmail">Copy Email</button><button class="btn primary" id="previewPrint">Print / PDF</button></div></div><div id="previewCanvas" class="preview-canvas"><div id="quotationDocument" class="quotation-document"></div></div></section>
+
+      <section class="page" id="page-settings"><div class="page-head"><div><span class="eyebrow">SYSTEM SETTINGS</span><h2>Quotation Settings</h2><p>Manage the master data used by the quotation editor and output.</p></div><button class="btn primary" id="saveSettings">Save Settings</button></div>
+        <div class="settings-grid">
+          <div class="panel"><h3>Property Profile</h3><div class="form-grid"><label>Property Name<input id="s_name"></label><label>Phone<input id="s_phone"></label><label>Email<input id="s_email"></label><label>Website<input id="s_website"></label><label class="full">Address<textarea id="s_address"></textarea></label><label>GSTIN / Tax ID<input id="s_gstin"></label><label>Default GST %<input id="s_gst" type="number"></label></div></div>
+          <div class="panel"><h3>Payment Details</h3><div class="form-grid"><label>Account Name<input id="s_account"></label><label>UPI ID<input id="s_upi"></label><label>Bank Name<input id="s_bank"></label><label>Account Number<input id="s_ac"></label><label>IFSC<input id="s_ifsc"></label><label>Branch<input id="s_branch"></label></div></div>
+          <div class="panel catalog-panel"><div class="panel-head"><div><h3>Room Categories</h3><p>Add room categories with a default plan and rate. They immediately appear in the quotation form.</p></div></div><div id="roomsCatalog"></div><button class="btn" id="addRoom">+ Add Room Category</button></div>
+          <div class="panel catalog-panel"><div class="panel-head"><div><h3>Extra Items / Add-ons</h3><p>Extra Mattress, meals, transfers and other chargeable items can be maintained here.</p></div></div><div id="extrasCatalog"></div><button class="btn" id="addExtra">+ Add Extra Item</button></div>
+          <div class="panel"><h3>Meal Plans</h3><div id="plansCatalog"></div><button class="btn" id="addPlan">+ Add Meal Plan</button></div>
+          <div class="panel"><h3>Branding & Documents</h3><div class="upload-grid"><label class="upload-box">Promo Banner<input id="s_banner" type="file" accept="image/*"><img id="bannerPreview" class="upload-preview hidden"></label><label class="upload-box">Authorized Signature<input id="s_signature" type="file" accept="image/*"><img id="signaturePreview" class="signature-preview hidden"></label></div><p class="settings-note">Banner and signature are embedded into the quotation preview and email HTML.</p></div>
+          <div class="panel"><h3>Default Terms</h3><textarea class="wide-text" id="s_terms"></textarea></div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <nav class="mobile-nav"><button data-page="dashboard" class="active">⌂<span>Home</span></button><button data-page="editor">＋<span>New</span></button><button data-page="quotations">▤<span>Quotes</span></button><button data-page="settings">⚙<span>Settings</span></button></nav>
 </div>
-</main>
-</div>
-<nav class="mobile-bottom"><button class="active" data-page="dashboard"><span class="mi">⌂</span>Home</button><button data-page="quotation"><span class="mi">＋</span>New</button><button data-page="quotations"><span class="mi">▤</span>Quotes</button><button data-page="settings"><span class="mi">⚙</span>Settings</button></nav>
 <div id="toast" class="toast hidden"></div>
-<script>
-const KEY='qm_v5_data'; const SETTINGS='qm_v5_settings'; const VERSION='5.0.0';
-const defaultSettings={
-name:'SHANGRILAS BEACH RESORT',
-address:'Vijay Nagar, Beach No.5, Swaraj Dweep, South Andaman - 744211',
-phone:'9474252529',
-email:'shangrilasbeachresort@gmail.com',
-gst:'30AAAAA0000A1Z5',
-website:'www.shangrilasbeachresort.in',
-upi:'',
-account:'',
-bank:'',
-tax:12,
-prefix:'QT',
-terms:'1. Check-in time is 11:00 AM and Check-out time is 08:00 AM. Early check-in and late check-out are subject to room availability.\n2. 50% advance deposit is mandatory to guarantee room reservation. Balance payable upon check-in.\n3. Free cancellation up to 20 days prior to arrival. Cancellations between 7 to 15 days attract 50% charge. No refund within 7 days.\n4. Valid Government Photo ID is mandatory at check-in (Passport, Voter ID, Driving License, Aadhaar). Note: PAN Cards are strictly not accepted as proof of identity.\n5. Festive Date Event Surcharge applies for Mandatory Gala Dinners (Durga Puja, Diwali, Christmas Eve, New Year Eve, Valentine’s Day).',
-note:'Quotation is subject to room availability at the time of confirmation.',
-banner:'',
-signature:'',
-roomCategories:[
-{name:'Deluxe',plan:'MAP',rate:5650},
-{name:'Family',plan:'MAP',rate:8500},
-{name:'Luxury Sea View Villa',plan:'MAP',rate:6500}
-],
-extraItems:[
-{name:'Extra Mattress',plan:'MAP',rate:1800},
-{name:'Breakfast',plan:'CP',rate:750},
-{name:'Lunch',plan:'MAP',rate:1200},
-{name:'Dinner',plan:'MAP',rate:1200}
-],
-mealPlans:['CP','MAP','AP','EP']
-};
-let settings=load(SETTINGS,defaultSettings), quotes=load(KEY,[]), current=null, deferredPrompt=null, waitingWorker=null;
-function load(k,f){try{return JSON.parse(localStorage.getItem(k)) ?? f}catch{return f}}
-function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
-function money(n){return '₹'+Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function today(){return new Date().toISOString().slice(0,10)}
-function addDays(d,n){let x=new Date(d+'T00:00:00');x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)}
-function ref(){let y=new Date().getFullYear(); return `${settings.prefix||'QT'}-${y}-${String(Date.now()).slice(-5)}`}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function toast(m){let e=document.getElementById('toast');e.textContent=m;e.classList.remove('hidden');clearTimeout(window.__t);window.__t=setTimeout(()=>e.classList.add('hidden'),2200)}
-function setVal(id,v){let e=document.getElementById(id); if(e)e.value=v??''}
-function getVal(id){return document.getElementById(id)?.value??''}
-function catalogOptions(selected=''){
- let rooms=settings.roomCategories||[], extras=settings.extraItems||[];
- let opts=`<option value="">Select item</option>`;
- rooms.forEach(x=>opts+=`<option value="${esc(x.name)}" ${x.name===selected?'selected':''}>${esc(x.name)}</option>`);
- if(extras.length) opts+=`<option disabled>──────── Add-ons ────────</option>`;
- extras.forEach(x=>opts+=`<option value="${esc(x.name)}" ${x.name===selected?'selected':''}>${esc(x.name)}</option>`);
- opts+=`<option value="__custom__" ${selected==='__custom__'?'selected':''}>Custom Item</option>`;
- return opts;
-}
-function roomOptions(selected=''){
- let rooms=settings.roomCategories||[];
- return `<option value="">Select room category</option>`+rooms.map(x=>`<option value="${esc(x.name)}" ${x.name===selected?'selected':''}>${esc(x.name)}</option>`).join('');
-}
-function catalogFind(name){
- return [...(settings.roomCategories||[]),...(settings.extraItems||[])].find(x=>x.name===name);
-}
-function fillDynamicOptions(){
- let room=document.getElementById('roomCategory'); if(room) room.innerHTML=roomOptions(getVal('roomCategory'));
- let plans=(settings.mealPlans||['CP','MAP','AP','EP']).map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
- ['newRoomPlan','newExtraPlan'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=plans});
- document.querySelectorAll('#itemBody .desc').forEach(sel=>{
-   let current=sel.value;
-   sel.innerHTML=catalogOptions(current);
- });
- document.querySelectorAll('#itemBody .plan').forEach(sel=>{
-   let current=sel.value;
-   sel.innerHTML=(settings.mealPlans||['CP','MAP','AP','EP']).map(x=>`<option ${x===current?'selected':''}>${esc(x)}</option>`).join('')+`<option ${!(settings.mealPlans||[]).includes(current)?'selected':''}>${esc(current)}</option>`;
- });
- renderCatalogSettings();
-}
-function emptyQuote(){return {id:crypto.randomUUID(),ref:ref(),issueDate:today(),validUntil:addDays(today(),7),status:'PROVISIONAL',guestName:'',guestMobile:'',guestEmail:'',agency:'',checkIn:'',checkOut:'',nights:1,pax:'',mealPlan:'CP',roomCategory:(settings.roomCategories?.[0]?.name||''),discountPct:0,taxPct:Number(settings.tax)||0,otherCharges:0,note:settings.note,terms:settings.terms,qrMode:'total',qrValue:50,items:[{description:(settings.roomCategories?.[0]?.name||'Room Accommodation'),plan:(settings.roomCategories?.[0]?.plan||'CP'),rooms:1,nights:1,rate:Number(settings.roomCategories?.[0]?.rate)||0}]}}
-function bindQuote(q){
- current=q;
- fillDynamicOptions();
- ['qRef','issueDate','validUntil','bookingStatus','guestName','guestMobile','guestEmail','agency','checkIn','checkOut','nights','pax','mealPlan','roomCategory','discountPct','taxPct','otherCharges','note','terms','qrMode','qrValue'].forEach(k=>setVal(k,q[k]));
- document.getElementById('itemBody').innerHTML='';
- (q.items||[]).forEach(addItemRow);
- calc(); updateQR();
-}
-function readQuote(){
- if(!current) current=emptyQuote();
- current={...current,ref:getVal('qRef'),issueDate:getVal('issueDate'),validUntil:getVal('validUntil'),status:getVal('bookingStatus'),guestName:getVal('guestName'),guestMobile:getVal('guestMobile'),guestEmail:getVal('guestEmail'),agency:getVal('agency'),checkIn:getVal('checkIn'),checkOut:getVal('checkOut'),nights:Number(getVal('nights'))||1,pax:getVal('pax'),mealPlan:getVal('mealPlan'),roomCategory:getVal('roomCategory'),discountPct:Number(getVal('discountPct'))||0,taxPct:Number(getVal('taxPct'))||0,otherCharges:Number(getVal('otherCharges'))||0,note:getVal('note'),terms:getVal('terms'),qrMode:getVal('qrMode'),qrValue:Number(getVal('qrValue'))||0,items:[...document.querySelectorAll('#itemBody tr')].map(tr=>({description:tr.querySelector('.desc').value,plan:tr.querySelector('.plan').value,rooms:Number(tr.querySelector('.rooms').value)||0,nights:Number(tr.querySelector('.nts').value)||0,rate:Number(tr.querySelector('.rate').value)||0}))};
- return current;
-}
-function stepper(value, cls, min=0){
- return `<div class="stepper"><button type="button" class="minus" data-cls="${cls}">−</button><input class="${cls}" type="number" min="${min}" value="${value}"><button type="button" class="plus" data-cls="${cls}">+</button></div>`;
-}
-function addItemRow(item={description:(settings.roomCategories?.[0]?.name||''),plan:(settings.roomCategories?.[0]?.plan||'CP'),rooms:1,nights:Number(getVal('nights'))||1,rate:Number(settings.roomCategories?.[0]?.rate)||0}){
- let tr=document.createElement('tr');
- tr.innerHTML=`<td><select class="desc">${catalogOptions(item.description)}</select></td><td><select class="plan">${(settings.mealPlans||['CP','MAP','AP','EP']).map(x=>`<option ${x===item.plan?'selected':''}>${esc(x)}</option>`).join('')}</select></td><td>${stepper(item.rooms,'rooms')}</td><td>${stepper(item.nights,'nts')}</td><td><input class="rate" type="number" min="0" value="${item.rate}"></td><td class="num amount">₹0.00</td><td><button class="btn danger remove" type="button">×</button></td>`;
- document.getElementById('itemBody').appendChild(tr);
- tr.querySelector('.desc').addEventListener('change',e=>{
-   let c=catalogFind(e.target.value);
-   if(c){tr.querySelector('.plan').value=c.plan;tr.querySelector('.rate').value=c.rate}
-   calc();
- });
- tr.querySelectorAll('input,select').forEach(x=>x.addEventListener('input',calc));
- tr.querySelectorAll('.minus,.plus').forEach(btn=>btn.onclick=()=>{
-   let input=tr.querySelector('.'+btn.dataset.cls), v=Number(input.value)||0;
-   input.value=Math.max(0,v+(btn.classList.contains('plus')?1:-1));
-   input.dispatchEvent(new Event('input',{bubbles:true}));
- });
- tr.querySelector('.remove').onclick=()=>{tr.remove();calc()};
- calc();
-}
-function calc(){let sub=0;document.querySelectorAll('#itemBody tr').forEach(tr=>{let a=(Number(tr.querySelector('.rooms').value)||0)*(Number(tr.querySelector('.nts').value)||0)*(Number(tr.querySelector('.rate').value)||0);tr.querySelector('.amount').textContent=money(a);sub+=a});let dis=sub*(Number(getVal('discountPct'))||0)/100;let taxable=sub-dis;let tax=taxable*(Number(getVal('taxPct'))||0)/100;let other=Number(getVal('otherCharges'))||0;let grand=taxable+tax+other;document.getElementById('sumSubtotal').textContent=money(sub);document.getElementById('sumDiscount').textContent=money(dis);document.getElementById('sumTax').textContent=money(tax);document.getElementById('sumOther').textContent=money(other);document.getElementById('sumGrand').textContent=money(grand);document.getElementById('statusPill').textContent=getVal('bookingStatus')||'DRAFT';document.getElementById('qrModePill').textContent=getVal('qrMode')==='percent'?'PERCENTAGE':getVal('qrMode')==='manual'?'MANUAL':'GRAND TOTAL';updateQR(grand);return {sub,dis,tax,other,grand}}
-function qrAmount(grand){let m=getVal('qrMode');if(m==='percent')return grand*(Number(getVal('qrValue'))||0)/100;if(m==='manual')return Number(getVal('qrValue'))||0;return grand}
-function updateQR(grand){if(grand===undefined){let sub=0;document.querySelectorAll('#itemBody tr').forEach(tr=>sub+=(Number(tr.querySelector('.rooms').value)||0)*(Number(tr.querySelector('.nts').value)||0)*(Number(tr.querySelector('.rate').value)||0));let dis=sub*(Number(getVal('discountPct'))||0)/100;grand=sub-dis+(sub-dis)*(Number(getVal('taxPct'))||0)/100+(Number(getVal('otherCharges'))||0)}let amt=qrAmount(grand),upi=settings.upi||'example@upi';let data=`upi://pay?pa=${encodeURIComponent(upi)}&pn=${encodeURIComponent(settings.name)}&am=${amt.toFixed(2)}&cu=INR&tn=${encodeURIComponent(getVal('qRef')||'Quotation')}`;document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data='+encodeURIComponent(data);document.getElementById('qrAmount').textContent=money(amt);document.getElementById('qrText').textContent=getVal('qrMode')==='percent'?`${getVal('qrValue')||0}% of Grand Total`:getVal('qrMode')==='manual'?'Manual payment amount':'Full Grand Total';document.getElementById('qrValueLabel').textContent=getVal('qrMode')==='percent'?'Percentage (%)':'Amount (₹)';}
-function saveCurrent(silent=false){let q=readQuote();let idx=quotes.findIndex(x=>x.id===q.id);if(idx>=0)quotes[idx]=q;else quotes.unshift(q);save(KEY,quotes);current=q;document.getElementById('saveState').textContent='Saved';renderLists();if(!silent)toast('Quotation saved');return q}
-function newQuote(){bindQuote(emptyQuote());showPage('quotation');toast('New quotation ready')}
-function showPage(page){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===page));let titles={dashboard:['Dashboard','Create and manage professional quotations'],quotation:['New Quotation','Build a professional quotation'],quotations:['Quotations','Search and manage saved quotations'],preview:['Quotation Preview','A4-ready customer quotation'],settings:['Settings','Property, payment and branding settings']};document.getElementById('pageTitle').textContent=titles[page][0];document.getElementById('pageSub').textContent=titles[page][1];if(page==='preview')renderPreview();if(page==='quotations')renderLists()}
-document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>showPage(b.dataset.page));document.getElementById('newTop').onclick=newQuote;document.getElementById('newDash').onclick=newQuote;document.getElementById('newList').onclick=newQuote;document.getElementById('addItem').onclick=()=>addItemRow();document.getElementById('saveBtn').onclick=()=>saveCurrent();document.getElementById('previewBtn').onclick=()=>{saveCurrent(true);showPage('preview')};document.getElementById('printBtn').onclick=()=>{saveCurrent(true);showPage('preview');setTimeout(()=>window.print(),300)};document.getElementById('emailBtn').onclick=async()=>{
- saveCurrent(true);
- const htmlEmail=emailHtml(current);
- const plain=document.createElement('div');plain.innerHTML=htmlEmail;const text=plain.innerText||plain.textContent||'';
- try{
-   if(navigator.clipboard && window.ClipboardItem){
-     await navigator.clipboard.write([new ClipboardItem({
-       'text/html':new Blob([htmlEmail],{type:'text/html'}),
-       'text/plain':new Blob([text],{type:'text/plain'})
-     })]);
-     toast('Rich quotation copied — paste directly into Gmail/Outlook');
-   }else{fallbackCopy(htmlEmail)}
- }catch(e){fallbackCopy(htmlEmail)}
-};
-['discountPct','taxPct','otherCharges','qrMode','qrValue','nights'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{calc();updateQR()}));
-document.getElementById('roomCategory').addEventListener('change',e=>{
- const c=(settings.roomCategories||[]).find(x=>x.name===e.target.value);
- if(c){
-   setVal('mealPlan',c.plan);
-   let first=document.querySelector('#itemBody tr');
-   if(first){
-     first.querySelector('.desc').value=c.name;
-     first.querySelector('.plan').value=c.plan;
-     first.querySelector('.rate').value=c.rate;
-   }
-   calc();
- }
-});
-document.getElementById('qrMode').addEventListener('change',updateQR);
-['checkIn','checkOut'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{let a=getVal('checkIn'),b=getVal('checkOut');if(a&&b){let n=Math.max(1,Math.round((new Date(b)-new Date(a))/86400000));setVal('nights',n);document.querySelectorAll('.nts').forEach(x=>x.value=n);calc()}}));
-function renderLists(){let list=document.getElementById('quoteList'),recent=document.getElementById('recentList');let arr=[...quotes].sort((a,b)=>(b.issueDate||'').localeCompare(a.issueDate||''));let html=arr.map(q=>`<div class="list-row"><div><strong>${esc(q.ref)}</strong><small>${esc(q.guestName||'No guest')} • ${esc(q.issueDate||'')}</small></div><div><b>${money(totalOf(q))}</b> <button class="btn" onclick="openQuote('${q.id}')">Open</button></div></div>`).join('');list.innerHTML=html||'<div class="notice">No saved quotations yet.</div>';recent.innerHTML=arr.slice(0,5).map(q=>`<div class="list-row"><div><strong>${esc(q.ref)}</strong><small>${esc(q.guestName||'No guest')}</small></div><b>${money(totalOf(q))}</b></div>`).join('')||'<div class="notice">Create your first quotation.</div>';document.getElementById('statTotal').textContent=arr.length;document.getElementById('statDraft').textContent=arr.filter(q=>q.status==='PROVISIONAL'||q.status==='HOLD').length;document.getElementById('statValue').textContent=money(arr.reduce((s,q)=>s+totalOf(q),0));document.getElementById('statLast').textContent=arr[0]?.ref||'—'}
-function totalOf(q){let sub=(q.items||[]).reduce((s,i)=>s+(+i.rooms||0)*(+i.nights||0)*(+i.rate||0),0);let dis=sub*(+q.discountPct||0)/100;return sub-dis+(sub-dis)*(+q.taxPct||0)/100+(+q.otherCharges||0)}
-window.openQuote=(id)=>{let q=quotes.find(x=>x.id===id);if(q){bindQuote(q);showPage('quotation')}};
-document.getElementById('searchQuotes').oninput=e=>{let term=e.target.value.toLowerCase();document.querySelectorAll('#quoteList .list-row').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(term)?'flex':'none')}
-function previewData(q){let totals=totalOfParts(q);return {sub:totals.sub,dis:totals.dis,tax:totals.tax,other:totals.other,grand:totals.grand,qr:qrAmountFor(q,totals.grand)}}
-function totalOfParts(q){let sub=(q.items||[]).reduce((s,i)=>s+(+i.rooms||0)*(+i.nights||0)*(+i.rate||0),0),dis=sub*(+q.discountPct||0)/100,tax=(sub-dis)*(+q.taxPct||0)/100,other=+q.otherCharges||0;return {sub,dis,tax,other,grand:sub-dis+tax+other}}
-function qrAmountFor(q,grand){return q.qrMode==='percent'?grand*(+q.qrValue||0)/100:q.qrMode==='manual'?(+q.qrValue||0):grand}
-function qrUrlFor(q,amt){let data=`upi://pay?pa=${encodeURIComponent(settings.upi||'example@upi')}&pn=${encodeURIComponent(settings.name)}&am=${amt.toFixed(2)}&cu=INR&tn=${encodeURIComponent(q.ref)}`;return 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data='+encodeURIComponent(data)}
-function quoteBody(q,t,forEmail=false){
- let items=(q.items||[]).map(i=>`<tr><td>${esc(i.description)}</td><td>${esc(i.plan)}</td><td style="text-align:center">${i.rooms}</td><td style="text-align:center">${i.nights}</td><td style="text-align:right">${money(i.rate)}</td><td style="text-align:right;font-weight:800">${money(i.rooms*i.nights*i.rate)}</td></tr>`).join('');
- let terms=esc(q.terms||'').replace(/\n/g,'<br>');
- let note=esc(q.note||'—').replace(/\n/g,'<br>');
- let qr=qrUrlFor(q,t.qr);
- let banner=settings.banner?`<div style="margin-top:8px"><img src="${settings.banner}" alt="Promo Banner" style="display:block;width:100%;max-height:105px;object-fit:cover;border:1px solid #cbd5e1"></div>`:'';
- let sig=settings.signature?`<div style="margin-top:5px;text-align:right"><img src="${settings.signature}" alt="Authorized Signature" style="display:inline-block;max-width:110px;max-height:45px"><br><span style="font-size:7px">Authorized Signature</span></div>`:'';
- let W=forEmail?'700px':'820px';
- let wrap=`width:100%;max-width:${W};margin:0 auto;background:#fff;border:1px solid #cbd5e1;padding:22px;color:#111827;font-family:Inter,Arial,Helvetica,sans-serif;box-sizing:border-box`;
- return `<article class="quote-a4 quote-shell" style="${wrap}">
-  <div class="qhead" style="display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #0b1d41;padding-bottom:8px">
-   <div class="qbrand" style="flex:1">
-    <h1 style="font-size:15px;line-height:18px;margin:0 0 2px;font-weight:900">${esc(settings.name)}</h1>
-    <p style="font-size:8px;line-height:11px;margin:1px 0">${esc(settings.gst||'')}</p>
-    <p style="font-size:8px;line-height:11px;margin:1px 0">${esc(settings.address)}</p>
-    <p style="font-size:8px;line-height:11px;margin:1px 0">Phone: ${esc(settings.phone)} · Email: ${esc(settings.email)}</p>
-    ${settings.website?`<p style="font-size:8px;line-height:11px;margin:1px 0">Web: ${esc(settings.website)}</p>`:''}
-   </div>
-   <div class="qref" style="width:170px;border:1px solid #cbd5e1;border-radius:4px;padding:8px;font-size:8px;line-height:12px;box-sizing:border-box">
-    <strong style="font-size:9px">ROOM QUOTATION</strong><br>Ref: ${esc(q.ref)}<br>Date: ${esc(q.issueDate)}<br>Valid Until: ${esc(q.validUntil)}
-   </div>
-  </div>
-  <div class="qgrid2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px">
-   <div class="qmini" style="border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
-    <div class="qtitle" style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">PREPARED FOR</div>
-    <div class="qbody" style="padding:7px 8px;font-size:8px;line-height:12px"><b>${esc(q.guestName||'—')}</b><br>Phone: ${esc(q.guestMobile||'—')}<br>Email: ${esc(q.guestEmail||'—')}<br>Agency: ${esc(q.agency||'—')}</div>
-   </div>
-   <div class="qmini" style="border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
-    <div class="qtitle" style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">STAY DETAILS</div>
-    <div class="qbody" style="padding:7px 8px;font-size:8px;line-height:12px">Check-in: <b>${esc(q.checkIn||'—')}</b><br>Check-out: <b>${esc(q.checkOut||'—')}</b><br>Duration: <b>${q.nights} Night(s)</b><br>Occupancy: <b>${esc(q.pax||'—')}</b><br>Rooms / Plan: <b>${(q.items||[]).reduce((s,i)=>s+(+i.rooms||0),0)} Rooms · ${esc(q.mealPlan||'—')}</b></div>
-   </div>
-  </div>
-  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
-   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">ACCOMMODATION &amp; TARIFF</div>
-   <table class="qtable" style="width:100%;border-collapse:collapse;font-size:8px"><thead><tr><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1;text-align:left">ROOM TYPE</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1">PLAN</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1">RMS</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1">NTS</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1;text-align:right">RATE/NT</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1;text-align:right">AMOUNT</th></tr></thead><tbody>${items}</tbody></table>
-  </div>
-  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
-   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">TARIFF BREAKDOWN &amp; GRAND TOTAL</div>
-   <div style="padding:7px 8px;font-size:8px;line-height:13px">
-    <div style="display:flex;justify-content:space-between"><span>Accommodation Total:</span><b>${money(t.sub)}</b></div>
-    <div style="display:flex;justify-content:space-between"><span>Subtotal:</span><b>${money(t.sub)}</b></div>
-    <div style="display:flex;justify-content:space-between"><span>Discount:</span><b>${money(t.dis)}</b></div>
-    <div style="display:flex;justify-content:space-between"><span>Taxable Amount:</span><b>${money(t.sub-t.dis)}</b></div>
-    <div style="display:flex;justify-content:space-between"><span>GST (${q.taxPct}%):</span><b>${money(t.tax)}</b></div>
-    ${t.other?`<div style="display:flex;justify-content:space-between"><span>Other Charges:</span><b>${money(t.other)}</b></div>`:''}
-    <div style="background:#0b1d41;color:#fff;font-weight:900;padding:8px 9px;margin-top:6px;display:flex;justify-content:space-between"><span>GRAND TOTAL:</span><span>${money(t.grand)}</span></div>
-    <div style="text-align:right;font-size:7px;margin-top:3px;text-transform:uppercase">${esc(amountWords(t.grand))} ONLY</div>
-   </div>
-  </div>
-  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
-   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">PAYMENT &amp; UPI PAYMENT DETAILS</div>
-   <div style="padding:7px 8px;display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center">
-    <div><img src="${qr}" alt="QR" style="display:block;width:82px;height:82px;border:1px solid #cbd5e1"><div style="font-size:6px;text-align:center;margin-top:2px">SCAN &amp; PAY VIA UPI</div></div>
-    <div style="font-size:8px;line-height:12px"><b>UPI Payment Amount: ${money(t.qr)}</b><br>Payment Method: UPI / Bank Transfer<br>Account Name: ${esc(settings.account||settings.name)}<br>UPI ID: ${esc(settings.upi||'—')}<br>Bank Details: ${esc(settings.bank||'—')}<br><b>Payment Note:</b> Please mention quotation reference while making payment.</div>
-   </div>
-  </div>
-  ${banner}
-  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
-   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">BOOKING TERMS &amp; STAY POLICIES</div>
-   <div style="padding:7px 8px;font-size:8px;line-height:12px">${terms}</div>
-  </div>
-  ${note?`<div style="margin-top:7px;font-size:8px;line-height:12px"><b>NOTE:</b> ${note}</div>`:''}
-  <div style="border-top:1px solid #cbd5e1;margin-top:9px;padding-top:8px;text-align:right;font-size:7px;line-height:10px">
-   <b>Thank you for choosing ${esc(settings.name)}. We look forward to welcoming you.</b><br>Phone: ${esc(settings.phone)}<br>Email: ${esc(settings.email)}${sig}
-  </div>
- </article>`;
-}
-function amountWords(n){
- n=Math.round(Number(n)||0);
- if(n===0)return 'Zero Rupees';
- const ones=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
- const tens=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
- function two(x){if(x<20)return ones[x];return tens[Math.floor(x/10)]+(x%10?' '+ones[x%10]:'')}
- function three(x){return x>=100?ones[Math.floor(x/100)]+' Hundred'+(x%100?' '+two(x%100):''):two(x)}
- let parts=[];let cr=Math.floor(n/10000000);n%=10000000;let lk=Math.floor(n/100000);n%=100000;let th=Math.floor(n/1000);n%=1000;let h=n;
- if(cr)parts.push(three(cr)+' Crore');if(lk)parts.push(three(lk)+' Lakh');if(th)parts.push(three(th)+' Thousand');if(h)parts.push(three(h));return parts.join(' ')+' Rupees';
-}
-function renderPreview(){let q=readQuote(),t=previewData(q);document.getElementById('quotePreview').innerHTML=quoteBody(q,t,false)}
-function emailHtml(q){let t=previewData(q);return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><style>body{margin:0;padding:0;background:#f3f4f6;color:#111827;font-family:Inter,Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}table{border-collapse:collapse}img{border:0;display:block}*{font-family:Inter,Arial,Helvetica,sans-serif}</style></head><body style="margin:0;padding:0;background:#f3f4f6;font-family:Inter,Arial,Helvetica,sans-serif">${quoteBody(q,t,true)}</body></html>`}
-function fallbackCopy(text){let ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Email HTML copied')}
-function renderCatalogSettings(){
- const room=document.getElementById('roomCatalog'), extra=document.getElementById('extraCatalog');
- if(!room||!extra)return;
- room.innerHTML=(settings.roomCategories||[]).map((x,i)=>`<div class="catalog-row"><input data-room-name="${i}" value="${esc(x.name)}"><select data-room-plan="${i}">${(settings.mealPlans||['CP','MAP','AP','EP']).map(p=>`<option ${p===x.plan?'selected':''}>${esc(p)}</option>`).join('')}</select><input data-room-rate="${i}" type="number" min="0" value="${x.rate}"><button class="btn danger" data-room-del="${i}" type="button">×</button></div>`).join('');
- extra.innerHTML=(settings.extraItems||[]).map((x,i)=>`<div class="catalog-row"><input data-extra-name="${i}" value="${esc(x.name)}"><select data-extra-plan="${i}">${(settings.mealPlans||['CP','MAP','AP','EP']).map(p=>`<option ${p===x.plan?'selected':''}>${esc(p)}</option>`).join('')}</select><input data-extra-rate="${i}" type="number" min="0" value="${x.rate}"><button class="btn danger" data-extra-del="${i}" type="button">×</button></div>`).join('');
- room.querySelectorAll('[data-room-del]').forEach(b=>b.onclick=()=>{settings.roomCategories.splice(+b.dataset.roomDel,1);save(SETTINGS,settings);renderCatalogSettings();fillDynamicOptions()});
- extra.querySelectorAll('[data-extra-del]').forEach(b=>b.onclick=()=>{settings.extraItems.splice(+b.dataset.extraDel,1);save(SETTINGS,settings);renderCatalogSettings();fillDynamicOptions()});
- room.querySelectorAll('input,select').forEach(e=>e.onchange=()=>{let i=+(e.dataset.roomName??e.dataset.roomPlan??e.dataset.roomRate);let x=settings.roomCategories[i];if(e.dataset.roomName)x.name=e.value;if(e.dataset.roomPlan)x.plan=e.value;if(e.dataset.roomRate)x.rate=Number(e.value)||0;save(SETTINGS,settings);fillDynamicOptions()});
- extra.querySelectorAll('input,select').forEach(e=>e.onchange=()=>{let i=+(e.dataset.extraName??e.dataset.extraPlan??e.dataset.extraRate);let x=settings.extraItems[i];if(e.dataset.extraName)x.name=e.value;if(e.dataset.extraPlan)x.plan=e.value;if(e.dataset.extraRate)x.rate=Number(e.value)||0;save(SETTINGS,settings);fillDynamicOptions()});
-}
-function fillSettings(){
- [['sName','name'],['sAddress','address'],['sPhone','phone'],['sEmail','email'],['sGst','gst'],['sWebsite','website'],['sUpi','upi'],['sAccount','account'],['sBank','bank'],['sTax','tax'],['sPrefix','prefix'],['sTerms','terms'],['sNote','note']].forEach(([a,b])=>setVal(a,settings[b]));
- fillDynamicOptions(); renderCatalogSettings();
-}
-function saveSettings(){
- settings={...settings,name:getVal('sName'),address:getVal('sAddress'),phone:getVal('sPhone'),email:getVal('sEmail'),gst:getVal('sGst'),website:getVal('sWebsite'),upi:getVal('sUpi'),account:getVal('sAccount'),bank:getVal('sBank'),tax:Number(getVal('sTax'))||0,prefix:getVal('sPrefix'),terms:getVal('sTerms'),note:getVal('sNote')};
- save(SETTINGS,settings);fillDynamicOptions();renderCatalogSettings();toast('Settings saved');
- if(current){setVal('taxPct',current.taxPct);setVal('terms',current.terms);setVal('note',current.note);updateQR();renderPreview()}
-}
-function fileData(input,key,img){let f=input.files?.[0];if(!f)return;let r=new FileReader();r.onload=()=>{settings[key]=r.result;save(SETTINGS,settings);img.src=r.result;img.classList.remove('hidden');toast('Image saved')};r.readAsDataURL(f)}
-function init(){
- fillSettings();
- if(settings.banner){let x=document.getElementById('bannerPreview');x.src=settings.banner;x.classList.remove('hidden')}
- if(settings.signature){let x=document.getElementById('sigPreview');x.src=settings.signature;x.classList.remove('hidden')}
- newQuote();renderLists();showPage('dashboard');
-}
-// PWA install + update handling
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').classList.remove('hidden')});document.getElementById('installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else toast('Use browser menu → Add to Home Screen / Install App')};window.addEventListener('appinstalled',()=>toast('App installed successfully'));
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(reg=>{if(reg.waiting){waitingWorker=reg;document.getElementById('updateNotice').classList.remove('hidden')}reg.addEventListener('updatefound',()=>{let nw=reg.installing;nw?.addEventListener('statechange',()=>{if(nw.state==='installed'&&navigator.serviceWorker.controller){waitingWorker=nw;document.getElementById('updateNotice').classList.remove('hidden')}})})}).catch(()=>{})}
-document.getElementById('updateBtn').onclick=()=>{if(waitingWorker){waitingWorker.postMessage({type:'SKIP_WAITING'});waitingWorker=null}location.reload()};navigator.serviceWorker?.addEventListener('controllerchange',()=>location.reload());
-init();
-</script>
-</body></html>
+<script src="email-template.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

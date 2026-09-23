@@ -1,18 +1,16 @@
-# Quotation Maker PRO v5
+# Quotation Maker Pro v6
 
-Professional hotel/resort quotation PWA.
+Professional hotel quotation PWA based on the user's supplied quotation reference format.
 
-Features:
-- Systematic mobile-app dashboard, quotation editor, saved quotations and settings
-- Inter font throughout the app
-- Room categories and extra/add-on catalog managed from Settings
-- Dropdowns in quotation form with + / − quantity steppers
-- Automatic Rooms × Nights × Rate calculation
-- Percentage/manual/full-total UPI QR
-- Professional quotation layout matching the supplied reference format
-- Promo banner and authorized signature
-- Rich HTML clipboard copy for Gmail/Outlook so the quotation pastes as formatted HTML
-- A4 print/PDF layout
-- PWA install and service-worker update flow
+## Included
+- Responsive app shell with dashboard, quotation editor, library, preview and settings.
+- Inter font throughout the application.
+- Room categories, extra items and meal plans managed from Settings and reflected in editor dropdowns.
+- Plus/minus steppers for rooms and nights.
+- Dynamic UPI QR by grand total, percentage or manual amount.
+- A4 quotation preview with banner and signature.
+- Email-safe HTML table output for Gmail/Outlook paste.
+- PWA install support and service-worker update flow.
+- Local device storage for quotations/settings.
 
-Static deployment: Cloudflare Workers/Pages or any static host.
+Static app: no build command is required. Deploy the repository root as the Worker assets directory.
