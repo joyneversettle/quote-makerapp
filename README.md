@@ -1,26 +1,18 @@
-# Quotation Maker — Cloudflare Pages
+# Quotation Maker PRO v4
 
-Based on the supplied quotation HTML. The quotation document sizing/layout is preserved while adding the requested app-level features.
+Professional hotel/resort quotation PWA.
 
 ## Included
-- Orange professional app shell
-- Settings for property/payment/terms
-- Promo banner upload
-- Authorized signature upload
-- Separate Note section
-- Local settings + draft persistence
-- PWA manifest and service worker
-- Mobile responsive shell
-- Correct Rooms × Nights × Rate line-item calculation
-- Favicon/PWA icons
+- Mobile app shell with installable PWA
+- Dashboard, quotations, preview and settings
+- Rooms × nights × rate calculations
+- Discount, GST/tax and other charges
+- Dynamic UPI QR: grand total, percentage or manual amount
+- Local quotation saving
+- Professional A4 quotation preview/print
+- Email-safe inline HTML generator designed to keep typography and table alignment stable in Gmail/Outlook
+- Promo banner and signature
+- Service worker auto-update: new deployed versions are detected and old caches are replaced. Saved local quotations/settings remain in browser storage.
 
-## Deploy with GitHub + Cloudflare Pages
-1. Create a new GitHub repository.
-2. Upload everything in this folder.
-3. Cloudflare Dashboard → Workers & Pages → Create application → Pages → Connect to Git.
-4. Select the GitHub repository.
-5. Production branch: `main`.
-6. Because this is plain static HTML, use build command `exit 0` and set the build output directory to the repository root (the folder containing `index.html`).
-7. Save and Deploy.
-
-Cloudflare's current documentation says Git integration automatically rebuilds/deploys when you push changes. For a Vite version, use `npm run build` and `dist` instead.
+## Deployment
+Static Cloudflare Worker/Pages deployment. No build command is required.
