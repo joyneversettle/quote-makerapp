@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="favicon-64.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Quotation Maker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><title>Quotation Maker PRO</title>
 <style>
 :root{--orange:#f97316;--orange2:#ea580c;--bg:#f4f6f8;--card:#fff;--text:#111827;--muted:#667085;--line:#e5e7eb;--soft:#fff7ed;--danger:#dc2626;--green:#15803d;--radius:16px}
 *{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-text-size-adjust:100%}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
@@ -20,6 +20,77 @@ body{min-height:100dvh}.app{min-height:100dvh;display:flex}.sidebar{width:250px;
 @media(max-width:1000px){.sidebar{display:none}.main{margin:0;width:100%;padding-bottom:76px}.topbar{height:64px;padding:0 14px}.topbar-title h1{font-size:17px}.topbar-title p{display:none}.top-actions .secondary{display:none}.content{padding:12px}.grid{grid-template-columns:1fr}.dashboard-grid{grid-template-columns:repeat(2,1fr)}.settings-grid{grid-template-columns:1fr}.mobile-bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;z-index:30;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:7px 6px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -4px 15px rgba(0,0,0,.06)}.mobile-bottom button{border:0;background:none;padding:6px 2px;color:#667085;font-size:10px;font-weight:800}.mobile-bottom button.active{color:var(--orange)}.mobile-bottom .mi{display:block;font-size:20px;line-height:22px}.form-grid.three{grid-template-columns:1fr}.quote-sheet{padding:20px}.quote-head{gap:10px}.quote-badge{min-width:135px}.quote-bottom{grid-template-columns:1fr}.qr-box{align-items:flex-start}.qr-box img{width:110px;height:110px}}
 @media(max-width:620px){.topbar{padding:0 10px}.top-actions{gap:5px}.btn{padding:9px 10px}.content{padding:9px}.card{padding:13px;border-radius:13px}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.dashboard-grid{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.install-banner{align-items:flex-start;flex-direction:column}.quote-page{padding:0}.quote-sheet{box-shadow:none;border:0;min-height:100vh;padding:18px 14px}.quote-head{display:block}.quote-badge{margin-top:10px}.quote-info{grid-template-columns:1fr}.quote-brand h1{font-size:18px}.quote-table{font-size:8px}.quote-table th,.quote-table td{padding:5px 4px}.quote-payment img{width:76px;height:76px}}
 @media print{body{background:#fff}.sidebar,.topbar,.mobile-bottom,.no-print{display:none!important}.main{margin:0;width:100%}.content{padding:0}.page{display:none!important}.page.print-page{display:block!important}.quote-page{padding:0;background:#fff}.quote-sheet{box-shadow:none;border:0;max-width:none;margin:0;padding:14mm;color:#111} @page{size:A4;margin:0}}
+
+/* V5 systematic editor + exact quotation styling */
+:root{--orange:#f97316;--orange2:#ea580c;--bg:#f5f7fa;--card:#fff;--text:#111827;--muted:#667085;--line:#d7dde5;--soft:#fff7ed;--navy:#0b1d41;--gold:#d6b56b}
+html,body,*{font-family:Inter,Arial,Helvetica,sans-serif!important}
+.editor-card{padding:20px!important}
+.form-grid.large-gap{gap:16px}
+.field input,.field select,.field textarea{min-height:44px;font-size:15px!important}
+.field label{font-size:12px!important}
+.items table{min-width:900px}
+.items th{font-size:12px;padding:12px}
+.items td{padding:9px}
+.items input,.items select{min-height:40px;font-size:14px!important}
+.stepper{display:flex;align-items:center;gap:4px}
+.stepper input{width:58px!important;text-align:center}
+.stepper button{width:32px;height:32px;border:1px solid #cbd5e1;background:#fff;border-radius:8px;font-weight:900;font-size:17px;line-height:1}
+.catalog-list{display:grid;gap:8px;margin-top:12px}
+.catalog-row{display:grid;grid-template-columns:minmax(0,1fr) 110px 110px 40px;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fafafa}
+.catalog-row input,.catalog-row select{width:100%;border:1px solid #d1d5db;border-radius:8px;padding:9px}
+.catalog-add{display:grid;grid-template-columns:minmax(0,1fr) 110px 110px auto;gap:8px;align-items:end;margin-top:10px}
+.setting-card h3{font-size:15px}
+.settings-help{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.4}
+.quote-shell{font-family:Inter,Arial,Helvetica,sans-serif}
+.quote-reference{font-size:11px}
+.quote-section-title2{background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:7px 9px;font-weight:900;font-size:10px;letter-spacing:.04em}
+.quote-box{border:1px solid #cbd5e1;border-radius:5px;overflow:hidden}
+.quote-box-body{padding:9px}
+.quote-table2{width:100%;border-collapse:collapse;font-size:9px}
+.quote-table2 th{background:var(--navy);color:#fff;padding:7px 6px;text-align:left;border:1px solid #cbd5e1}
+.quote-table2 td{padding:6px;border:1px solid #cbd5e1}
+.quote-totalbar{background:var(--navy);color:#fff;font-weight:900;padding:8px 10px;display:flex;justify-content:space-between}
+.quote-a4{background:#fff;max-width:820px;margin:auto;border:1px solid #cbd5e1;padding:22px;font-family:Inter,Arial,Helvetica,sans-serif}
+.quote-a4 .qhead{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #0b1d41;padding-bottom:8px}
+.quote-a4 .qbrand{flex:1}
+.quote-a4 .qbrand h1{font-size:15px;margin:0 0 2px;letter-spacing:.02em}
+.quote-a4 .qbrand p{font-size:8px;line-height:11px;margin:1px 0}
+.quote-a4 .qref{width:170px;border:1px solid #cbd5e1;border-radius:4px;padding:8px;font-size:8px;line-height:12px}
+.quote-a4 .qref strong{font-size:9px}
+.quote-a4 .qgrid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.quote-a4 .qmini{border:1px solid #cbd5e1;border-radius:4px;overflow:hidden}
+.quote-a4 .qtitle{background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900}
+.quote-a4 .qbody{padding:7px 8px;font-size:8px;line-height:12px}
+.quote-a4 .qbody b{font-weight:800}
+.quote-a4 .qtable{width:100%;border-collapse:collapse;font-size:8px}
+.quote-a4 .qtable th{background:var(--navy);color:#fff;padding:6px 5px;border:1px solid #cbd5e1}
+.quote-a4 .qtable td{padding:6px 5px;border:1px solid #cbd5e1}
+.quote-a4 .qsummary{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.quote-a4 .qsummarybox{border:1px solid #cbd5e1;border-radius:4px;overflow:hidden}
+.quote-a4 .qrows{padding:7px 8px;font-size:8px;line-height:13px}
+.quote-a4 .qgrand{background:var(--navy);color:#fff;padding:7px 8px;font-size:10px;font-weight:900;display:flex;justify-content:space-between}
+.quote-a4 .qpay{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center}
+.quote-a4 .qpay img{width:82px;height:82px;border:1px solid #cbd5e1}
+.quote-a4 .qpaytext{font-size:8px;line-height:12px}
+.quote-a4 .qbanner{margin-top:8px}
+.quote-a4 .qbanner img{display:block;width:100%;max-height:105px;object-fit:cover;border:1px solid #cbd5e1}
+.quote-a4 .qterms{font-size:8px;line-height:12px}
+.quote-a4 .qfooter{border-top:1px solid #cbd5e1;margin-top:9px;padding-top:8px;text-align:right;font-size:7px;line-height:10px}
+.quote-a4 .signature{margin-top:5px;display:inline-block;text-align:center}
+.quote-a4 .signature img{display:block;max-width:110px;max-height:45px;margin-left:auto}
+@media(max-width:620px){
+ .editor-card{padding:15px!important}
+ .catalog-row{grid-template-columns:1fr 1fr 1fr 40px}
+ .catalog-add{grid-template-columns:1fr 1fr 1fr}
+ .catalog-add .btn{grid-column:1/-1}
+ .quote-a4{padding:14px;border:0;max-width:none}
+ .quote-a4 .qhead{display:block}
+ .quote-a4 .qref{width:auto;margin-top:7px}
+ .quote-a4 .qgrid2,.quote-a4 .qsummary{grid-template-columns:1fr}
+ .quote-a4 .qtable{font-size:7px}
+ .quote-a4 .qtable th,.quote-a4 .qtable td{padding:4px 3px}
+ .quote-a4 .qpay{grid-template-columns:80px 1fr}
+}
 </style>
 </head>
 <body>
@@ -33,13 +104,13 @@ body{min-height:100dvh}.app{min-height:100dvh;display:flex}.sidebar{width:250px;
     <button data-page="preview">◫ &nbsp; Preview</button>
     <button data-page="settings">⚙ &nbsp; Settings</button>
   </nav>
-  <div class="sidebar-bottom">Cloud quotation app • auto-updates</div>
+  <div class="sidebar-bottom">Quotation Maker PRO • v5 • auto-updates</div>
 </aside>
 <main class="main">
 <header class="topbar"><div class="topbar-title"><h1 id="pageTitle">Dashboard</h1><p id="pageSub">Create and manage professional quotations</p></div><div class="top-actions"><button class="btn secondary" id="installBtn">Install App</button><button class="btn primary" id="newTop">+ New Quotation</button></div></header>
 <div class="content">
 <section class="page active" id="page-dashboard">
- <div id="updateNotice" class="install-banner hidden"><div><strong>New app version available.</strong><div style="font-size:12px;margin-top:2px">Update once — your saved quotations stay on this device.</div></div><button class="btn primary" id="updateBtn">Update</button></div>
+ <div id="updateNotice" class="install-banner hidden"><div><strong>New app version available.</strong><div style="font-size:12px;margin-top:2px">Update once — your quotations and settings stay on this device.</div></div><button class="btn primary" id="updateBtn">Update</button></div>
  <div class="dashboard-grid"><div class="stat"><span>TOTAL QUOTATIONS</span><strong id="statTotal">0</strong></div><div class="stat"><span>DRAFTS</span><strong id="statDraft">0</strong></div><div class="stat"><span>SAVED TOTAL</span><strong id="statValue">₹0</strong></div><div class="stat"><span>LAST QUOTE</span><strong id="statLast">—</strong></div></div>
  <div class="card recent"><div class="section-title"><h2>Recent Quotations</h2><button class="btn" id="newDash">+ New</button></div><div id="recentList" class="list"></div></div>
 </section>
@@ -58,15 +129,15 @@ body{min-height:100dvh}.app{min-height:100dvh;display:flex}.sidebar{width:250px;
     <div class="section-title"><h2>Guest & Stay Details</h2></div>
     <div class="form-grid">
       <div class="field"><label>Guest Full Name</label><input id="guestName"></div><div class="field"><label>Mobile Number</label><input id="guestMobile"></div>
-      <div class="field full"><label>Email Address</label><input id="guestEmail" type="email"></div>
+      <div class="field"><label>Email Address</label><input id="guestEmail" type="email"></div><div class="field"><label>Agency / Company</label><input id="agency" placeholder="Travel Agency"></div>
       <div class="field"><label>Check-in</label><input id="checkIn" type="date"></div><div class="field"><label>Check-out</label><input id="checkOut" type="date"></div>
       <div class="field"><label>Nights</label><input id="nights" type="number" min="1" value="1"></div><div class="field"><label>Pax</label><input id="pax" placeholder="2 Adults, 1 Child"></div>
-      <div class="field"><label>Meal Plan</label><input id="mealPlan" placeholder="CP (Breakfast Included)"></div><div class="field"><label>Room Category</label><input id="roomCategory" placeholder="Deluxe AC Room"></div>
+      <div class="field"><label>Meal Plan</label><input id="mealPlan" placeholder="CP (Breakfast Included)"></div><div class="field"><label>Room Category</label><select id="roomCategory"></select></div>
     </div>
    </div>
    <div class="card" style="margin-top:14px">
     <div class="section-title"><h2>Itemized Rate & Charges</h2><button class="btn" id="addItem">+ Add Item</button></div>
-    <div class="items"><table><thead><tr><th>Description</th><th>Plan</th><th style="width:80px">Rooms</th><th style="width:80px">Nights</th><th style="width:130px">Rate/Night</th><th style="width:130px">Amount</th><th style="width:45px"></th></tr></thead><tbody id="itemBody"></tbody></table></div>
+    <div class="items"><table><thead><tr><th>Description / Category</th><th>Plan</th><th style="width:145px">Rooms / Qty</th><th style="width:145px">Nights</th><th style="width:130px">Rate</th><th style="width:130px">Amount</th><th style="width:45px"></th></tr></thead><tbody id="itemBody"></tbody></table></div>
    </div>
    <div class="card" style="margin-top:14px">
     <div class="section-title"><h2>Discount & Tax</h2></div>
@@ -84,26 +155,109 @@ body{min-height:100dvh}.app{min-height:100dvh;display:flex}.sidebar{width:250px;
     <div class="qr-box" style="margin-top:12px"><img id="qrImg" alt="Payment QR"><div class="qr-meta"><strong id="qrAmount">₹0</strong><small id="qrText">Scan to pay</small></div></div>
    </div>
    <div class="card" style="margin-top:14px"><div class="section-title"><h2>Quotation Summary</h2></div><div class="totals"><div><span>Subtotal</span><strong id="sumSubtotal">₹0</strong></div><div><span>Discount</span><strong id="sumDiscount">₹0</strong></div><div><span>Tax / GST</span><strong id="sumTax">₹0</strong></div><div><span>Other Charges</span><strong id="sumOther">₹0</strong></div><div><span>Grand Total</span><strong id="sumGrand">₹0</strong></div></div></div>
-   <div class="card" style="margin-top:14px"><div class="section-title"><h2>Actions</h2></div><div class="toolbar"><button class="btn primary" id="saveBtn">Save Quotation</button><button class="btn dark" id="previewBtn">Preview</button><button class="btn" id="emailBtn">Copy Email HTML</button><button class="btn" id="printBtn">Print / PDF</button></div></div>
+   <div class="card" style="margin-top:14px"><div class="section-title"><h2>Actions</h2></div><div class="toolbar"><button class="btn primary" id="saveBtn">Save Quotation</button><button class="btn dark" id="previewBtn">Preview</button><button class="btn" id="emailBtn">Copy Email Quotation</button><button class="btn" id="printBtn">Print / PDF</button></div></div>
   </div>
  </div>
 </section>
 <section class="page" id="page-quotations"><div class="card"><div class="section-title"><h2>All Quotations</h2><button class="btn primary" id="newList">+ New Quotation</button></div><div class="field" style="margin-bottom:12px"><input id="searchQuotes" placeholder="Search by quotation ref or guest name"></div><div id="quoteList" class="list"></div></div></section>
 <section class="page" id="page-preview"><div class="quote-page" id="quotePreview"></div></section>
-<section class="page" id="page-settings"><div class="settings-grid">
- <div class="setting-card"><h3>Property Details</h3><div class="form-grid"><div class="field full"><label>Hotel / Resort Name</label><input id="sName"></div><div class="field full"><label>Address</label><input id="sAddress"></div><div class="field"><label>Phone</label><input id="sPhone"></div><div class="field"><label>Email</label><input id="sEmail"></div><div class="field"><label>GSTIN / Tax ID</label><input id="sGst"></div><div class="field"><label>Website</label><input id="sWebsite"></div></div></div>
- <div class="setting-card"><h3>Payment Details</h3><div class="form-grid"><div class="field full"><label>UPI ID</label><input id="sUpi"></div><div class="field"><label>Account Name</label><input id="sAccount"></div><div class="field"><label>Bank Details</label><input id="sBank"></div><div class="field"><label>Default Tax %</label><input id="sTax" type="number" step="0.01"></div><div class="field"><label>Quotation Prefix</label><input id="sPrefix"></div></div></div>
- <div class="setting-card"><h3>Default Content</h3><div class="field"><label>Default Terms</label><textarea id="sTerms"></textarea></div><div class="field" style="margin-top:10px"><label>Default Note</label><textarea id="sNote"></textarea></div></div>
- <div class="setting-card"><h3>Branding</h3><label class="file-btn">Upload Promo Banner<input id="bannerFile" type="file" accept="image/*" hidden></label><img id="bannerPreview" class="preview hidden"><div style="height:10px"></div><label class="file-btn">Upload Signature<input id="sigFile" type="file" accept="image/*" hidden></label><img id="sigPreview" class="preview hidden"></div>
- </div><div class="card" style="margin-top:16px"><button class="btn primary" id="saveSettings">Save Settings</button><button class="btn" id="resetSettings" style="margin-left:8px">Reset Defaults</button></div></section>
+<section class="page" id="page-settings">
+ <div class="settings-grid">
+  <div class="setting-card">
+   <h3>Property Details</h3>
+   <div class="form-grid">
+    <div class="field full"><label>Hotel / Resort Name</label><input id="sName"></div>
+    <div class="field full"><label>Address</label><input id="sAddress"></div>
+    <div class="field"><label>Phone</label><input id="sPhone"></div>
+    <div class="field"><label>Email</label><input id="sEmail"></div>
+    <div class="field"><label>GSTIN / Tax ID</label><input id="sGst"></div>
+    <div class="field"><label>Website</label><input id="sWebsite"></div>
+   </div>
+  </div>
+  <div class="setting-card">
+   <h3>Payment & Quotation</h3>
+   <div class="form-grid">
+    <div class="field full"><label>UPI ID</label><input id="sUpi"></div>
+    <div class="field"><label>Account Name</label><input id="sAccount"></div>
+    <div class="field"><label>Bank Details</label><input id="sBank"></div>
+    <div class="field"><label>Default Tax %</label><input id="sTax" type="number" step="0.01"></div>
+    <div class="field"><label>Quotation Prefix</label><input id="sPrefix"></div>
+   </div>
+  </div>
+  <div class="setting-card">
+   <h3>Room Categories</h3>
+   <div class="settings-help">These options appear in the quotation form. Rate is the default rate; you can still edit it in the quotation.</div>
+   <div id="roomCatalog" class="catalog-list"></div>
+   <div class="catalog-add">
+    <div class="field"><label>Name</label><input id="newRoomName" placeholder="Deluxe"></div>
+    <div class="field"><label>Plan</label><select id="newRoomPlan"></select></div>
+    <div class="field"><label>Default Rate</label><input id="newRoomRate" type="number" min="0" placeholder="5650"></div>
+    <button class="btn primary" id="addRoomCategory">+ Add Room</button>
+   </div>
+  </div>
+  <div class="setting-card">
+   <h3>Extra Items / Add-ons</h3>
+   <div class="settings-help">Examples: Extra Mattress, Breakfast, Lunch, Dinner, Transfer, etc. These appear in the item description dropdown.</div>
+   <div id="extraCatalog" class="catalog-list"></div>
+   <div class="catalog-add">
+    <div class="field"><label>Name</label><input id="newExtraName" placeholder="Extra Mattress"></div>
+    <div class="field"><label>Plan</label><select id="newExtraPlan"></select></div>
+    <div class="field"><label>Default Rate</label><input id="newExtraRate" type="number" min="0" placeholder="1800"></div>
+    <button class="btn primary" id="addExtraItem">+ Add Item</button>
+   </div>
+  </div>
+  <div class="setting-card">
+   <h3>Default Content</h3>
+   <div class="field"><label>Default Terms</label><textarea id="sTerms"></textarea></div>
+   <div class="field" style="margin-top:10px"><label>Default Note</label><textarea id="sNote"></textarea></div>
+  </div>
+  <div class="setting-card">
+   <h3>Branding</h3>
+   <label class="file-btn">Upload Promo Banner<input id="bannerFile" type="file" accept="image/*" hidden></label>
+   <img id="bannerPreview" class="preview hidden">
+   <div style="height:10px"></div>
+   <label class="file-btn">Upload Signature<input id="sigFile" type="file" accept="image/*" hidden></label>
+   <img id="sigPreview" class="preview hidden">
+  </div>
+ </div>
+ <div class="card" style="margin-top:16px"><button class="btn primary" id="saveSettings">Save Settings</button><button class="btn" id="resetSettings" style="margin-left:8px">Reset Defaults</button></div>
+</section>
 </div>
 </main>
 </div>
 <nav class="mobile-bottom"><button class="active" data-page="dashboard"><span class="mi">⌂</span>Home</button><button data-page="quotation"><span class="mi">＋</span>New</button><button data-page="quotations"><span class="mi">▤</span>Quotes</button><button data-page="settings"><span class="mi">⚙</span>Settings</button></nav>
 <div id="toast" class="toast hidden"></div>
 <script>
-const KEY='qm_v4_data'; const SETTINGS='qm_v4_settings'; const VERSION='4.0.0';
-const defaultSettings={name:'SHANGRILAS BEACH RESORT',address:'Vijay Nagar, Beach No.5, Swaraj Dweep, South Andaman - 744211',phone:'9474252529',email:'shangrilasbeachresort@gmail.com',gst:'30AAAAA0000A1Z5',website:'',upi:'',account:'',bank:'',tax:12,prefix:'GHR',terms:'1. 50% advance payment is required to confirm the booking.\n2. Standard Check-in: 12:00 PM | Check-out: 10:00 AM.\n3. Free cancellation is allowed up to 48 hours prior to check-in date.\n4. Late cancellation / no-show charges may apply as per the applicable policy.',note:'Quotation is subject to room availability at the time of confirmation.',banner:'',signature:''};
+const KEY='qm_v5_data'; const SETTINGS='qm_v5_settings'; const VERSION='5.0.0';
+const defaultSettings={
+name:'SHANGRILAS BEACH RESORT',
+address:'Vijay Nagar, Beach No.5, Swaraj Dweep, South Andaman - 744211',
+phone:'9474252529',
+email:'shangrilasbeachresort@gmail.com',
+gst:'30AAAAA0000A1Z5',
+website:'www.shangrilasbeachresort.in',
+upi:'',
+account:'',
+bank:'',
+tax:12,
+prefix:'QT',
+terms:'1. Check-in time is 11:00 AM and Check-out time is 08:00 AM. Early check-in and late check-out are subject to room availability.\n2. 50% advance deposit is mandatory to guarantee room reservation. Balance payable upon check-in.\n3. Free cancellation up to 20 days prior to arrival. Cancellations between 7 to 15 days attract 50% charge. No refund within 7 days.\n4. Valid Government Photo ID is mandatory at check-in (Passport, Voter ID, Driving License, Aadhaar). Note: PAN Cards are strictly not accepted as proof of identity.\n5. Festive Date Event Surcharge applies for Mandatory Gala Dinners (Durga Puja, Diwali, Christmas Eve, New Year Eve, Valentine’s Day).',
+note:'Quotation is subject to room availability at the time of confirmation.',
+banner:'',
+signature:'',
+roomCategories:[
+{name:'Deluxe',plan:'MAP',rate:5650},
+{name:'Family',plan:'MAP',rate:8500},
+{name:'Luxury Sea View Villa',plan:'MAP',rate:6500}
+],
+extraItems:[
+{name:'Extra Mattress',plan:'MAP',rate:1800},
+{name:'Breakfast',plan:'CP',rate:750},
+{name:'Lunch',plan:'MAP',rate:1200},
+{name:'Dinner',plan:'MAP',rate:1200}
+],
+mealPlans:['CP','MAP','AP','EP']
+};
 let settings=load(SETTINGS,defaultSettings), quotes=load(KEY,[]), current=null, deferredPrompt=null, waitingWorker=null;
 function load(k,f){try{return JSON.parse(localStorage.getItem(k)) ?? f}catch{return f}}
 function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
@@ -115,18 +269,106 @@ function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 function toast(m){let e=document.getElementById('toast');e.textContent=m;e.classList.remove('hidden');clearTimeout(window.__t);window.__t=setTimeout(()=>e.classList.add('hidden'),2200)}
 function setVal(id,v){let e=document.getElementById(id); if(e)e.value=v??''}
 function getVal(id){return document.getElementById(id)?.value??''}
-function emptyQuote(){return {id:crypto.randomUUID(),ref:ref(),issueDate:today(),validUntil:addDays(today(),7),status:'PROVISIONAL',guestName:'',guestMobile:'',guestEmail:'',checkIn:'',checkOut:'',nights:1,pax:'',mealPlan:'CP (Breakfast Included)',roomCategory:'',discountPct:0,taxPct:Number(settings.tax)||0,otherCharges:0,note:settings.note,terms:settings.terms,qrMode:'total',qrValue:50,items:[{description:'Room Accommodation',plan:'CP',rooms:1,nights:1,rate:0}]}}
-function bindQuote(q){current=q;['qRef','issueDate','validUntil','bookingStatus','guestName','guestMobile','guestEmail','checkIn','checkOut','nights','pax','mealPlan','roomCategory','discountPct','taxPct','otherCharges','note','terms','qrMode','qrValue'].forEach(k=>setVal(k,q[k])); document.getElementById('itemBody').innerHTML=''; q.items.forEach(addItemRow); calc(); updateQR();}
-function readQuote(){if(!current) current=emptyQuote(); current={...current,ref:getVal('qRef'),issueDate:getVal('issueDate'),validUntil:getVal('validUntil'),status:getVal('bookingStatus'),guestName:getVal('guestName'),guestMobile:getVal('guestMobile'),guestEmail:getVal('guestEmail'),checkIn:getVal('checkIn'),checkOut:getVal('checkOut'),nights:Number(getVal('nights'))||1,pax:getVal('pax'),mealPlan:getVal('mealPlan'),roomCategory:getVal('roomCategory'),discountPct:Number(getVal('discountPct'))||0,taxPct:Number(getVal('taxPct'))||0,otherCharges:Number(getVal('otherCharges'))||0,note:getVal('note'),terms:getVal('terms'),qrMode:getVal('qrMode'),qrValue:Number(getVal('qrValue'))||0,items:[...document.querySelectorAll('#itemBody tr')].map(tr=>({description:tr.querySelector('.desc').value,plan:tr.querySelector('.plan').value,rooms:Number(tr.querySelector('.rooms').value)||0,nights:Number(tr.querySelector('.nts').value)||0,rate:Number(tr.querySelector('.rate').value)||0}))};return current}
-function addItemRow(item={description:'',plan:'CP',rooms:1,nights:Number(getVal('nights'))||1,rate:0}){let tr=document.createElement('tr');tr.innerHTML=`<td><input class="desc" value="${esc(item.description)}"></td><td><input class="plan" value="${esc(item.plan)}"></td><td><input class="rooms" type="number" min="0" value="${item.rooms}"></td><td><input class="nts" type="number" min="0" value="${item.nights}"></td><td><input class="rate" type="number" min="0" value="${item.rate}"></td><td class="num amount">₹0.00</td><td><button class="btn danger remove" type="button">×</button></td>`;document.getElementById('itemBody').appendChild(tr);tr.querySelectorAll('input').forEach(x=>x.addEventListener('input',calc));tr.querySelector('.remove').onclick=()=>{tr.remove();calc()};calc()}
+function catalogOptions(selected=''){
+ let rooms=settings.roomCategories||[], extras=settings.extraItems||[];
+ let opts=`<option value="">Select item</option>`;
+ rooms.forEach(x=>opts+=`<option value="${esc(x.name)}" ${x.name===selected?'selected':''}>${esc(x.name)}</option>`);
+ if(extras.length) opts+=`<option disabled>──────── Add-ons ────────</option>`;
+ extras.forEach(x=>opts+=`<option value="${esc(x.name)}" ${x.name===selected?'selected':''}>${esc(x.name)}</option>`);
+ opts+=`<option value="__custom__" ${selected==='__custom__'?'selected':''}>Custom Item</option>`;
+ return opts;
+}
+function roomOptions(selected=''){
+ let rooms=settings.roomCategories||[];
+ return `<option value="">Select room category</option>`+rooms.map(x=>`<option value="${esc(x.name)}" ${x.name===selected?'selected':''}>${esc(x.name)}</option>`).join('');
+}
+function catalogFind(name){
+ return [...(settings.roomCategories||[]),...(settings.extraItems||[])].find(x=>x.name===name);
+}
+function fillDynamicOptions(){
+ let room=document.getElementById('roomCategory'); if(room) room.innerHTML=roomOptions(getVal('roomCategory'));
+ let plans=(settings.mealPlans||['CP','MAP','AP','EP']).map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
+ ['newRoomPlan','newExtraPlan'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=plans});
+ document.querySelectorAll('#itemBody .desc').forEach(sel=>{
+   let current=sel.value;
+   sel.innerHTML=catalogOptions(current);
+ });
+ document.querySelectorAll('#itemBody .plan').forEach(sel=>{
+   let current=sel.value;
+   sel.innerHTML=(settings.mealPlans||['CP','MAP','AP','EP']).map(x=>`<option ${x===current?'selected':''}>${esc(x)}</option>`).join('')+`<option ${!(settings.mealPlans||[]).includes(current)?'selected':''}>${esc(current)}</option>`;
+ });
+ renderCatalogSettings();
+}
+function emptyQuote(){return {id:crypto.randomUUID(),ref:ref(),issueDate:today(),validUntil:addDays(today(),7),status:'PROVISIONAL',guestName:'',guestMobile:'',guestEmail:'',agency:'',checkIn:'',checkOut:'',nights:1,pax:'',mealPlan:'CP',roomCategory:(settings.roomCategories?.[0]?.name||''),discountPct:0,taxPct:Number(settings.tax)||0,otherCharges:0,note:settings.note,terms:settings.terms,qrMode:'total',qrValue:50,items:[{description:(settings.roomCategories?.[0]?.name||'Room Accommodation'),plan:(settings.roomCategories?.[0]?.plan||'CP'),rooms:1,nights:1,rate:Number(settings.roomCategories?.[0]?.rate)||0}]}}
+function bindQuote(q){
+ current=q;
+ fillDynamicOptions();
+ ['qRef','issueDate','validUntil','bookingStatus','guestName','guestMobile','guestEmail','agency','checkIn','checkOut','nights','pax','mealPlan','roomCategory','discountPct','taxPct','otherCharges','note','terms','qrMode','qrValue'].forEach(k=>setVal(k,q[k]));
+ document.getElementById('itemBody').innerHTML='';
+ (q.items||[]).forEach(addItemRow);
+ calc(); updateQR();
+}
+function readQuote(){
+ if(!current) current=emptyQuote();
+ current={...current,ref:getVal('qRef'),issueDate:getVal('issueDate'),validUntil:getVal('validUntil'),status:getVal('bookingStatus'),guestName:getVal('guestName'),guestMobile:getVal('guestMobile'),guestEmail:getVal('guestEmail'),agency:getVal('agency'),checkIn:getVal('checkIn'),checkOut:getVal('checkOut'),nights:Number(getVal('nights'))||1,pax:getVal('pax'),mealPlan:getVal('mealPlan'),roomCategory:getVal('roomCategory'),discountPct:Number(getVal('discountPct'))||0,taxPct:Number(getVal('taxPct'))||0,otherCharges:Number(getVal('otherCharges'))||0,note:getVal('note'),terms:getVal('terms'),qrMode:getVal('qrMode'),qrValue:Number(getVal('qrValue'))||0,items:[...document.querySelectorAll('#itemBody tr')].map(tr=>({description:tr.querySelector('.desc').value,plan:tr.querySelector('.plan').value,rooms:Number(tr.querySelector('.rooms').value)||0,nights:Number(tr.querySelector('.nts').value)||0,rate:Number(tr.querySelector('.rate').value)||0}))};
+ return current;
+}
+function stepper(value, cls, min=0){
+ return `<div class="stepper"><button type="button" class="minus" data-cls="${cls}">−</button><input class="${cls}" type="number" min="${min}" value="${value}"><button type="button" class="plus" data-cls="${cls}">+</button></div>`;
+}
+function addItemRow(item={description:(settings.roomCategories?.[0]?.name||''),plan:(settings.roomCategories?.[0]?.plan||'CP'),rooms:1,nights:Number(getVal('nights'))||1,rate:Number(settings.roomCategories?.[0]?.rate)||0}){
+ let tr=document.createElement('tr');
+ tr.innerHTML=`<td><select class="desc">${catalogOptions(item.description)}</select></td><td><select class="plan">${(settings.mealPlans||['CP','MAP','AP','EP']).map(x=>`<option ${x===item.plan?'selected':''}>${esc(x)}</option>`).join('')}</select></td><td>${stepper(item.rooms,'rooms')}</td><td>${stepper(item.nights,'nts')}</td><td><input class="rate" type="number" min="0" value="${item.rate}"></td><td class="num amount">₹0.00</td><td><button class="btn danger remove" type="button">×</button></td>`;
+ document.getElementById('itemBody').appendChild(tr);
+ tr.querySelector('.desc').addEventListener('change',e=>{
+   let c=catalogFind(e.target.value);
+   if(c){tr.querySelector('.plan').value=c.plan;tr.querySelector('.rate').value=c.rate}
+   calc();
+ });
+ tr.querySelectorAll('input,select').forEach(x=>x.addEventListener('input',calc));
+ tr.querySelectorAll('.minus,.plus').forEach(btn=>btn.onclick=()=>{
+   let input=tr.querySelector('.'+btn.dataset.cls), v=Number(input.value)||0;
+   input.value=Math.max(0,v+(btn.classList.contains('plus')?1:-1));
+   input.dispatchEvent(new Event('input',{bubbles:true}));
+ });
+ tr.querySelector('.remove').onclick=()=>{tr.remove();calc()};
+ calc();
+}
 function calc(){let sub=0;document.querySelectorAll('#itemBody tr').forEach(tr=>{let a=(Number(tr.querySelector('.rooms').value)||0)*(Number(tr.querySelector('.nts').value)||0)*(Number(tr.querySelector('.rate').value)||0);tr.querySelector('.amount').textContent=money(a);sub+=a});let dis=sub*(Number(getVal('discountPct'))||0)/100;let taxable=sub-dis;let tax=taxable*(Number(getVal('taxPct'))||0)/100;let other=Number(getVal('otherCharges'))||0;let grand=taxable+tax+other;document.getElementById('sumSubtotal').textContent=money(sub);document.getElementById('sumDiscount').textContent=money(dis);document.getElementById('sumTax').textContent=money(tax);document.getElementById('sumOther').textContent=money(other);document.getElementById('sumGrand').textContent=money(grand);document.getElementById('statusPill').textContent=getVal('bookingStatus')||'DRAFT';document.getElementById('qrModePill').textContent=getVal('qrMode')==='percent'?'PERCENTAGE':getVal('qrMode')==='manual'?'MANUAL':'GRAND TOTAL';updateQR(grand);return {sub,dis,tax,other,grand}}
 function qrAmount(grand){let m=getVal('qrMode');if(m==='percent')return grand*(Number(getVal('qrValue'))||0)/100;if(m==='manual')return Number(getVal('qrValue'))||0;return grand}
 function updateQR(grand){if(grand===undefined){let sub=0;document.querySelectorAll('#itemBody tr').forEach(tr=>sub+=(Number(tr.querySelector('.rooms').value)||0)*(Number(tr.querySelector('.nts').value)||0)*(Number(tr.querySelector('.rate').value)||0));let dis=sub*(Number(getVal('discountPct'))||0)/100;grand=sub-dis+(sub-dis)*(Number(getVal('taxPct'))||0)/100+(Number(getVal('otherCharges'))||0)}let amt=qrAmount(grand),upi=settings.upi||'example@upi';let data=`upi://pay?pa=${encodeURIComponent(upi)}&pn=${encodeURIComponent(settings.name)}&am=${amt.toFixed(2)}&cu=INR&tn=${encodeURIComponent(getVal('qRef')||'Quotation')}`;document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data='+encodeURIComponent(data);document.getElementById('qrAmount').textContent=money(amt);document.getElementById('qrText').textContent=getVal('qrMode')==='percent'?`${getVal('qrValue')||0}% of Grand Total`:getVal('qrMode')==='manual'?'Manual payment amount':'Full Grand Total';document.getElementById('qrValueLabel').textContent=getVal('qrMode')==='percent'?'Percentage (%)':'Amount (₹)';}
 function saveCurrent(silent=false){let q=readQuote();let idx=quotes.findIndex(x=>x.id===q.id);if(idx>=0)quotes[idx]=q;else quotes.unshift(q);save(KEY,quotes);current=q;document.getElementById('saveState').textContent='Saved';renderLists();if(!silent)toast('Quotation saved');return q}
 function newQuote(){bindQuote(emptyQuote());showPage('quotation');toast('New quotation ready')}
 function showPage(page){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===page));let titles={dashboard:['Dashboard','Create and manage professional quotations'],quotation:['New Quotation','Build a professional quotation'],quotations:['Quotations','Search and manage saved quotations'],preview:['Quotation Preview','A4-ready customer quotation'],settings:['Settings','Property, payment and branding settings']};document.getElementById('pageTitle').textContent=titles[page][0];document.getElementById('pageSub').textContent=titles[page][1];if(page==='preview')renderPreview();if(page==='quotations')renderLists()}
-document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>showPage(b.dataset.page));document.getElementById('newTop').onclick=newQuote;document.getElementById('newDash').onclick=newQuote;document.getElementById('newList').onclick=newQuote;document.getElementById('addItem').onclick=()=>addItemRow();document.getElementById('saveBtn').onclick=()=>saveCurrent();document.getElementById('previewBtn').onclick=()=>{saveCurrent(true);showPage('preview')};document.getElementById('printBtn').onclick=()=>{saveCurrent(true);showPage('preview');setTimeout(()=>window.print(),300)};document.getElementById('emailBtn').onclick=()=>{saveCurrent(true);navigator.clipboard?.writeText(emailHtml(current)).then(()=>toast('Email HTML copied')).catch(()=>fallbackCopy(emailHtml(current)))};
-['discountPct','taxPct','otherCharges','qrMode','qrValue','nights'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{calc();updateQR()}));document.getElementById('qrMode').addEventListener('change',updateQR);
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>showPage(b.dataset.page));document.getElementById('newTop').onclick=newQuote;document.getElementById('newDash').onclick=newQuote;document.getElementById('newList').onclick=newQuote;document.getElementById('addItem').onclick=()=>addItemRow();document.getElementById('saveBtn').onclick=()=>saveCurrent();document.getElementById('previewBtn').onclick=()=>{saveCurrent(true);showPage('preview')};document.getElementById('printBtn').onclick=()=>{saveCurrent(true);showPage('preview');setTimeout(()=>window.print(),300)};document.getElementById('emailBtn').onclick=async()=>{
+ saveCurrent(true);
+ const htmlEmail=emailHtml(current);
+ const plain=document.createElement('div');plain.innerHTML=htmlEmail;const text=plain.innerText||plain.textContent||'';
+ try{
+   if(navigator.clipboard && window.ClipboardItem){
+     await navigator.clipboard.write([new ClipboardItem({
+       'text/html':new Blob([htmlEmail],{type:'text/html'}),
+       'text/plain':new Blob([text],{type:'text/plain'})
+     })]);
+     toast('Rich quotation copied — paste directly into Gmail/Outlook');
+   }else{fallbackCopy(htmlEmail)}
+ }catch(e){fallbackCopy(htmlEmail)}
+};
+['discountPct','taxPct','otherCharges','qrMode','qrValue','nights'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{calc();updateQR()}));
+document.getElementById('roomCategory').addEventListener('change',e=>{
+ const c=(settings.roomCategories||[]).find(x=>x.name===e.target.value);
+ if(c){
+   setVal('mealPlan',c.plan);
+   let first=document.querySelector('#itemBody tr');
+   if(first){
+     first.querySelector('.desc').value=c.name;
+     first.querySelector('.plan').value=c.plan;
+     first.querySelector('.rate').value=c.rate;
+   }
+   calc();
+ }
+});
+document.getElementById('qrMode').addEventListener('change',updateQR);
 ['checkIn','checkOut'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{let a=getVal('checkIn'),b=getVal('checkOut');if(a&&b){let n=Math.max(1,Math.round((new Date(b)-new Date(a))/86400000));setVal('nights',n);document.querySelectorAll('.nts').forEach(x=>x.value=n);calc()}}));
 function renderLists(){let list=document.getElementById('quoteList'),recent=document.getElementById('recentList');let arr=[...quotes].sort((a,b)=>(b.issueDate||'').localeCompare(a.issueDate||''));let html=arr.map(q=>`<div class="list-row"><div><strong>${esc(q.ref)}</strong><small>${esc(q.guestName||'No guest')} • ${esc(q.issueDate||'')}</small></div><div><b>${money(totalOf(q))}</b> <button class="btn" onclick="openQuote('${q.id}')">Open</button></div></div>`).join('');list.innerHTML=html||'<div class="notice">No saved quotations yet.</div>';recent.innerHTML=arr.slice(0,5).map(q=>`<div class="list-row"><div><strong>${esc(q.ref)}</strong><small>${esc(q.guestName||'No guest')}</small></div><b>${money(totalOf(q))}</b></div>`).join('')||'<div class="notice">Create your first quotation.</div>';document.getElementById('statTotal').textContent=arr.length;document.getElementById('statDraft').textContent=arr.filter(q=>q.status==='PROVISIONAL'||q.status==='HOLD').length;document.getElementById('statValue').textContent=money(arr.reduce((s,q)=>s+totalOf(q),0));document.getElementById('statLast').textContent=arr[0]?.ref||'—'}
 function totalOf(q){let sub=(q.items||[]).reduce((s,i)=>s+(+i.rooms||0)*(+i.nights||0)*(+i.rate||0),0);let dis=sub*(+q.discountPct||0)/100;return sub-dis+(sub-dis)*(+q.taxPct||0)/100+(+q.otherCharges||0)}
@@ -136,14 +378,112 @@ function previewData(q){let totals=totalOfParts(q);return {sub:totals.sub,dis:to
 function totalOfParts(q){let sub=(q.items||[]).reduce((s,i)=>s+(+i.rooms||0)*(+i.nights||0)*(+i.rate||0),0),dis=sub*(+q.discountPct||0)/100,tax=(sub-dis)*(+q.taxPct||0)/100,other=+q.otherCharges||0;return {sub,dis,tax,other,grand:sub-dis+tax+other}}
 function qrAmountFor(q,grand){return q.qrMode==='percent'?grand*(+q.qrValue||0)/100:q.qrMode==='manual'?(+q.qrValue||0):grand}
 function qrUrlFor(q,amt){let data=`upi://pay?pa=${encodeURIComponent(settings.upi||'example@upi')}&pn=${encodeURIComponent(settings.name)}&am=${amt.toFixed(2)}&cu=INR&tn=${encodeURIComponent(q.ref)}`;return 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data='+encodeURIComponent(data)}
-function renderPreview(){let q=readQuote();let t=previewData(q), lines=(q.items||[]).map(i=>`<tr><td>${esc(i.description)}</td><td>${esc(i.plan)}</td><td>${i.rooms}</td><td>${i.nights}</td><td style="text-align:right">${money(i.rate)}</td><td style="text-align:right;font-weight:700">${money(i.rooms*i.nights*i.rate)}</td></tr>`).join('');let terms=esc(q.terms||'').replace(/\n/g,'<br>');document.getElementById('quotePreview').innerHTML=`<article class="quote-sheet"><div class="quote-head"><div class="quote-brand"><h1>${esc(settings.name)}</h1><p>${esc(settings.address)}</p><p><b>Ph:</b> ${esc(settings.phone)} &nbsp; | &nbsp; ${esc(settings.email)}</p>${settings.gst?`<p><b>GSTIN:</b> ${esc(settings.gst)}</p>`:''}</div><div class="quote-badge"><strong>BOOKING QUOTATION</strong><div>Ref: ${esc(q.ref)}</div><div>Issue: ${esc(q.issueDate)}</div><div>Valid Until: ${esc(q.validUntil)}</div><div>Status: ${esc(q.status)}</div></div></div><div class="quote-section"><div class="quote-section-title">GUEST & STAY DETAILS</div><div class="quote-section-body"><div class="quote-info"><div><b>Guest Name</b><br>${esc(q.guestName||'—')}</div><div><b>Mobile</b><br>${esc(q.guestMobile||'—')}</div><div><b>Email</b><br>${esc(q.guestEmail||'—')}</div><div><b>Duration</b><br>${q.nights} Night(s)</div><div><b>Check-in</b><br>${esc(q.checkIn||'—')}</div><div><b>Check-out</b><br>${esc(q.checkOut||'—')}</div><div><b>Guests</b><br>${esc(q.pax||'—')}</div><div><b>Meal Plan</b><br>${esc(q.mealPlan||'—')}</div></div><div style="margin-top:7px;font-size:10px"><b>Room Category:</b> ${esc(q.roomCategory||'—')}</div></div></div><div class="quote-section"><div class="quote-section-title">RATE & CHARGES</div><div class="quote-section-body"><table class="quote-table"><thead><tr><th>Description</th><th>Plan</th><th>Rooms</th><th>Nts</th><th>Rate/Nt</th><th>Amount</th></tr></thead><tbody>${lines}</tbody></table></div></div><div class="quote-bottom"><div class="quote-summary"><strong>QUOTATION SUMMARY</strong><div style="margin-top:8px">Reference: ${esc(q.ref)}<br>Status: ${esc(q.status)}<br>Tax/GST: ${q.taxPct}%</div></div><div class="quote-summary"><div style="display:flex;justify-content:space-between"><span>Subtotal</span><b>${money(t.sub)}</b></div><div style="display:flex;justify-content:space-between;margin-top:5px"><span>Discount</span><b>${money(t.dis)}</b></div><div style="display:flex;justify-content:space-between;margin-top:5px"><span>Tax / GST</span><b>${money(t.tax)}</b></div>${t.other?`<div style="display:flex;justify-content:space-between;margin-top:5px"><span>Other</span><b>${money(t.other)}</b></div>`:''}<div class="grand"><span>GRAND TOTAL</span><span>${money(t.grand)}</span></div></div></div><div class="quote-section"><div class="quote-section-title">PAYMENT INFORMATION</div><div class="quote-section-body quote-payment"><img src="${qrUrlFor(q,t.qr)}"><div><b>QR Payment Amount: ${money(t.qr)}</b><br>Payment Method: UPI / Bank Transfer<br>Account Name: ${esc(settings.account||settings.name)}<br>UPI ID: ${esc(settings.upi||'—')}<br>Bank Details: ${esc(settings.bank||'—')}</div></div></div>${settings.banner?`<div style="margin-top:14px"><img src="${settings.banner}" style="width:100%;max-height:130px;object-fit:cover;border-radius:6px"></div>`:''}<div class="quote-section"><div class="quote-section-title">IMPORTANT NOTE</div><div class="quote-section-body quote-note">${esc(q.note||'—').replace(/\n/g,'<br>')}</div></div><div class="quote-section"><div class="quote-section-title">TERMS & CONDITIONS</div><div class="quote-section-body quote-note">${terms}</div></div><div class="quote-footer">Thank you for choosing ${esc(settings.name)}<br><b>For reservations & assistance: ${esc(settings.phone)} | ${esc(settings.email)}</b>${settings.signature?`<div style="margin-top:8px"><img src="${settings.signature}" style="max-width:130px;max-height:55px"><br>Authorized Signature</div>`:''}</div></article>`}
-function emailHtml(q){let t=previewData(q);let rows=q.items.map(i=>`<tr><td style="padding:7px 6px;border-bottom:1px solid #e5e7eb;font-size:12px;line-height:16px">${esc(i.description)}</td><td style="padding:7px 6px;border-bottom:1px solid #e5e7eb;text-align:center;font-size:12px">${esc(i.plan)}</td><td style="padding:7px 6px;border-bottom:1px solid #e5e7eb;text-align:center;font-size:12px">${i.rooms}</td><td style="padding:7px 6px;border-bottom:1px solid #e5e7eb;text-align:center;font-size:12px">${i.nights}</td><td style="padding:7px 6px;border-bottom:1px solid #e5e7eb;text-align:right;font-size:12px">${money(i.rate)}</td><td style="padding:7px 6px;border-bottom:1px solid #e5e7eb;text-align:right;font-size:12px;font-weight:bold">${money(i.rooms*i.nights*i.rate)}</td></tr>`).join('');let terms=esc(q.terms||'').replace(/\n/g,'<br>');let qr=qrUrlFor(q,t.qr);return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><style>body{margin:0;padding:0;background:#f3f4f6;color:#111827;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}table{border-collapse:collapse}img{border:0;display:block}a{text-decoration:none}</style></head><body style="margin:0;padding:0;background:#f3f4f6;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;background:#f3f4f6"><tr><td align="center" style="padding:18px 8px"><table role="presentation" width="720" cellpadding="0" cellspacing="0" style="width:720px;max-width:720px;background:#ffffff;border:1px solid #d1d5db"><tr><td style="padding:18px 20px;border-bottom:3px solid #d4a72c"><table width="100%"><tr><td valign="top"><div style="font-size:19px;line-height:23px;font-weight:800">${esc(settings.name)}</div><div style="font-size:11px;line-height:16px;color:#374151">${esc(settings.address)}</div><div style="font-size:11px;line-height:16px;color:#374151">Ph: ${esc(settings.phone)} &nbsp; | &nbsp; ${esc(settings.email)}</div>${settings.gst?`<div style="font-size:10px;line-height:14px;color:#374151">GSTIN: ${esc(settings.gst)}</div>`:''}</td><td align="right" valign="top"><div style="border:1px solid #111827;border-radius:7px;padding:8px 10px;width:150px;font-size:10px;line-height:15px"><b style="font-size:12px">BOOKING QUOTATION</b><br>Ref: ${esc(q.ref)}<br>Issue: ${esc(q.issueDate)}<br>Valid Until: ${esc(q.validUntil)}<br>Status: ${esc(q.status)}</div></td></tr></table></td></tr><tr><td style="padding:14px 20px;font-size:13px;line-height:19px">Dear Guest,<br>Please find below the quotation and reservation details for your stay.</td></tr><tr><td style="padding:0 20px 12px"><div style="background:#faf6e9;border-top:1px solid #d4a72c;border-bottom:1px solid #d4a72c;padding:7px 8px;font-size:11px;font-weight:bold">GUEST & STAY DETAILS</div><table width="100%" style="font-size:11px;line-height:16px"><tr><td width="50%" style="padding:6px;border-bottom:1px solid #eee"><b>Guest Name</b><br>${esc(q.guestName||'—')}</td><td style="padding:6px;border-bottom:1px solid #eee"><b>Mobile</b><br>${esc(q.guestMobile||'—')}</td></tr><tr><td style="padding:6px;border-bottom:1px solid #eee"><b>Email</b><br>${esc(q.guestEmail||'—')}</td><td style="padding:6px;border-bottom:1px solid #eee"><b>Duration</b><br>${q.nights} Night(s)</td></tr><tr><td style="padding:6px"><b>Check-in</b><br>${esc(q.checkIn||'—')}</td><td style="padding:6px"><b>Check-out</b><br>${esc(q.checkOut||'—')}</td></tr><tr><td style="padding:6px"><b>Guests</b><br>${esc(q.pax||'—')}</td><td style="padding:6px"><b>Meal Plan</b><br>${esc(q.mealPlan||'—')}</td></tr></table><div style="font-size:11px;padding:5px 6px"><b>Room Category:</b> ${esc(q.roomCategory||'—')}</div></td></tr><tr><td style="padding:0 20px 12px"><div style="background:#111827;color:#fff;padding:8px;font-size:10px;font-weight:bold">RATE & CHARGES</div><table width="100%" style="border:1px solid #e5e7eb;font-size:11px"><tr><th align="left" style="padding:7px;background:#111827;color:#fff">Description</th><th style="padding:7px;background:#111827;color:#fff">Plan</th><th style="padding:7px;background:#111827;color:#fff">Rooms</th><th style="padding:7px;background:#111827;color:#fff">Nts</th><th align="right" style="padding:7px;background:#111827;color:#fff">Rate/Nt</th><th align="right" style="padding:7px;background:#111827;color:#fff">Amount</th></tr>${rows}</table></td></tr><tr><td style="padding:0 20px 12px"><table width="100%"><tr><td width="55%" valign="top" style="padding-right:12px"><div style="border:1px solid #d1d5db;padding:10px;font-size:10px;line-height:15px"><b>QUOTATION SUMMARY</b><br>Reference: ${esc(q.ref)}<br>Status: ${esc(q.status)}<br>Tax/GST: ${q.taxPct}%</div></td><td valign="top"><table width="100%" style="font-size:11px"><tr><td>Subtotal</td><td align="right"><b>${money(t.sub)}</b></td></tr><tr><td>Discount</td><td align="right"><b>${money(t.dis)}</b></td></tr><tr><td>Tax / GST</td><td align="right"><b>${money(t.tax)}</b></td></tr>${t.other?`<tr><td>Other Charges</td><td align="right"><b>${money(t.other)}</b></td></tr>`:''}<tr><td colspan="2" style="padding-top:6px"><div style="background:#111827;color:#fff;padding:8px;font-size:12px;font-weight:bold"><table width="100%"><tr><td style="color:#fff">GRAND TOTAL</td><td align="right" style="color:#fff">${money(t.grand)}</td></tr></table></div></td></tr></table></td></tr></table></td></tr><tr><td style="padding:0 20px 12px"><div style="background:#faf6e9;border-top:1px solid #d4a72c;border-bottom:1px solid #d4a72c;padding:7px 8px;font-size:11px;font-weight:bold">PAYMENT INFORMATION</div><table width="100%"><tr><td width="105" valign="top" style="padding:10px 10px 10px 0"><img src="${qr}" width="90" height="90" alt="Payment QR"></td><td valign="top" style="padding:10px 0;font-size:11px;line-height:17px"><b>QR Payment Amount: ${money(t.qr)}</b><br>Payment Method: UPI / Bank Transfer<br>Account Name: ${esc(settings.account||settings.name)}<br>UPI ID: ${esc(settings.upi||'—')}<br>Bank Details: ${esc(settings.bank||'—')}</td></tr></table></td></tr>${settings.banner?`<tr><td style="padding:0 20px 12px"><img src="${settings.banner}" width="680" style="width:680px;max-width:100%;height:auto" alt="Promo"></td></tr>`:''}<tr><td style="padding:0 20px 12px"><div style="background:#faf6e9;border-top:1px solid #d4a72c;border-bottom:1px solid #d4a72c;padding:7px 8px;font-size:11px;font-weight:bold">IMPORTANT NOTE</div><div style="padding:9px 8px;font-size:10px;line-height:15px">${esc(q.note||'—').replace(/\n/g,'<br>')}</div></td></tr><tr><td style="padding:0 20px 18px"><div style="background:#faf6e9;border-top:1px solid #d4a72c;border-bottom:1px solid #d4a72c;padding:7px 8px;font-size:11px;font-weight:bold">TERMS & CONDITIONS</div><div style="padding:9px 8px;font-size:10px;line-height:15px">${terms}</div></td></tr><tr><td align="center" style="padding:12px 20px;border-top:2px solid #d4a72c;font-size:10px;line-height:15px">Thank you for choosing ${esc(settings.name)}<br><b>For reservations & assistance: ${esc(settings.phone)} | ${esc(settings.email)}</b></td></tr></table></td></tr></table></body></html>`}
+function quoteBody(q,t,forEmail=false){
+ let items=(q.items||[]).map(i=>`<tr><td>${esc(i.description)}</td><td>${esc(i.plan)}</td><td style="text-align:center">${i.rooms}</td><td style="text-align:center">${i.nights}</td><td style="text-align:right">${money(i.rate)}</td><td style="text-align:right;font-weight:800">${money(i.rooms*i.nights*i.rate)}</td></tr>`).join('');
+ let terms=esc(q.terms||'').replace(/\n/g,'<br>');
+ let note=esc(q.note||'—').replace(/\n/g,'<br>');
+ let qr=qrUrlFor(q,t.qr);
+ let banner=settings.banner?`<div style="margin-top:8px"><img src="${settings.banner}" alt="Promo Banner" style="display:block;width:100%;max-height:105px;object-fit:cover;border:1px solid #cbd5e1"></div>`:'';
+ let sig=settings.signature?`<div style="margin-top:5px;text-align:right"><img src="${settings.signature}" alt="Authorized Signature" style="display:inline-block;max-width:110px;max-height:45px"><br><span style="font-size:7px">Authorized Signature</span></div>`:'';
+ let W=forEmail?'700px':'820px';
+ let wrap=`width:100%;max-width:${W};margin:0 auto;background:#fff;border:1px solid #cbd5e1;padding:22px;color:#111827;font-family:Inter,Arial,Helvetica,sans-serif;box-sizing:border-box`;
+ return `<article class="quote-a4 quote-shell" style="${wrap}">
+  <div class="qhead" style="display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #0b1d41;padding-bottom:8px">
+   <div class="qbrand" style="flex:1">
+    <h1 style="font-size:15px;line-height:18px;margin:0 0 2px;font-weight:900">${esc(settings.name)}</h1>
+    <p style="font-size:8px;line-height:11px;margin:1px 0">${esc(settings.gst||'')}</p>
+    <p style="font-size:8px;line-height:11px;margin:1px 0">${esc(settings.address)}</p>
+    <p style="font-size:8px;line-height:11px;margin:1px 0">Phone: ${esc(settings.phone)} · Email: ${esc(settings.email)}</p>
+    ${settings.website?`<p style="font-size:8px;line-height:11px;margin:1px 0">Web: ${esc(settings.website)}</p>`:''}
+   </div>
+   <div class="qref" style="width:170px;border:1px solid #cbd5e1;border-radius:4px;padding:8px;font-size:8px;line-height:12px;box-sizing:border-box">
+    <strong style="font-size:9px">ROOM QUOTATION</strong><br>Ref: ${esc(q.ref)}<br>Date: ${esc(q.issueDate)}<br>Valid Until: ${esc(q.validUntil)}
+   </div>
+  </div>
+  <div class="qgrid2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px">
+   <div class="qmini" style="border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
+    <div class="qtitle" style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">PREPARED FOR</div>
+    <div class="qbody" style="padding:7px 8px;font-size:8px;line-height:12px"><b>${esc(q.guestName||'—')}</b><br>Phone: ${esc(q.guestMobile||'—')}<br>Email: ${esc(q.guestEmail||'—')}<br>Agency: ${esc(q.agency||'—')}</div>
+   </div>
+   <div class="qmini" style="border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
+    <div class="qtitle" style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">STAY DETAILS</div>
+    <div class="qbody" style="padding:7px 8px;font-size:8px;line-height:12px">Check-in: <b>${esc(q.checkIn||'—')}</b><br>Check-out: <b>${esc(q.checkOut||'—')}</b><br>Duration: <b>${q.nights} Night(s)</b><br>Occupancy: <b>${esc(q.pax||'—')}</b><br>Rooms / Plan: <b>${(q.items||[]).reduce((s,i)=>s+(+i.rooms||0),0)} Rooms · ${esc(q.mealPlan||'—')}</b></div>
+   </div>
+  </div>
+  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
+   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">ACCOMMODATION &amp; TARIFF</div>
+   <table class="qtable" style="width:100%;border-collapse:collapse;font-size:8px"><thead><tr><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1;text-align:left">ROOM TYPE</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1">PLAN</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1">RMS</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1">NTS</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1;text-align:right">RATE/NT</th><th style="background:#0b1d41;color:#fff;padding:6px 5px;border:1px solid #cbd5e1;text-align:right">AMOUNT</th></tr></thead><tbody>${items}</tbody></table>
+  </div>
+  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
+   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">TARIFF BREAKDOWN &amp; GRAND TOTAL</div>
+   <div style="padding:7px 8px;font-size:8px;line-height:13px">
+    <div style="display:flex;justify-content:space-between"><span>Accommodation Total:</span><b>${money(t.sub)}</b></div>
+    <div style="display:flex;justify-content:space-between"><span>Subtotal:</span><b>${money(t.sub)}</b></div>
+    <div style="display:flex;justify-content:space-between"><span>Discount:</span><b>${money(t.dis)}</b></div>
+    <div style="display:flex;justify-content:space-between"><span>Taxable Amount:</span><b>${money(t.sub-t.dis)}</b></div>
+    <div style="display:flex;justify-content:space-between"><span>GST (${q.taxPct}%):</span><b>${money(t.tax)}</b></div>
+    ${t.other?`<div style="display:flex;justify-content:space-between"><span>Other Charges:</span><b>${money(t.other)}</b></div>`:''}
+    <div style="background:#0b1d41;color:#fff;font-weight:900;padding:8px 9px;margin-top:6px;display:flex;justify-content:space-between"><span>GRAND TOTAL:</span><span>${money(t.grand)}</span></div>
+    <div style="text-align:right;font-size:7px;margin-top:3px;text-transform:uppercase">${esc(amountWords(t.grand))} ONLY</div>
+   </div>
+  </div>
+  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
+   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">PAYMENT &amp; UPI PAYMENT DETAILS</div>
+   <div style="padding:7px 8px;display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center">
+    <div><img src="${qr}" alt="QR" style="display:block;width:82px;height:82px;border:1px solid #cbd5e1"><div style="font-size:6px;text-align:center;margin-top:2px">SCAN &amp; PAY VIA UPI</div></div>
+    <div style="font-size:8px;line-height:12px"><b>UPI Payment Amount: ${money(t.qr)}</b><br>Payment Method: UPI / Bank Transfer<br>Account Name: ${esc(settings.account||settings.name)}<br>UPI ID: ${esc(settings.upi||'—')}<br>Bank Details: ${esc(settings.bank||'—')}<br><b>Payment Note:</b> Please mention quotation reference while making payment.</div>
+   </div>
+  </div>
+  ${banner}
+  <div style="margin-top:9px;border:1px solid #cbd5e1;border-radius:4px;overflow:hidden">
+   <div style="background:#f8fafc;border-bottom:1px solid #cbd5e1;padding:6px 8px;font-size:8px;font-weight:900">BOOKING TERMS &amp; STAY POLICIES</div>
+   <div style="padding:7px 8px;font-size:8px;line-height:12px">${terms}</div>
+  </div>
+  ${note?`<div style="margin-top:7px;font-size:8px;line-height:12px"><b>NOTE:</b> ${note}</div>`:''}
+  <div style="border-top:1px solid #cbd5e1;margin-top:9px;padding-top:8px;text-align:right;font-size:7px;line-height:10px">
+   <b>Thank you for choosing ${esc(settings.name)}. We look forward to welcoming you.</b><br>Phone: ${esc(settings.phone)}<br>Email: ${esc(settings.email)}${sig}
+  </div>
+ </article>`;
+}
+function amountWords(n){
+ n=Math.round(Number(n)||0);
+ if(n===0)return 'Zero Rupees';
+ const ones=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+ const tens=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+ function two(x){if(x<20)return ones[x];return tens[Math.floor(x/10)]+(x%10?' '+ones[x%10]:'')}
+ function three(x){return x>=100?ones[Math.floor(x/100)]+' Hundred'+(x%100?' '+two(x%100):''):two(x)}
+ let parts=[];let cr=Math.floor(n/10000000);n%=10000000;let lk=Math.floor(n/100000);n%=100000;let th=Math.floor(n/1000);n%=1000;let h=n;
+ if(cr)parts.push(three(cr)+' Crore');if(lk)parts.push(three(lk)+' Lakh');if(th)parts.push(three(th)+' Thousand');if(h)parts.push(three(h));return parts.join(' ')+' Rupees';
+}
+function renderPreview(){let q=readQuote(),t=previewData(q);document.getElementById('quotePreview').innerHTML=quoteBody(q,t,false)}
+function emailHtml(q){let t=previewData(q);return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><style>body{margin:0;padding:0;background:#f3f4f6;color:#111827;font-family:Inter,Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}table{border-collapse:collapse}img{border:0;display:block}*{font-family:Inter,Arial,Helvetica,sans-serif}</style></head><body style="margin:0;padding:0;background:#f3f4f6;font-family:Inter,Arial,Helvetica,sans-serif">${quoteBody(q,t,true)}</body></html>`}
 function fallbackCopy(text){let ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Email HTML copied')}
-function fillSettings(){[['sName','name'],['sAddress','address'],['sPhone','phone'],['sEmail','email'],['sGst','gst'],['sWebsite','website'],['sUpi','upi'],['sAccount','account'],['sBank','bank'],['sTax','tax'],['sPrefix','prefix'],['sTerms','terms'],['sNote','note']].forEach(([a,b])=>setVal(a,settings[b]))}
-function saveSettings(){settings={...settings,name:getVal('sName'),address:getVal('sAddress'),phone:getVal('sPhone'),email:getVal('sEmail'),gst:getVal('sGst'),website:getVal('sWebsite'),upi:getVal('sUpi'),account:getVal('sAccount'),bank:getVal('sBank'),tax:Number(getVal('sTax'))||0,prefix:getVal('sPrefix'),terms:getVal('sTerms'),note:getVal('sNote')};save(SETTINGS,settings);toast('Settings saved');if(current){setVal('taxPct',current.taxPct);updateQR();renderPreview()}}
+function renderCatalogSettings(){
+ const room=document.getElementById('roomCatalog'), extra=document.getElementById('extraCatalog');
+ if(!room||!extra)return;
+ room.innerHTML=(settings.roomCategories||[]).map((x,i)=>`<div class="catalog-row"><input data-room-name="${i}" value="${esc(x.name)}"><select data-room-plan="${i}">${(settings.mealPlans||['CP','MAP','AP','EP']).map(p=>`<option ${p===x.plan?'selected':''}>${esc(p)}</option>`).join('')}</select><input data-room-rate="${i}" type="number" min="0" value="${x.rate}"><button class="btn danger" data-room-del="${i}" type="button">×</button></div>`).join('');
+ extra.innerHTML=(settings.extraItems||[]).map((x,i)=>`<div class="catalog-row"><input data-extra-name="${i}" value="${esc(x.name)}"><select data-extra-plan="${i}">${(settings.mealPlans||['CP','MAP','AP','EP']).map(p=>`<option ${p===x.plan?'selected':''}>${esc(p)}</option>`).join('')}</select><input data-extra-rate="${i}" type="number" min="0" value="${x.rate}"><button class="btn danger" data-extra-del="${i}" type="button">×</button></div>`).join('');
+ room.querySelectorAll('[data-room-del]').forEach(b=>b.onclick=()=>{settings.roomCategories.splice(+b.dataset.roomDel,1);save(SETTINGS,settings);renderCatalogSettings();fillDynamicOptions()});
+ extra.querySelectorAll('[data-extra-del]').forEach(b=>b.onclick=()=>{settings.extraItems.splice(+b.dataset.extraDel,1);save(SETTINGS,settings);renderCatalogSettings();fillDynamicOptions()});
+ room.querySelectorAll('input,select').forEach(e=>e.onchange=()=>{let i=+(e.dataset.roomName??e.dataset.roomPlan??e.dataset.roomRate);let x=settings.roomCategories[i];if(e.dataset.roomName)x.name=e.value;if(e.dataset.roomPlan)x.plan=e.value;if(e.dataset.roomRate)x.rate=Number(e.value)||0;save(SETTINGS,settings);fillDynamicOptions()});
+ extra.querySelectorAll('input,select').forEach(e=>e.onchange=()=>{let i=+(e.dataset.extraName??e.dataset.extraPlan??e.dataset.extraRate);let x=settings.extraItems[i];if(e.dataset.extraName)x.name=e.value;if(e.dataset.extraPlan)x.plan=e.value;if(e.dataset.extraRate)x.rate=Number(e.value)||0;save(SETTINGS,settings);fillDynamicOptions()});
+}
+function fillSettings(){
+ [['sName','name'],['sAddress','address'],['sPhone','phone'],['sEmail','email'],['sGst','gst'],['sWebsite','website'],['sUpi','upi'],['sAccount','account'],['sBank','bank'],['sTax','tax'],['sPrefix','prefix'],['sTerms','terms'],['sNote','note']].forEach(([a,b])=>setVal(a,settings[b]));
+ fillDynamicOptions(); renderCatalogSettings();
+}
+function saveSettings(){
+ settings={...settings,name:getVal('sName'),address:getVal('sAddress'),phone:getVal('sPhone'),email:getVal('sEmail'),gst:getVal('sGst'),website:getVal('sWebsite'),upi:getVal('sUpi'),account:getVal('sAccount'),bank:getVal('sBank'),tax:Number(getVal('sTax'))||0,prefix:getVal('sPrefix'),terms:getVal('sTerms'),note:getVal('sNote')};
+ save(SETTINGS,settings);fillDynamicOptions();renderCatalogSettings();toast('Settings saved');
+ if(current){setVal('taxPct',current.taxPct);setVal('terms',current.terms);setVal('note',current.note);updateQR();renderPreview()}
+}
 function fileData(input,key,img){let f=input.files?.[0];if(!f)return;let r=new FileReader();r.onload=()=>{settings[key]=r.result;save(SETTINGS,settings);img.src=r.result;img.classList.remove('hidden');toast('Image saved')};r.readAsDataURL(f)}
-document.getElementById('saveSettings').onclick=saveSettings;document.getElementById('resetSettings').onclick=()=>{settings={...defaultSettings};save(SETTINGS,settings);fillSettings();toast('Defaults restored')};document.getElementById('bannerFile').onchange=e=>fileData(e.target,'banner',document.getElementById('bannerPreview'));document.getElementById('sigFile').onchange=e=>fileData(e.target,'signature',document.getElementById('sigPreview'));
-function init(){fillSettings();if(settings.banner){let x=document.getElementById('bannerPreview');x.src=settings.banner;x.classList.remove('hidden')}if(settings.signature){let x=document.getElementById('sigPreview');x.src=settings.signature;x.classList.remove('hidden')}newQuote();renderLists();showPage('dashboard');}
+function init(){
+ fillSettings();
+ if(settings.banner){let x=document.getElementById('bannerPreview');x.src=settings.banner;x.classList.remove('hidden')}
+ if(settings.signature){let x=document.getElementById('sigPreview');x.src=settings.signature;x.classList.remove('hidden')}
+ newQuote();renderLists();showPage('dashboard');
+}
 // PWA install + update handling
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').classList.remove('hidden')});document.getElementById('installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else toast('Use browser menu → Add to Home Screen / Install App')};window.addEventListener('appinstalled',()=>toast('App installed successfully'));
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(reg=>{if(reg.waiting){waitingWorker=reg;document.getElementById('updateNotice').classList.remove('hidden')}reg.addEventListener('updatefound',()=>{let nw=reg.installing;nw?.addEventListener('statechange',()=>{if(nw.state==='installed'&&navigator.serviceWorker.controller){waitingWorker=nw;document.getElementById('updateNotice').classList.remove('hidden')}})})}).catch(()=>{})}
