@@ -1,8 +1,8 @@
-# Quotation Maker Pro V11
+# Quotation Maker Pro V13
 
 Professional hotel quotation PWA with responsive A4 preview and email-safe quotation output.
 
-## V11 fixes
+## V13 fixes
 - Desktop A4 preview is readable and centered instead of stretching across the screen.
 - Mobile preview auto-fits to device width without zoom controls.
 - Accommodation & Tariff uses the full document width.

@@ -228,3 +228,89 @@
   .quotation-document{width:210mm!important;height:auto!important;margin:0!important;transform:none!important}
   .quote-sheet{transform:none!important}
 }
+
+
+/* V13 FINAL OVERRIDES — layout/typography only; preserves existing app features */
+html,body{font-family:Inter,Arial,Helvetica,sans-serif}
+.content{zoom:1!important}
+/* Desktop: show the quotation as a real centered A4 sheet instead of stretching it across the screen. */
+.preview-canvas{display:flex;justify-content:center;align-items:flex-start;overflow:auto;background:#e7ebf0;padding:24px}
+.quotation-document{width:794px!important;height:1123px!important;display:block!important;transform:none!important;margin:0 auto!important}
+.quote-sheet{width:794px!important;max-width:794px!important;min-height:1123px!important;height:auto;background:#fff;margin:0 auto!important;padding:22px!important;box-sizing:border-box}
+.q-top{grid-template-columns:minmax(0,1fr) 176px;gap:14px;align-items:start}
+.q-brand{min-width:0}
+.q-brand h1{font-size:16px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:clip}
+.q-brand p{color:#111827}
+.q-ref{width:176px;justify-self:end;border-radius:8px}
+.q-ref,.q-box{border-radius:8px}
+.q-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+.q-grid>.q-box{display:flex;flex-direction:column;min-width:0}
+.q-grid>.q-box .q-box-body{flex:1;min-height:82px}
+.q-section{width:100%!important;max-width:100%!important;margin-left:0!important;margin-right:0!important}
+.q-table-wrap{width:100%!important;max-width:100%!important}
+.q-table{width:100%!important;table-layout:fixed}
+.q-rows{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:3px 18px;width:100%;padding:8px 10px;font-size:8px;line-height:14px}
+.q-rows span{min-width:0}
+.q-rows strong{text-align:right;white-space:nowrap}
+.q-total{width:100%;box-sizing:border-box}
+.q-payment{grid-template-columns:96px minmax(0,1fr);width:100%}
+.q-payment-text{min-width:0;overflow-wrap:anywhere}
+.q-contact,.q-website{color:#111827!important;text-decoration:none!important;pointer-events:none!important;cursor:default!important}
+.q-footer{color:#111827!important;text-decoration:none!important}
+.q-footer .q-contact,.q-footer .q-website{color:#111827!important;text-decoration:none!important}
+.q-status-badge{display:inline-block;background:#f97316;color:#fff;border-radius:999px;padding:3px 7px;font-size:7px;font-weight:900;line-height:8px;margin:1px 0 3px;text-transform:uppercase}
+
+/* Mobile: retain the reference's two-column header and equal information cards, while fitting every device. */
+@media(max-width:900px){
+  .preview-canvas{display:block;padding:0;background:#fff;overflow-x:hidden;overflow-y:auto}
+  .quotation-document{width:100%!important;height:auto!important;display:block!important;margin:0!important}
+  .quote-sheet{width:100%!important;max-width:none!important;min-height:0!important;height:auto!important;padding:10px!important;border:1px solid #bfc8d5;box-shadow:none}
+  .q-top{grid-template-columns:minmax(0,1fr) 150px;gap:8px;padding-bottom:7px}
+  .q-brand h1{font-size:clamp(11px,3.45vw,16px);line-height:1.1;white-space:nowrap;letter-spacing:-.02em}
+  .q-brand p{font-size:clamp(6px,1.9vw,7.5px);line-height:1.25;margin:1px 0}
+  .q-ref{width:150px;padding:6px;font-size:7px;line-height:10px;border-radius:7px}
+  .q-ref strong{font-size:8px}
+  .q-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+  .q-grid>.q-box .q-box-body{min-height:96px;padding:7px;font-size:clamp(7px,2.1vw,9px);line-height:1.4}
+  .q-box-title{font-size:clamp(7px,2.15vw,9px);padding:6px 8px;line-height:1.2}
+  .q-table{font-size:clamp(6.5px,1.95vw,8px)}
+  .q-table th{padding:6px 4px;font-size:clamp(6.3px,1.8vw,8px)}
+  .q-table td{padding:6px 4px}
+  .q-rows{font-size:clamp(7.5px,2.15vw,9px);line-height:1.55;padding:8px}
+  .q-total{font-size:clamp(8px,2.3vw,10px);padding:8px}
+  .q-payment{grid-template-columns:88px minmax(0,1fr);gap:9px}
+  .q-payment .q-qr{width:82px;height:82px}
+  .q-payment-text{font-size:clamp(7px,2vw,8.5px);line-height:1.45}
+  .q-terms{font-size:clamp(7px,2vw,8.5px);line-height:1.45}
+  .q-footer{font-size:clamp(6px,1.8vw,7px);line-height:1.35;text-align:center}
+  .q-sign{text-align:right}
+}
+@media(max-width:380px){
+  .quote-sheet{padding:8px!important}
+  .q-top{grid-template-columns:minmax(0,1fr) 132px;gap:6px}
+  .q-ref{width:132px;padding:5px}
+  .q-grid{gap:6px}
+  .q-grid>.q-box .q-box-body{min-height:92px}
+}
+
+/* Print/PDF: keep true A4 and improve readability without changing the screen quotation. */
+@media print{
+  html,body{background:#fff!important}
+  .preview-canvas{display:block!important;padding:0!important;background:#fff!important;overflow:visible!important}
+  .quotation-document{width:210mm!important;height:auto!important;margin:0!important;display:block!important}
+  .quote-sheet{width:210mm!important;max-width:none!important;min-height:297mm!important;height:auto!important;padding:12mm!important;border:0!important;box-shadow:none!important}
+  .q-brand h1{font-size:17px!important;line-height:20px!important}
+  .q-brand p{font-size:9px!important;line-height:12px!important}
+  .q-ref{font-size:9px!important;line-height:13px!important}
+  .q-ref strong{font-size:10px!important}
+  .q-box-title{font-size:9px!important;line-height:12px!important;padding:7px 9px!important}
+  .q-box-body,.q-terms,.q-payment-text,.q-rows{font-size:9px!important;line-height:14px!important}
+  .q-table{font-size:8.5px!important}
+  .q-table th,.q-table td{padding:7px 6px!important}
+  .q-total{font-size:10px!important;padding:8px 9px!important}
+  .q-payment{grid-template-columns:100px minmax(0,1fr)!important}
+  .q-payment .q-qr{width:90px!important;height:90px!important}
+  .q-footer{font-size:8px!important;line-height:11px!important}
+  .q-banner img{max-height:100px!important}
+  @page{size:A4 portrait;margin:0}
+}
