@@ -1,28 +1,9 @@
-# Quotation Maker Pro V16
+# Quotation Maker V23
 
-Professional hotel quotation PWA with responsive A4 preview and email-safe quotation output.
+Includes the existing quotation app plus the integrated Payment Received and Booking Confirmed templates.
 
-## V16 fixes
-- Desktop A4 preview is readable and centered instead of stretching across the screen.
-- Mobile preview auto-fits to device width without zoom controls.
-- Accommodation & Tariff uses the full document width.
-- Summary rows align labels and amounts cleanly.
-- Phone, email, and website output is black and non-underlined.
-- Payment section includes Payment Method and Branch in addition to existing details.
-- Rate editing no longer re-renders the row on every keystroke, so the cursor/focus is not lost.
-- Service worker cache version bumped for V16 updates.
-- Line-item amounts are always calculated fresh as Rooms × Nights × Rate, so displayed row amounts cannot become stale.
-- Phone, email, and website contact text is protected against automatic link styling.
-- Tariff breakdown uses explicit full-width left-label/right-amount rows.
+V23 fixes the template email output for Gmail/Outlook/mobile clients by using a reliable single-column card layout rather than relying on mobile media queries that email clients may strip. Prepared For, Stay Details, payment/confirmation, detail rows, banner, message and footer are separate full-width cards.
 
-## Files
-- index.html
-- styles.css
-- app.js
-- email-template.js
-- manifest.webmanifest
-- sw.js
-- icon-192.png
-- icon-512.png
-- favicon-64.png
-- apple-touch-icon.png
+Contact information in the template email is rendered in black with no underline, with invisible zero-width separators to reduce automatic blue-link conversion by mail clients.
+
+Existing quotation calculation/editor design is not intentionally changed by this template-only update.
