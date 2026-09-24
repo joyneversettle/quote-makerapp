@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Document Templates — Quotation Maker</title>
+<link rel="icon" href="icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><img src="icon-192.png"><div><strong>Quotation Maker</strong><span>Document Templates</span></div></div>
+    <a class="back" href="../index.html">← Back to Quotation</a>
+  </header>
+  <main>
+    <section class="hero"><div><span class="eyebrow">DOCUMENT CENTER</span><h1>Payment & Booking Templates</h1><p>Separate templates based on your existing quotation design. Your existing quotation system is not modified.</p></div><div class="tabs"><button class="tab active" data-template="payment">Payment Received</button><button class="tab" data-template="confirmed">Booking Confirmed</button></div></section>
+    <div class="workspace">
+      <section class="editor">
+        <div class="panel-head"><div><h2 id="formTitle">Payment Received</h2><p>Edit the fields and the document updates instantly.</p></div><button class="btn orange" id="loadLast">Load Last Quotation</button></div>
+        <div class="form-grid">
+          <label>Guest Name<input id="guest"></label><label>Agency<input id="agency"></label>
+          <label>Guest Phone<input id="phone"></label><label>Guest Email<input id="email" type="email"></label>
+          <label>Quotation Ref<input id="quoteRef"></label><label>Booking Ref<input id="bookingRef"></label>
+          <label>Check-in<input id="checkin" type="date"></label><label>Check-out<input id="checkout" type="date"></label>
+          <label>Room / Stay Summary<input id="room"></label><label>Adults / Children<input id="occupancy"></label>
+          <label>Payment Date<input id="paymentDate" type="date"></label><label>Payment Amount (₹)<input id="paymentAmount" type="number" min="0" step="0.01"></label>
+          <label>Payment Mode<select id="paymentMode"><option>UPI</option><option>Bank Transfer</option><option>Cash</option><option>Card</option><option>Other</option></select></label><label>Transaction / UTR No.<input id="transaction"></label>
+          <label>Advance / Payment Note<input id="paymentNote"></label><label>Balance Due (₹)<input id="balance" type="number" min="0" step="0.01"></label>
+          <label class="full">Message<textarea id="message"></textarea></label>
+        </div>
+        <div class="actions"><button class="btn dark" id="copyEmail">Copy Email Template</button><button class="btn" id="print">Print / Save PDF</button><button class="btn" id="reset">Reset</button></div>
+      </section>
+      <aside class="preview"><div class="preview-head"><strong>Live Preview</strong><span>A4</span></div><div id="document" class="document"></div></aside>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
