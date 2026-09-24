@@ -28,9 +28,22 @@
     <div class="sidebar-footer"><span id="onlineState">Online</span><button id="installBtnSide" class="install-mini hidden">Install App</button></div>
   </aside>
 
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer-head"><div class="drawer-brand"><img src="icon-192.png" alt=""><div><strong>Quotation Maker</strong><small>Professional Edition</small></div></div><button class="drawer-close" id="mobileMenuClose" aria-label="Close menu">×</button></div>
+    <nav class="mobile-drawer-nav">
+      <button data-page="dashboard">⌂<span>Dashboard</span></button>
+      <button data-page="editor">＋<span>New Quotation</span></button>
+      <button data-page="quotations">▤<span>Quotations</span></button>
+      <button data-page="preview">▣<span>Preview</span></button>
+      <button data-page="templates">▦<span>Templates</span></button>
+      <button data-page="settings">⚙<span>Settings</span></button>
+    </nav>
+  </aside>
+
   <main class="main">
     <header class="topbar">
-      <div class="mobile-brand"><img src="icon-192.png" alt=""><strong>Quotation Maker</strong></div>
+      <div class="mobile-brand"><button class="hamburger-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button><img src="icon-192.png" alt=""><strong>Quotation Maker</strong></div>
       <div class="top-title"><h1 id="pageTitle">Dashboard</h1><p id="pageSub">Manage professional quotations</p></div>
       <div class="top-actions">
         <button class="btn primary" id="newTop">+ New Quotation</button>
@@ -98,8 +111,8 @@
       <section class="page" id="page-templates">
         <div class="page-head"><div><span class="eyebrow">DOCUMENT TEMPLATES</span><h2>Payment & Booking Templates</h2><p>Open the separate templates module without changing your quotation workflow.</p></div></div>
         <div class="template-grid">
-          <div class="panel template-card"><div class="template-icon">₹</div><div><h3>Payment Received</h3><p>Create a professional payment receipt using the resort branding.</p></div><button class="btn primary" data-template-open="payment">Open Template</button></div>
-          <div class="panel template-card"><div class="template-icon">✓</div><div><h3>Booking Confirmed</h3><p>Create a professional booking confirmation using the same branding.</p></div><button class="btn primary" data-template-open="booking">Open Template</button></div>
+          <div class="panel template-card"><div class="template-icon">₹</div><div><h3>Payment Received</h3><p>Create a professional payment receipt using the resort branding.</p></div><button class="btn primary" data-template-open="payment">💰 Open Payment</button></div>
+          <div class="panel template-card"><div class="template-icon">✓</div><div><h3>Booking Confirmed</h3><p>Create a professional booking confirmation using the same branding.</p></div><button class="btn primary" data-template-open="booking">✅ Open Booking</button></div>
         </div>
         <div class="panel template-note"><strong>Separate module</strong><span>These templates are stored in the <b>templates/</b> folder and open separately. Your existing quotation editor remains unchanged.</span></div>
       </section>
@@ -116,7 +129,6 @@
       </section>
     </section>
   </main>
-  <nav class="mobile-nav"><button data-page="dashboard" class="active">⌂<span>Home</span></button><button data-page="editor">＋<span>New</span></button><button data-page="quotations">▤<span>Quotes</span></button><button data-page="templates">▦<span>Templates</span></button><button data-page="settings">⚙<span>Settings</span></button></nav>
 </div>
 <div id="toast" class="toast hidden"></div>
 <script src="email-template.js"></script>
