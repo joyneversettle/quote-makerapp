@@ -1,19 +1,25 @@
-# Quotation Maker Pro V7
+# Quotation Maker Pro V11
 
-Professional hotel quotation management PWA.
+Professional hotel quotation PWA with responsive A4 preview and email-safe quotation output.
 
-## V7 layout fixes
-- Removed all app and preview zoom controls.
-- Responsive device-based layout with no forced page zoom.
-- Compact, consistent New Quotation editor view matching Home scale.
-- Rounded quotation boxes except QR image box.
-- Accommodation & Tariff, Tariff Breakdown, and Payment/UPI are separate sections.
-- Consistent table alignment and spacing with no artificial large gaps.
-- Email addresses are rendered black/non-underlined and protected from automatic link styling where supported.
-- Email quotation uses email-safe table layout with tighter side margins and stable typography.
-- Promo banner and signature are included in the generated email HTML when configured.
-- Inter is used across the application and quotation UI.
-- PWA service worker cache version is bumped for future automatic updates.
+## V11 fixes
+- Desktop A4 preview is readable and centered instead of stretching across the screen.
+- Mobile preview auto-fits to device width without zoom controls.
+- Accommodation & Tariff uses the full document width.
+- Summary rows align labels and amounts cleanly.
+- Phone, email, and website output is black and non-underlined.
+- Payment section includes Payment Method and Branch in addition to existing details.
+- Rate editing no longer re-renders the row on every keystroke, so the cursor/focus is not lost.
+- Service worker cache version bumped for future deployments/updates.
 
-## Required files
-index.html, styles.css, app.js, email-template.js, manifest.webmanifest, sw.js, icon-192.png, icon-512.png, favicon-64.png, apple-touch-icon.png, README.md
+## Files
+- index.html
+- styles.css
+- app.js
+- email-template.js
+- manifest.webmanifest
+- sw.js
+- icon-192.png
+- icon-512.png
+- favicon-64.png
+- apple-touch-icon.png
