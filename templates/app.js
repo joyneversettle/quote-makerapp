@@ -16,9 +16,11 @@ function emailDocument(d){
   const esc2=esc;
   const safeText=v=>esc2(v||'—');
   // Keep contact text black and prevent Gmail/mobile clients from auto-linking it.
-  const safePhone=v=>esc2(v||'—').replace(/(\d{4})(?=\d)/g,'$1&#8203;');
-  const safeEmail=v=>esc2(v||'—').replace(/@/g,'&#8203;@').replace(/\./g,'&#8203;.');
-  const safeWeb=v=>esc2(v||'—').replace(/\./g,'&#8203;.');
+  const plainStyle='color:#000000!important;text-decoration:none!important;-webkit-text-decoration:none!important;-webkit-text-fill-color:#000000!important;font-weight:400!important;';
+  // Keep contact details visually identical to ordinary text while preventing Gmail/Outlook auto-linking.
+  const safePhone=v=>{const x=String(v||'—');return x.split(/(\d{4})/).filter(Boolean).map(part=>`<span style="${plainStyle}">${esc2(part)}</span>`).join('')};
+  const safeEmail=v=>{const x=String(v||'—');return x.split(/([@.])/).filter(Boolean).map(part=>`<span style="${plainStyle}">${esc2(part)}</span>`).join('')};
+  const safeWeb=v=>{const x=String(v||'—');return x.split(/([.])/).filter(Boolean).map(part=>`<span style="${plainStyle}">${esc2(part)}</span>`).join('')};
   const box='border:1px solid #c6d0dc;border-radius:9px;background:#ffffff;overflow:hidden;';
   const title='background:#f8fafc;border-bottom:1px solid #c6d0dc;padding:10px 12px;font-size:11px;font-weight:800;line-height:15px;color:#111827;';
   const body='padding:11px 12px;font-size:11px;line-height:18px;color:#111827;overflow-wrap:anywhere;word-break:break-word;';
@@ -31,13 +33,13 @@ function emailDocument(d){
         <!-- Header: deliberately single-column for reliable Gmail/Outlook/mobile rendering -->
         <div style="width:100%;box-sizing:border-box;border:1px solid #c6d0dc;border-radius:9px;padding:12px;background:#ffffff;text-align:center;">
           <div style="font-size:19px;font-weight:800;line-height:24px;color:#111827;text-align:center;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.name)}</div>
-          <div style="font-size:10px;line-height:15px;margin-top:3px;color:#111827;text-align:center;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.address)}</div>
-          <div style="font-size:10px;line-height:15px;color:#000000;text-align:center;overflow-wrap:anywhere;word-break:break-word;">
+          <div style="font-size:9px;line-height:13px;margin-top:3px;color:#111827;text-align:center;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.address)}</div>
+          <div style="font-size:9px;line-height:13px;color:#000000;text-align:center;overflow-wrap:anywhere;word-break:break-word;">
             Phone: ${contact}${safePhone(s.phone)}</span>
             <span style="color:#000000;">&nbsp; | &nbsp;</span>
             Email: ${contact}${safeEmail(s.email)}</span>
           </div>
-          ${s.gstin?`<div style="font-size:10px;line-height:15px;color:#111827;text-align:center;">GSTIN: ${esc2(s.gstin)}</div>`:''}
+          ${s.gstin?`<div style="font-size:9px;line-height:13px;color:#111827;text-align:center;">GSTIN: ${esc2(s.gstin)}</div>`:''}
           <div style="height:3px;background:#f97316;margin:8px auto 0;border-radius:2px;max-width:240px;"></div>
         </div>
 
