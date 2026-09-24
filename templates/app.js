@@ -18,9 +18,16 @@ function emailDocument(d){
   // Keep contact text black and prevent Gmail/mobile clients from auto-linking it.
   const plainStyle='color:#000000!important;text-decoration:none!important;-webkit-text-decoration:none!important;-webkit-text-fill-color:#000000!important;font-weight:400!important;';
   // Keep contact details visually identical to ordinary text while preventing Gmail/Outlook auto-linking.
-  const safePhone=v=>{const x=String(v||'—');return x.split(/(\d{4})/).filter(Boolean).map(part=>`<span style="${plainStyle}">${esc2(part)}</span>`).join('')};
-  const safeEmail=v=>{const x=String(v||'—');return x.split(/([@.])/).filter(Boolean).map(part=>`<span style="${plainStyle}">${esc2(part)}</span>`).join('')};
-  const safeWeb=v=>{const x=String(v||'—');return x.split(/([.])/).filter(Boolean).map(part=>`<span style="${plainStyle}">${esc2(part)}</span>`).join('')};
+  // Gmail/iOS/Outlook can auto-convert phone, email and website text into blue underlined links
+  // after paste. Keep the text visually normal, but insert invisible zero-width separators between
+  // characters so mail clients cannot detect the value as a link. No <a>, href, tel: or mailto: is generated.
+  const plainChar=v=>{
+    const x=String(v??'—');
+    return [...x].map((ch,i)=>`<span style="${plainStyle}display:inline!important;">${esc2(ch)}</span>${i<x.length-1?'&#8204;':''}`).join('');
+  };
+  const safePhone=v=>plainChar(v);
+  const safeEmail=v=>plainChar(v);
+  const safeWeb=v=>plainChar(v);
   const box='border:1px solid #c6d0dc;border-radius:9px;background:#ffffff;overflow:hidden;';
   const title='background:#f8fafc;border-bottom:1px solid #c6d0dc;padding:10px 12px;font-size:11px;font-weight:800;line-height:15px;color:#111827;';
   const body='padding:11px 12px;font-size:11px;line-height:18px;color:#111827;overflow-wrap:anywhere;word-break:break-word;';
@@ -128,7 +135,7 @@ function emailDocument(d){
     </div>
   </div>`;
 }
-function htmlForEmail(){const d=data();return `<!doctype html><html><body style="margin:0;padding:0;background:#ffffff;">${emailDocument(d)}</body></html>`}
+function htmlForEmail(){const d=data();return `<!doctype html><html><head><meta name="format-detection" content="telephone=no,email=no,address=no"><style>u,a{color:#000!important;text-decoration:none!important;}a[x-apple-data-detectors],a[href^="tel:"],a[href^="mailto:"],a[href^="http"]{color:#000!important;text-decoration:none!important;}</style></head><body style="margin:0;padding:0;background:#ffffff;">${emailDocument(d)}</body></html>`}
 async function copyEmail(){const html=htmlForEmail();try{if(navigator.clipboard?.write&&window.ClipboardItem){await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([document.querySelector('#document').innerText],{type:'text/plain'})})])}else{throw new Error('rich clipboard unavailable')}}catch{const holder=document.createElement('div');holder.contentEditable='true';holder.style.position='fixed';holder.style.left='-99999px';holder.style.top='0';holder.innerHTML=emailDocument(data());document.body.appendChild(holder);const range=document.createRange();range.selectNodeContents(holder);const sel=getSelection();sel.removeAllRanges();sel.addRange(range);document.execCommand('copy');sel.removeAllRanges();holder.remove()}alert('Template copied. Paste it into Gmail/Outlook.')}
 function setType(next){type=next;$$('.tab').forEach(b=>b.classList.toggle('active',b.dataset.template===type));$('#formTitle').textContent=type==='payment'?'Payment Received':'Booking Confirmed';defaultsForm()}
 function fitTemplatePreview(){const host=$('#document');const sheet=host?.querySelector('.sheet');if(!host||!sheet)return;const baseW=794,baseH=1123;const available=Math.max(250,host.clientWidth-10);const scale=Math.min(1,available/baseW);sheet.style.transform=`scale(${scale})`;sheet.style.transformOrigin='top center';host.style.height=`${baseH*scale}px`;host.style.width='100%';}
