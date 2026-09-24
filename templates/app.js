@@ -23,22 +23,22 @@ function emailDocument(d){
   const title='background:#f8fafc;border-bottom:1px solid #c6d0dc;padding:10px 12px;font-size:11px;font-weight:800;line-height:15px;color:#111827;';
   const body='padding:11px 12px;font-size:11px;line-height:18px;color:#111827;overflow-wrap:anywhere;word-break:break-word;';
   const row='padding:10px 12px;border-top:1px solid #e3e7ed;font-size:11px;line-height:16px;color:#111827;';
-  const contact=`<span style="color:#111827!important;text-decoration:none!important;-webkit-text-decoration:none!important;">`;
+  const contact=`<span style="color:#000000!important;text-decoration:none!important;-webkit-text-decoration:none!important;-webkit-text-fill-color:#000000!important;">`;
   return `<div style="width:100%;margin:0;padding:0;background:#ffffff;color:#111827;font-family:Arial,Helvetica,sans-serif;">
     <div style="width:100%;box-sizing:border-box;margin:0 auto;padding:10px;background:#ffffff;">
       <div style="width:100%;max-width:680px;margin:0 auto;border:1px solid #bfc8d5;border-radius:10px;background:#ffffff;padding:16px;box-sizing:border-box;">
 
         <!-- Header: deliberately single-column for reliable Gmail/Outlook/mobile rendering -->
-        <div style="width:100%;box-sizing:border-box;border:1px solid #c6d0dc;border-radius:9px;padding:12px;background:#ffffff;">
-          <div style="font-size:19px;font-weight:800;line-height:24px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.name)}</div>
-          <div style="font-size:11px;line-height:17px;margin-top:4px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.address)}</div>
-          <div style="font-size:11px;line-height:17px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">
+        <div style="width:100%;box-sizing:border-box;border:1px solid #c6d0dc;border-radius:9px;padding:12px;background:#ffffff;text-align:center;">
+          <div style="font-size:19px;font-weight:800;line-height:24px;color:#111827;text-align:center;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.name)}</div>
+          <div style="font-size:10px;line-height:15px;margin-top:3px;color:#111827;text-align:center;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.address)}</div>
+          <div style="font-size:10px;line-height:15px;color:#000000;text-align:center;overflow-wrap:anywhere;word-break:break-word;">
             Phone: ${contact}${safePhone(s.phone)}</span>
-            <span style="color:#667085;">&nbsp; | &nbsp;</span>
+            <span style="color:#000000;">&nbsp; | &nbsp;</span>
             Email: ${contact}${safeEmail(s.email)}</span>
           </div>
-          ${s.gstin?`<div style="font-size:11px;line-height:17px;color:#111827;">GSTIN: ${esc2(s.gstin)}</div>`:''}
-          <div style="height:3px;background:#f97316;margin-top:9px;border-radius:2px;"></div>
+          ${s.gstin?`<div style="font-size:10px;line-height:15px;color:#111827;text-align:center;">GSTIN: ${esc2(s.gstin)}</div>`:''}
+          <div style="height:3px;background:#f97316;margin:8px auto 0;border-radius:2px;max-width:240px;"></div>
         </div>
 
         <div style="height:9px;line-height:9px;font-size:1px;">&nbsp;</div>
