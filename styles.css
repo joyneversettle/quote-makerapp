@@ -171,3 +171,12 @@
   .q-sign img{max-width:40mm!important;max-height:18mm!important}
   .q-footer{font-size:7.5pt!important;line-height:10pt!important}
 }
+
+
+/* V10: force document sections to use the full available mobile width */
+.q-section.q-accommodation,.q-section.q-breakdown,.q-section.q-payment{width:100%!important;max-width:none!important;box-sizing:border-box}
+.q-table-wrap,.q-table{width:100%!important;max-width:none!important;box-sizing:border-box}
+@media(max-width:680px){
+  .quote-sheet{width:100%!important;max-width:none!important;box-sizing:border-box;margin-left:0!important;margin-right:0!important}
+  .q-section{width:100%!important}
+}
