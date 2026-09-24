@@ -14,49 +14,74 @@ function render(){const d=data();$('#document').innerHTML=quoteSummary(d);reques
 function emailDocument(d){
   const s=state.settings||{};
   const esc2=esc;
-  const cell='border:1px solid #c6d0dc;border-radius:8px;padding:9px;vertical-align:top;';
-  const title='background:#f8fafc;border-bottom:1px solid #c6d0dc;padding:7px 9px;font-size:11px;font-weight:800;';
-  const body='padding:9px;font-size:11px;line-height:18px;';
-  const row='border-top:1px solid #e3e7ed;padding:8px 10px;font-size:11px;';
+  const cell='border:1px solid #c6d0dc;border-radius:8px;padding:0;vertical-align:top;overflow:hidden;';
+  const title='background:#f8fafc;border-bottom:1px solid #c6d0dc;padding:9px 11px;font-size:11px;font-weight:800;line-height:14px;';
+  const body='padding:10px 11px;font-size:11px;line-height:18px;overflow-wrap:anywhere;word-break:break-word;';
+  const row='border-top:1px solid #e3e7ed;padding:9px 11px;font-size:11px;line-height:16px;';
   const html=`<div style="width:100%;margin:0;padding:0;background:#ffffff;color:#111827;font-family:Arial,Helvetica,sans-serif;">
-    <div style="max-width:760px;margin:0 auto;border:1px solid #bfc8d5;border-radius:10px;background:#ffffff;padding:20px;box-sizing:border-box;">
-      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;">
-        <tr>
-          <td style="vertical-align:top;padding:0 14px 10px 0;border-bottom:1px solid #0b1d41;">
-            <div style="font-size:18px;font-weight:800;line-height:22px;">${esc2(s.name)}</div>
-            <div style="font-size:10px;line-height:15px;margin-top:3px;">${esc2(s.address)}</div>
-            <div style="font-size:10px;line-height:15px;">Phone: ${esc2(s.phone)} &nbsp;|&nbsp; Email: ${esc2(s.email)}</div>
-            ${s.gstin?`<div style="font-size:10px;line-height:15px;">GSTIN: ${esc2(s.gstin)}</div>`:''}
-            <div style="height:3px;background:#f97316;margin-top:8px;border-radius:2px;"></div>
-          </td>
-          <td width="185" style="vertical-align:top;padding:9px;border:1px solid #c6d0dc;border-radius:8px;font-size:10px;line-height:15px;">
-            <div style="font-size:12px;font-weight:800;">${type==='payment'?'PAYMENT RECEIPT':'BOOKING CONFIRMATION'}</div>
-            <div style="display:inline-block;background:#f97316;color:#ffffff;border-radius:12px;padding:4px 8px;font-size:9px;font-weight:800;margin:5px 0;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</div><br>
-            Ref: ${esc2(d.bookingRef||d.quoteRef||'—')}<br>Date: ${esc2(d.paymentDate||today())}
-          </td>
-        </tr>
-      </table>
-      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:separate;border-spacing:8px 9px;width:calc(100% + 16px);margin-left:-8px;">
-        <tr>
-          <td width="50%" style="${cell}"><div style="${title}">PREPARED FOR</div><div style="${body}"><strong>${esc2(d.guest||'—')}</strong><br>Phone: ${esc2(d.phone||'—')}<br>Email: ${esc2(d.email||'—')}<br>Agency: ${esc2(d.agency||'—')}</div></td>
-          <td width="50%" style="${cell}"><div style="${title}">STAY DETAILS</div><div style="${body}">Check-in: <strong>${esc2(d.checkin||'—')}</strong><br>Check-out: <strong>${esc2(d.checkout||'—')}</strong><br>Occupancy: ${esc2(d.occupancy||'—')}<br>Room / Stay: ${esc2(d.room||'—')}</div></td>
-        </tr>
-      </table>
-      <div style="margin-top:9px;background:#f8fafc;border:1px solid #c6d0dc;border-radius:8px;padding:13px;">
-        <div style="font-size:10px;font-weight:800;color:#667085;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</div>
-        <div style="font-size:20px;font-weight:800;color:#0b1d41;margin-top:3px;">${type==='payment'?money(d.paymentAmount):'Your reservation is confirmed'}</div>
-        ${type==='payment'?`<div style="font-size:10px;line-height:15px;margin-top:3px;">Payment Mode: ${esc2(d.paymentMode||'—')} &nbsp; | &nbsp; Transaction / UTR: ${esc2(d.transaction||'—')}</div>`:`<div style="font-size:10px;line-height:15px;margin-top:3px;">Quotation Ref: ${esc2(d.quoteRef||'—')} &nbsp; | &nbsp; Booking Ref: ${esc2(d.bookingRef||'—')}</div>`}
+    <style>
+      @media screen and (max-width:600px){
+        .tm-outer{padding:8px!important}
+        .tm-card{width:100%!important;max-width:100%!important;border-radius:8px!important;padding:12px!important}
+        .tm-head,.tm-info{width:100%!important;table-layout:auto!important}
+        .tm-head td,.tm-info td{display:block!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+        .tm-brand{padding:0 0 10px 0!important;border-bottom:0!important}
+        .tm-ref{margin-top:8px!important;padding:10px!important}
+        .tm-info{border-spacing:0!important;width:100%!important;margin-left:0!important}
+        .tm-info td{padding:0!important}
+        .tm-info td+td{padding-top:9px!important}
+        .tm-box{margin-top:9px!important}
+        .tm-value{font-size:18px!important;line-height:22px!important}
+        .tm-row-label,.tm-row-value{display:block!important;width:100%!important;float:none!important;text-align:left!important}
+        .tm-row-value{margin-top:3px!important}
+        .tm-banner{max-height:none!important;height:auto!important}
+        .tm-footer{text-align:center!important}
+      }
+    </style>
+    <div class="tm-outer" style="width:100%;box-sizing:border-box;margin:0;padding:10px;background:#ffffff;">
+      <div class="tm-card" style="width:100%;max-width:680px;margin:0 auto;border:1px solid #bfc8d5;border-radius:10px;background:#ffffff;padding:18px;box-sizing:border-box;">
+        <table class="tm-head" role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;table-layout:fixed;">
+          <tr>
+            <td class="tm-brand" valign="top" style="vertical-align:top;padding:0 12px 10px 0;border-bottom:1px solid #0b1d41;">
+              <div style="font-size:18px;font-weight:800;line-height:22px;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.name)}</div>
+              <div style="font-size:10px;line-height:15px;margin-top:3px;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.address)}</div>
+              <div style="font-size:10px;line-height:15px;overflow-wrap:anywhere;word-break:break-word;">Phone: <span style="color:#111827!important;text-decoration:none!important;">${esc2(s.phone)}</span> &nbsp;|&nbsp; Email: <span style="color:#111827!important;text-decoration:none!important;">${esc2(s.email)}</span></div>
+              ${s.gstin?`<div style="font-size:10px;line-height:15px;">GSTIN: ${esc2(s.gstin)}</div>`:''}
+              <div style="height:3px;background:#f97316;margin-top:8px;border-radius:2px;"></div>
+            </td>
+            <td class="tm-ref" valign="top" style="width:185px;vertical-align:top;padding:9px;border:1px solid #c6d0dc;border-radius:8px;font-size:10px;line-height:15px;overflow-wrap:anywhere;word-break:break-word;">
+              <div style="font-size:12px;font-weight:800;line-height:15px;">${type==='payment'?'PAYMENT RECEIPT':'BOOKING CONFIRMATION'}</div>
+              <div style="display:inline-block;background:#f97316;color:#ffffff;border-radius:12px;padding:4px 8px;font-size:9px;font-weight:800;margin:5px 0;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</div><br>
+              Ref: ${esc2(d.bookingRef||d.quoteRef||'—')}<br>Date: ${esc2(d.paymentDate||today())}
+            </td>
+          </tr>
+        </table>
+
+        <table class="tm-info" role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:separate;border-spacing:8px 9px;width:calc(100% + 16px);margin-left:-8px;table-layout:fixed;">
+          <tr>
+            <td class="tm-info-cell" width="50%" style="width:50%;${cell}"><div style="${title}">PREPARED FOR</div><div style="${body}"><strong>${esc2(d.guest||'—')}</strong><br>Phone: ${esc2(d.phone||'—')}<br>Email: ${esc2(d.email||'—')}<br>Agency: ${esc2(d.agency||'—')}</div></td>
+            <td class="tm-info-cell" width="50%" style="width:50%;${cell}"><div style="${title}">STAY DETAILS</div><div style="${body}">Check-in: <strong>${esc2(d.checkin||'—')}</strong><br>Check-out: <strong>${esc2(d.checkout||'—')}</strong><br>Occupancy: ${esc2(d.occupancy||'—')}<br>Room / Stay: ${esc2(d.room||'—')}</div></td>
+          </tr>
+        </table>
+
+        <div class="tm-box" style="margin-top:9px;background:#f8fafc;border:1px solid #c6d0dc;border-radius:8px;padding:13px;box-sizing:border-box;">
+          <div style="font-size:10px;font-weight:800;color:#667085;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</div>
+          <div class="tm-value" style="font-size:20px;font-weight:800;line-height:24px;color:#0b1d41;margin-top:3px;overflow-wrap:anywhere;">${type==='payment'?money(d.paymentAmount):'Your reservation is confirmed'}</div>
+          ${type==='payment'?`<div style="font-size:10px;line-height:15px;margin-top:3px;overflow-wrap:anywhere;">Payment Mode: ${esc2(d.paymentMode||'—')} &nbsp; | &nbsp; Transaction / UTR: ${esc2(d.transaction||'—')}</div>`:`<div style="font-size:10px;line-height:15px;margin-top:3px;overflow-wrap:anywhere;">Quotation Ref: ${esc2(d.quoteRef||'—')} &nbsp; | &nbsp; Booking Ref: ${esc2(d.bookingRef||'—')}</div>`}
+        </div>
+
+        <div class="tm-box" style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;overflow:hidden;">
+          <div style="${row.replace('border-top:','border-top:0;')}"><span class="tm-row-label">${type==='payment'?'Payment Date':'Confirmation Date'}</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;">${esc2(d.paymentDate||today())}</span></div>
+          <div style="${row}"><span class="tm-row-label">Payment Mode</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;">${esc2(d.paymentMode||'—')}</span></div>
+          <div style="${row}"><span class="tm-row-label">${type==='payment'?'Balance Due':'Balance Payable'}</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;">${money(d.balance)}</span></div>
+          ${d.paymentNote?`<div style="${row}"><span class="tm-row-label">Note</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;max-width:65%;">${esc2(d.paymentNote)}</span></div>`:''}
+        </div>
+
+        ${s.banner?`<div class="tm-box" style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;overflow:hidden;"><img class="tm-banner" src="${s.banner}" alt="Promo Banner" style="display:block;width:100%;max-width:100%;height:auto;border:0;"></div>`:''}
+        <div class="tm-box" style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;padding:11px;font-size:11px;line-height:18px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;">${esc2(d.message||'')}</div>
+        ${s.signature?`<div style="text-align:right;margin-top:8px;"><img src="${s.signature}" alt="Authorized Signature" style="display:inline-block;max-width:150px;max-height:55px;height:auto;"></div>`:''}
+        <div class="tm-footer" style="border-top:1px solid #c6d0dc;margin-top:10px;padding-top:8px;text-align:right;font-size:9px;line-height:14px;overflow-wrap:anywhere;">Thank you for choosing ${esc2(s.name)}<br>Phone: ${esc2(s.phone)} &nbsp;|&nbsp; Email: ${esc2(s.email)} &nbsp;|&nbsp; ${esc2(s.website)}</div>
       </div>
-      <div style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;overflow:hidden;">
-        <div style="${row.replace('border-top:','border-top:0;')}"><span>${type==='payment'?'Payment Date':'Confirmation Date'}</span><span style="float:right;font-weight:700;">${esc2(d.paymentDate||today())}</span></div>
-        <div style="${row}"><span>Payment Mode</span><span style="float:right;font-weight:700;">${esc2(d.paymentMode||'—')}</span></div>
-        <div style="${row}"><span>${type==='payment'?'Balance Due':'Balance Payable'}</span><span style="float:right;font-weight:700;">${money(d.balance)}</span></div>
-        ${d.paymentNote?`<div style="${row}"><span>Note</span><span style="float:right;font-weight:700;max-width:65%;text-align:right;">${esc2(d.paymentNote)}</span></div>`:''}
-      </div>
-      ${s.banner?`<img src="${s.banner}" alt="Promo Banner" style="display:block;width:100%;max-width:100%;height:auto;max-height:150px;object-fit:cover;border:1px solid #c6d0dc;border-radius:6px;margin-top:9px;">`:''}
-      <div style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;padding:11px;font-size:11px;line-height:18px;white-space:pre-wrap;">${esc2(d.message||'')}</div>
-      ${s.signature?`<div style="text-align:right;margin-top:8px;"><img src="${s.signature}" alt="Authorized Signature" style="display:inline-block;max-width:150px;max-height:55px;"></div>`:''}
-      <div style="border-top:1px solid #c6d0dc;margin-top:10px;padding-top:8px;text-align:right;font-size:9px;line-height:14px;">Thank you for choosing ${esc2(s.name)}<br>Phone: ${esc2(s.phone)} &nbsp;|&nbsp; Email: ${esc2(s.email)} &nbsp;|&nbsp; ${esc2(s.website)}</div>
     </div>
   </div>`;
   return html;
