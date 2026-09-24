@@ -230,7 +230,7 @@
 }
 
 
-/* V13 FINAL OVERRIDES — layout/typography only; preserves existing app features */
+/* V14 BASE OVERRIDES — layout/typography only; preserves existing app features */
 html,body{font-family:Inter,Arial,Helvetica,sans-serif}
 .content{zoom:1!important}
 /* Desktop: show the quotation as a real centered A4 sheet instead of stretching it across the screen. */
@@ -314,3 +314,13 @@ html,body{font-family:Inter,Arial,Helvetica,sans-serif}
   .q-banner img{max-height:100px!important}
   @page{size:A4 portrait;margin:0}
 }
+
+
+/* V14 FINAL FIXES */
+.q-rows{display:block!important;width:100%!important;box-sizing:border-box!important;padding:8px 10px!important}
+.q-breakdown-row{display:grid!important;grid-template-columns:minmax(0,1fr) max-content!important;column-gap:16px!important;align-items:center!important;width:100%!important;box-sizing:border-box!important;min-height:22px}
+.q-breakdown-row span{display:block!important;text-align:left!important;min-width:0!important}
+.q-breakdown-row strong{display:block!important;text-align:right!important;justify-self:end!important;white-space:nowrap!important;margin:0!important}
+.q-contact,.q-website,.q-footer .q-contact,.q-footer .q-website{color:#111827!important;text-decoration:none!important;-webkit-text-fill-color:#111827!important;text-decoration-line:none!important;pointer-events:none!important;cursor:default!important}
+.q-contact a,.q-website a{color:#111827!important;text-decoration:none!important;-webkit-text-fill-color:#111827!important;pointer-events:none!important}
+@media(max-width:680px){.q-rows{padding:8px!important}.q-breakdown-row{grid-template-columns:minmax(0,1fr) max-content!important;column-gap:12px!important;min-height:22px}.q-breakdown-row strong{text-align:right!important}}
