@@ -339,3 +339,16 @@ html,body{font-family:Inter,Arial,Helvetica,sans-serif}
 .q-ref{justify-self:end!important}
 @media(max-width:680px){.q-rows{grid-template-columns:minmax(0,1fr) minmax(120px,1fr)!important;column-gap:12px!important;padding:9px 10px!important}.q-breakdown-row{grid-template-columns:minmax(0,1fr) minmax(120px,1fr)!important;column-gap:12px!important}.q-payment-text{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;column-gap:10px!important;font-size:clamp(7px,2vw,8.5px)!important}.q-payment-text>div{min-width:0!important}.q-ref{justify-self:end!important}}
 @media(max-width:390px){.q-payment-text{grid-template-columns:1fr!important}.q-payment{grid-template-columns:82px minmax(0,1fr)!important}.q-payment .q-qr{width:76px!important;height:76px!important}}
+
+
+/* V16: only the requested quotation refinements. */
+.q-top{width:100%!important;grid-template-columns:minmax(0,1fr) 176px!important;align-items:start!important;}
+.q-ref{width:176px!important;justify-self:end!important;margin-left:auto!important;align-self:start!important;box-sizing:border-box!important;}
+.q-breakdown-card{width:100%!important;overflow:hidden!important;border:1px solid #b9c5d6!important;box-shadow:0 3px 10px rgba(11,29,65,.08)!important;background:#fff!important;}
+.q-breakdown-card .q-box-title{background:linear-gradient(135deg,#0b1d41,#18345f)!important;color:#fff!important;border-bottom:0!important;font-weight:900!important;letter-spacing:.15px!important;padding:9px 10px!important;}
+.q-breakdown-card .q-rows{background:#f8fafc!important;padding:10px 12px!important;}
+.q-breakdown-card .q-breakdown-row{min-height:26px!important;border-bottom:1px solid #e1e7ef!important;}
+.q-breakdown-card .q-breakdown-row:last-child{border-bottom:0!important;}
+.q-breakdown-card .q-total{margin:8px 10px 10px!important;border-radius:6px!important;box-shadow:0 2px 5px rgba(11,29,65,.12)!important;}
+@media(max-width:680px){.q-top{grid-template-columns:minmax(0,1fr) 150px!important;width:100%!important;}.q-ref{width:150px!important;max-width:150px!important;justify-self:end!important;margin-left:auto!important}.q-breakdown-card .q-box-title{padding:8px 9px!important}.q-breakdown-card .q-rows{padding:9px 10px!important}}
+@media(max-width:390px){.q-top{grid-template-columns:minmax(0,1fr) 132px!important}.q-ref{width:132px!important;max-width:132px!important}}
