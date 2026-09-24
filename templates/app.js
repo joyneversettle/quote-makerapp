@@ -14,77 +14,117 @@ function render(){const d=data();$('#document').innerHTML=quoteSummary(d);reques
 function emailDocument(d){
   const s=state.settings||{};
   const esc2=esc;
-  const cell='border:1px solid #c6d0dc;border-radius:8px;padding:0;vertical-align:top;overflow:hidden;';
-  const title='background:#f8fafc;border-bottom:1px solid #c6d0dc;padding:9px 11px;font-size:11px;font-weight:800;line-height:14px;';
-  const body='padding:10px 11px;font-size:11px;line-height:18px;overflow-wrap:anywhere;word-break:break-word;';
-  const row='border-top:1px solid #e3e7ed;padding:9px 11px;font-size:11px;line-height:16px;';
-  const html=`<div style="width:100%;margin:0;padding:0;background:#ffffff;color:#111827;font-family:Arial,Helvetica,sans-serif;">
-    <style>
-      @media screen and (max-width:600px){
-        .tm-outer{padding:8px!important}
-        .tm-card{width:100%!important;max-width:100%!important;border-radius:8px!important;padding:12px!important}
-        .tm-head,.tm-info{width:100%!important;table-layout:auto!important}
-        .tm-head td,.tm-info td{display:block!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
-        .tm-brand{padding:0 0 10px 0!important;border-bottom:0!important}
-        .tm-ref{margin-top:8px!important;padding:10px!important}
-        .tm-info{border-spacing:0!important;width:100%!important;margin-left:0!important}
-        .tm-info td{padding:0!important}
-        .tm-info td+td{padding-top:9px!important}
-        .tm-box{margin-top:9px!important}
-        .tm-value{font-size:18px!important;line-height:22px!important}
-        .tm-row-label,.tm-row-value{display:block!important;width:100%!important;float:none!important;text-align:left!important}
-        .tm-row-value{margin-top:3px!important}
-        .tm-banner{max-height:none!important;height:auto!important}
-        .tm-footer{text-align:center!important}
-      }
-    </style>
-    <div class="tm-outer" style="width:100%;box-sizing:border-box;margin:0;padding:10px;background:#ffffff;">
-      <div class="tm-card" style="width:100%;max-width:680px;margin:0 auto;border:1px solid #bfc8d5;border-radius:10px;background:#ffffff;padding:18px;box-sizing:border-box;">
-        <table class="tm-head" role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;table-layout:fixed;">
-          <tr>
-            <td class="tm-brand" valign="top" style="vertical-align:top;padding:0 12px 10px 0;border-bottom:1px solid #0b1d41;">
-              <div style="font-size:18px;font-weight:800;line-height:22px;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.name)}</div>
-              <div style="font-size:10px;line-height:15px;margin-top:3px;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.address)}</div>
-              <div style="font-size:10px;line-height:15px;overflow-wrap:anywhere;word-break:break-word;">Phone: <span style="color:#111827!important;text-decoration:none!important;">${esc2(s.phone)}</span> &nbsp;|&nbsp; Email: <span style="color:#111827!important;text-decoration:none!important;">${esc2(s.email)}</span></div>
-              ${s.gstin?`<div style="font-size:10px;line-height:15px;">GSTIN: ${esc2(s.gstin)}</div>`:''}
-              <div style="height:3px;background:#f97316;margin-top:8px;border-radius:2px;"></div>
-            </td>
-            <td class="tm-ref" valign="top" style="width:185px;vertical-align:top;padding:9px;border:1px solid #c6d0dc;border-radius:8px;font-size:10px;line-height:15px;overflow-wrap:anywhere;word-break:break-word;">
-              <div style="font-size:12px;font-weight:800;line-height:15px;">${type==='payment'?'PAYMENT RECEIPT':'BOOKING CONFIRMATION'}</div>
-              <div style="display:inline-block;background:#f97316;color:#ffffff;border-radius:12px;padding:4px 8px;font-size:9px;font-weight:800;margin:5px 0;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</div><br>
-              Ref: ${esc2(d.bookingRef||d.quoteRef||'—')}<br>Date: ${esc2(d.paymentDate||today())}
-            </td>
-          </tr>
-        </table>
+  const safeText=v=>esc2(v||'—');
+  // Keep contact text black and prevent Gmail/mobile clients from auto-linking it.
+  const safePhone=v=>esc2(v||'—').replace(/(\d{4})(?=\d)/g,'$1&#8203;');
+  const safeEmail=v=>esc2(v||'—').replace(/@/g,'&#8203;@').replace(/\./g,'&#8203;.');
+  const safeWeb=v=>esc2(v||'—').replace(/\./g,'&#8203;.');
+  const box='border:1px solid #c6d0dc;border-radius:9px;background:#ffffff;overflow:hidden;';
+  const title='background:#f8fafc;border-bottom:1px solid #c6d0dc;padding:10px 12px;font-size:11px;font-weight:800;line-height:15px;color:#111827;';
+  const body='padding:11px 12px;font-size:11px;line-height:18px;color:#111827;overflow-wrap:anywhere;word-break:break-word;';
+  const row='padding:10px 12px;border-top:1px solid #e3e7ed;font-size:11px;line-height:16px;color:#111827;';
+  const contact=`<span style="color:#111827!important;text-decoration:none!important;-webkit-text-decoration:none!important;">`;
+  return `<div style="width:100%;margin:0;padding:0;background:#ffffff;color:#111827;font-family:Arial,Helvetica,sans-serif;">
+    <div style="width:100%;box-sizing:border-box;margin:0 auto;padding:10px;background:#ffffff;">
+      <div style="width:100%;max-width:680px;margin:0 auto;border:1px solid #bfc8d5;border-radius:10px;background:#ffffff;padding:16px;box-sizing:border-box;">
 
-        <table class="tm-info" role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:separate;border-spacing:8px 9px;width:calc(100% + 16px);margin-left:-8px;table-layout:fixed;">
-          <tr>
-            <td class="tm-info-cell" width="50%" style="width:50%;${cell}"><div style="${title}">PREPARED FOR</div><div style="${body}"><strong>${esc2(d.guest||'—')}</strong><br>Phone: ${esc2(d.phone||'—')}<br>Email: ${esc2(d.email||'—')}<br>Agency: ${esc2(d.agency||'—')}</div></td>
-            <td class="tm-info-cell" width="50%" style="width:50%;${cell}"><div style="${title}">STAY DETAILS</div><div style="${body}">Check-in: <strong>${esc2(d.checkin||'—')}</strong><br>Check-out: <strong>${esc2(d.checkout||'—')}</strong><br>Occupancy: ${esc2(d.occupancy||'—')}<br>Room / Stay: ${esc2(d.room||'—')}</div></td>
-          </tr>
-        </table>
-
-        <div class="tm-box" style="margin-top:9px;background:#f8fafc;border:1px solid #c6d0dc;border-radius:8px;padding:13px;box-sizing:border-box;">
-          <div style="font-size:10px;font-weight:800;color:#667085;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</div>
-          <div class="tm-value" style="font-size:20px;font-weight:800;line-height:24px;color:#0b1d41;margin-top:3px;overflow-wrap:anywhere;">${type==='payment'?money(d.paymentAmount):'Your reservation is confirmed'}</div>
-          ${type==='payment'?`<div style="font-size:10px;line-height:15px;margin-top:3px;overflow-wrap:anywhere;">Payment Mode: ${esc2(d.paymentMode||'—')} &nbsp; | &nbsp; Transaction / UTR: ${esc2(d.transaction||'—')}</div>`:`<div style="font-size:10px;line-height:15px;margin-top:3px;overflow-wrap:anywhere;">Quotation Ref: ${esc2(d.quoteRef||'—')} &nbsp; | &nbsp; Booking Ref: ${esc2(d.bookingRef||'—')}</div>`}
+        <!-- Header: deliberately single-column for reliable Gmail/Outlook/mobile rendering -->
+        <div style="width:100%;box-sizing:border-box;border:1px solid #c6d0dc;border-radius:9px;padding:12px;background:#ffffff;">
+          <div style="font-size:19px;font-weight:800;line-height:24px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.name)}</div>
+          <div style="font-size:11px;line-height:17px;margin-top:4px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">${esc2(s.address)}</div>
+          <div style="font-size:11px;line-height:17px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">
+            Phone: ${contact}${safePhone(s.phone)}</span>
+            <span style="color:#667085;">&nbsp; | &nbsp;</span>
+            Email: ${contact}${safeEmail(s.email)}</span>
+          </div>
+          ${s.gstin?`<div style="font-size:11px;line-height:17px;color:#111827;">GSTIN: ${esc2(s.gstin)}</div>`:''}
+          <div style="height:3px;background:#f97316;margin-top:9px;border-radius:2px;"></div>
         </div>
 
-        <div class="tm-box" style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;overflow:hidden;">
-          <div style="${row.replace('border-top:','border-top:0;')}"><span class="tm-row-label">${type==='payment'?'Payment Date':'Confirmation Date'}</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;">${esc2(d.paymentDate||today())}</span></div>
-          <div style="${row}"><span class="tm-row-label">Payment Mode</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;">${esc2(d.paymentMode||'—')}</span></div>
-          <div style="${row}"><span class="tm-row-label">${type==='payment'?'Balance Due':'Balance Payable'}</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;">${money(d.balance)}</span></div>
-          ${d.paymentNote?`<div style="${row}"><span class="tm-row-label">Note</span><span class="tm-row-value" style="float:right;font-weight:700;text-align:right;max-width:65%;">${esc2(d.paymentNote)}</span></div>`:''}
+        <div style="height:9px;line-height:9px;font-size:1px;">&nbsp;</div>
+
+        <!-- Receipt / confirmation reference -->
+        <div style="${box}">
+          <div style="${title}">${type==='payment'?'PAYMENT RECEIPT':'BOOKING CONFIRMATION'}</div>
+          <div style="padding:11px 12px;font-size:11px;line-height:17px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">
+            <span style="display:inline-block;background:#f97316;color:#ffffff;border-radius:14px;padding:5px 9px;font-size:9px;font-weight:800;line-height:11px;margin-bottom:7px;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</span><br>
+            Ref: ${safeText(d.bookingRef||d.quoteRef)}<br>
+            Date: ${safeText(d.paymentDate||today())}
+          </div>
         </div>
 
-        ${s.banner?`<div class="tm-box" style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;overflow:hidden;"><img class="tm-banner" src="${s.banner}" alt="Promo Banner" style="display:block;width:100%;max-width:100%;height:auto;border:0;"></div>`:''}
-        <div class="tm-box" style="margin-top:9px;border:1px solid #c6d0dc;border-radius:8px;padding:11px;font-size:11px;line-height:18px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;">${esc2(d.message||'')}</div>
-        ${s.signature?`<div style="text-align:right;margin-top:8px;"><img src="${s.signature}" alt="Authorized Signature" style="display:inline-block;max-width:150px;max-height:55px;height:auto;"></div>`:''}
-        <div class="tm-footer" style="border-top:1px solid #c6d0dc;margin-top:10px;padding-top:8px;text-align:right;font-size:9px;line-height:14px;overflow-wrap:anywhere;">Thank you for choosing ${esc2(s.name)}<br>Phone: ${esc2(s.phone)} &nbsp;|&nbsp; Email: ${esc2(s.email)} &nbsp;|&nbsp; ${esc2(s.website)}</div>
+        <div style="height:9px;line-height:9px;font-size:1px;">&nbsp;</div>
+
+        <!-- Prepared for -->
+        <div style="${box}">
+          <div style="${title}">PREPARED FOR</div>
+          <div style="${body}">
+            <strong style="font-size:12px;">${safeText(d.guest)}</strong><br>
+            Phone: ${contact}${safePhone(d.phone)}</span><br>
+            Email: ${contact}${safeEmail(d.email)}</span><br>
+            Agency: ${safeText(d.agency)}
+          </div>
+        </div>
+
+        <div style="height:9px;line-height:9px;font-size:1px;">&nbsp;</div>
+
+        <!-- Stay details -->
+        <div style="${box}">
+          <div style="${title}">STAY DETAILS</div>
+          <div style="${body}">
+            Check-in: <strong>${safeText(d.checkin)}</strong><br>
+            Check-out: <strong>${safeText(d.checkout)}</strong><br>
+            Occupancy: ${safeText(d.occupancy)}<br>
+            Room / Stay: ${safeText(d.room)}
+          </div>
+        </div>
+
+        <div style="height:9px;line-height:9px;font-size:1px;">&nbsp;</div>
+
+        <!-- Main status / amount -->
+        <div style="border:1px solid #c6d0dc;border-radius:9px;background:#f8fafc;padding:13px;box-sizing:border-box;">
+          <div style="font-size:10px;font-weight:800;color:#667085;line-height:14px;">${type==='payment'?'PAYMENT RECEIVED':'BOOKING CONFIRMED'}</div>
+          <div style="font-size:20px;font-weight:800;line-height:25px;color:#0b1d41;margin-top:3px;overflow-wrap:anywhere;word-break:break-word;">${type==='payment'?money(d.paymentAmount):'Your reservation is confirmed'}</div>
+          ${type==='payment'
+            ? `<div style="font-size:11px;line-height:17px;margin-top:4px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">Payment Mode: ${safeText(d.paymentMode)}<br>Transaction / UTR: ${safeText(d.transaction)}</div>`
+            : `<div style="font-size:11px;line-height:17px;margin-top:4px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">Quotation Ref: ${safeText(d.quoteRef)}<br>Booking Ref: ${safeText(d.bookingRef)}</div>`}
+        </div>
+
+        <div style="height:9px;line-height:9px;font-size:1px;">&nbsp;</div>
+
+        <!-- Detail rows -->
+        <div style="${box}">
+          <div style="${row}border-top:0;">
+            <div style="font-weight:500;">${type==='payment'?'Payment Date':'Confirmation Date'}</div>
+            <div style="font-weight:700;margin-top:3px;">${safeText(d.paymentDate||today())}</div>
+          </div>
+          <div style="${row}">
+            <div style="font-weight:500;">Payment Mode</div>
+            <div style="font-weight:700;margin-top:3px;">${safeText(d.paymentMode)}</div>
+          </div>
+          <div style="${row}">
+            <div style="font-weight:500;">${type==='payment'?'Balance Due':'Balance Payable'}</div>
+            <div style="font-weight:700;margin-top:3px;">${money(d.balance)}</div>
+          </div>
+          ${d.paymentNote?`<div style="${row}"><div style="font-weight:500;">Note</div><div style="font-weight:700;margin-top:3px;overflow-wrap:anywhere;word-break:break-word;">${safeText(d.paymentNote)}</div></div>`:''}
+        </div>
+
+        ${s.banner?`<div style="margin-top:9px;border:1px solid #c6d0dc;border-radius:9px;overflow:hidden;"><img src="${s.banner}" alt="Promo Banner" style="display:block;width:100%;max-width:100%;height:auto;border:0;"></div>`:''}
+
+        <div style="margin-top:9px;border:1px solid #c6d0dc;border-radius:9px;padding:12px;font-size:11px;line-height:18px;color:#111827;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;">${esc2(d.message||'')}</div>
+
+        ${s.signature?`<div style="text-align:right;margin-top:9px;"><img src="${s.signature}" alt="Authorized Signature" style="display:inline-block;max-width:150px;max-height:55px;height:auto;"></div>`:''}
+
+        <div style="border-top:1px solid #c6d0dc;margin-top:10px;padding-top:9px;text-align:center;font-size:9px;line-height:15px;color:#111827;overflow-wrap:anywhere;word-break:break-word;">
+          Thank you for choosing ${esc2(s.name)}<br>
+          Phone: ${contact}${safePhone(s.phone)}</span>
+          <span style="color:#667085;">&nbsp; | &nbsp;</span>
+          Email: ${contact}${safeEmail(s.email)}</span><br>
+          ${contact}${safeWeb(s.website)}</span>
+        </div>
       </div>
     </div>
   </div>`;
-  return html;
 }
 function htmlForEmail(){const d=data();return `<!doctype html><html><body style="margin:0;padding:0;background:#ffffff;">${emailDocument(d)}</body></html>`}
 async function copyEmail(){const html=htmlForEmail();try{if(navigator.clipboard?.write&&window.ClipboardItem){await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([document.querySelector('#document').innerText],{type:'text/plain'})})])}else{throw new Error('rich clipboard unavailable')}}catch{const holder=document.createElement('div');holder.contentEditable='true';holder.style.position='fixed';holder.style.left='-99999px';holder.style.top='0';holder.innerHTML=emailDocument(data());document.body.appendChild(holder);const range=document.createRange();range.selectNodeContents(holder);const sel=getSelection();sel.removeAllRanges();sel.addRange(range);document.execCommand('copy');sel.removeAllRanges();holder.remove()}alert('Template copied. Paste it into Gmail/Outlook.')}

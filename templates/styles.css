@@ -19,3 +19,14 @@ html,body{width:100%;min-width:0;overflow-x:hidden}.app{width:100%;min-width:0}.
 }
 @media(min-width:701px){.tabs{width:auto}.workspace{min-width:0}}
 @media print{.sheet{transform:none!important}.document{height:auto!important;width:auto!important}}
+
+/* V23: strict mobile layout for the template app and its on-screen preview */
+.no-link{color:#111827!important;text-decoration:none!important;-webkit-text-decoration:none!important}
+.preview{overflow:hidden}
+.document{max-width:100%;}
+@media(max-width:700px){
+  .document{padding:0 2px;overflow:hidden;display:flex;justify-content:center;align-items:flex-start}
+  .sheet{margin:0;}
+  .hero .tabs{width:100%;}
+  .tab{min-width:0;overflow:hidden;text-overflow:ellipsis;}
+}
